@@ -13,7 +13,7 @@
     "build": "node psql-setup-script.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "John O'Donnell 2022",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
