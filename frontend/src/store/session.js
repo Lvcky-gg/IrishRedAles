@@ -64,7 +64,7 @@ export const sessionSlice = createSlice({
 export const authenticate = createAsyncThunk(
     'session/authenticate',
     async () => {
-        const response = await csrfFetch('/api/auth/', {
+        const response = await csrfFetch('/api/session', {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -113,7 +113,7 @@ export const login = createAsyncThunk(
 );
 
 export const logout = createAsyncThunk('session/logout', async () => {
-    const response = await csrfFetch('/api/auth/logout', {
+    const response = await csrfFetch('/api/session', {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -128,7 +128,7 @@ export const signUp = createAsyncThunk(
     'session/signUp',
     async ({ firstName, lastName, username, email, password }, { rejectWithValue }) => {
         try {
-            const response = await csrfFetch('/api/auth/signup', {
+            const response = await csrfFetch('/api/user', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
