@@ -13,18 +13,18 @@ function LoginFormPage() {
     const validationErrors = useSelector(
         (state) => state.session.validationErrors
     );
-    const [email, setEmail] = useState('');
+    const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [inputValidate, setInputValidate] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const errors = validateInput({ email, password });
+        const errors = validateInput({ credential, password });
         if (errors.length) {
             setInputValidate(errors);
         } else {
             setInputValidate([]);
-            dispatch(login({ email, password }));
+            dispatch(login({ credential, password }));
         }
     };
 
@@ -58,11 +58,11 @@ function LoginFormPage() {
             <h1>Log In</h1>
             <form onSubmit={handleSubmit}>
                 <div className="handleLoginBox">
-                    <label>Email</label>
+                    <label>Credential</label>
                     <input
                         type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={credential}
+                        onChange={(e) => setCredential(e.target.value)}
                         required
                     />
                 </div>

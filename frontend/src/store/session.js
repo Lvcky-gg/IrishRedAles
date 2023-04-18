@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { csrfFetch } from './csrf';
+
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const sessionSlice = createSlice({
     name: 'session',
@@ -83,15 +84,15 @@ export const authenticate = createAsyncThunk(
 
 export const login = createAsyncThunk(
     'session/login',
-    async ({ email, password }, { rejectWithValue }) => {
+    async ({ credential, password }, { rejectWithValue }) => {
         try {
-            const response = await csrfFetch('/api/auth/login', {
+            const response = await csrfFetch('/api/session', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    email,
+                    credential,
                     password,
                 }),
             });
@@ -125,7 +126,7 @@ export const logout = createAsyncThunk('session/logout', async () => {
 
 export const signUp = createAsyncThunk(
     'session/signUp',
-    async ({ username, email, password }, { rejectWithValue }) => {
+    async ({ firstName, lastName, username, email, password }, { rejectWithValue }) => {
         try {
             const response = await csrfFetch('/api/auth/signup', {
                 method: 'POST',
@@ -133,6 +134,8 @@ export const signUp = createAsyncThunk(
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    firstName,
+                    lastName,
                     username,
                     email,
                     password,
