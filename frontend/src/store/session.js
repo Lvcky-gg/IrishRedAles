@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { csrfFetch } from './csrf';
 
 export const sessionSlice = createSlice({
     name: 'session',
@@ -62,7 +63,7 @@ export const sessionSlice = createSlice({
 export const authenticate = createAsyncThunk(
     'session/authenticate',
     async () => {
-        const response = await fetch('/api/auth/', {
+        const response = await csrfFetch('/api/auth/', {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -84,7 +85,7 @@ export const login = createAsyncThunk(
     'session/login',
     async ({ email, password }, { rejectWithValue }) => {
         try {
-            const response = await fetch('/api/auth/login', {
+            const response = await csrfFetch('/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -111,7 +112,7 @@ export const login = createAsyncThunk(
 );
 
 export const logout = createAsyncThunk('session/logout', async () => {
-    const response = await fetch('/api/auth/logout', {
+    const response = await csrfFetch('/api/auth/logout', {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -126,7 +127,7 @@ export const signUp = createAsyncThunk(
     'session/signUp',
     async ({ username, email, password }, { rejectWithValue }) => {
         try {
-            const response = await fetch('/api/auth/signup', {
+            const response = await csrfFetch('/api/auth/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

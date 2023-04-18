@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { authenticate } from './store/session';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import LoginFormPage from './components/LoginFormPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -10,7 +12,9 @@ function App() {
 }, [dispatch]);
 
   return (
-    <h1>Hello from App</h1>
+    <Routes>
+      <Route path="/login" element={<LoginFormPage></LoginFormPage>}/>
+    </Routes>
   );
 }
 
