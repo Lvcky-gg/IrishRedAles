@@ -18,6 +18,7 @@ function App() {
     <Navigation isLoaded={isLoaded} />
     {isLoaded && <Routes>
       <Route path="/login" element={<LoginFormPage></LoginFormPage>}/>
+      <Route path="/" />
     </Routes>}
     </>
   );
