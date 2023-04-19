@@ -23,9 +23,7 @@ function Navigation({ isLoaded }) {
                         <li>
                             <NavLink to="/">Home</NavLink>
                         </li>
-                        <li>
-                            <NavLink to="/all-questions/">Questions</NavLink>
-                        </li>
+
                     </>
                 )}
                 {isLoaded && (
