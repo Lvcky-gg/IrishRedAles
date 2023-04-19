@@ -44,7 +44,7 @@ function ProfileButton({ user }) {
     const closeMenu = () => setShowMenu(false);
     const demoUserLogin = () => {
         const credential = {
-            email: 'demo@aa.io',
+            credential: 'demo@user.io',
             password: 'password',
         };
         dispatch(login(credential));

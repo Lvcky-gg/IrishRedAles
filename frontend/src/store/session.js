@@ -128,7 +128,7 @@ export const signUp = createAsyncThunk(
     'session/signUp',
     async ({ firstName, lastName, username, email, password }, { rejectWithValue }) => {
         try {
-            const response = await csrfFetch('/api/user', {
+            const response = await csrfFetch('/api/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import store from './store'
 import App from './App';
-import { ModalProvider } from './context/Modal';
+import { ModalProvider, Modal } from './context/Modal';
 
 function Root() {
   return (
@@ -13,7 +13,7 @@ function Root() {
     <Provider store={store}>
       <BrowserRouter>
         <App />
-        {/* <Modal /> */}
+        <Modal />
       </BrowserRouter>
     </Provider>   
     </ModalProvider>

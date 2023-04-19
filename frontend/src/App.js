@@ -4,6 +4,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginFormPage from './components/LoginFormPage';
 import Navigation from './components/Navigation';
+import Loader from './components/Loader';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,9 +16,9 @@ function App() {
   return (
     <>
     <Navigation isLoaded={isLoaded} />
-    <Routes>
+    {isLoaded && <Routes>
       <Route path="/login" element={<LoginFormPage></LoginFormPage>}/>
-    </Routes>
+    </Routes>}
     </>
   );
 }
