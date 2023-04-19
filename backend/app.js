@@ -29,15 +29,21 @@ if (!isProduction) {
   );
   
   // Set the _csrf token and create req.csrfToken method
-  app.use(
-    csurf({
-      cookie: {
-        secure: isProduction,
-        sameSite: isProduction && "Lax",
-        httpOnly: true
-      }
-    })
-  );
+  /***************************use this later************************
+   * **************************************************************
+   * **************************************************************/
+  // app.use(
+  //   csurf({
+  //     cookie: {
+  //       secure: isProduction,
+  //       sameSite: isProduction && "Lax",
+  //       httpOnly: true
+  //     }
+  //   })
+  // );
+    /***************************use this later************************
+   * **************************************************************
+   * **************************************************************/
 
 const routes = require('./routes');
 app.use(routes); // Connect all the routes

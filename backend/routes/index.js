@@ -26,13 +26,17 @@ if (process.env.NODE_ENV === 'production') {
     );
   });
 }
-
-if (process.env.NODE_ENV !== 'production') {
-  router.get('/api/csrf/restore', (req, res) => {
-    res.cookie('XSRF-TOKEN', req.csrfToken());
-    return res.json({});
-  });
-}
+  /***************************use this later************************
+   * **************************************************************
+   * **************************************************************/
+// if (process.env.NODE_ENV !== 'production') {
+//   router.get('/api/csrf/restore', (req, res) => {
+//     res.cookie('XSRF-TOKEN', req.csrfToken());
+//     return res.json({});
+//   });
+  /***************************use this later************************
+   * **************************************************************
+   * **************************************************************/
 
 router.use('/api', apiRouter);
 
@@ -41,11 +45,12 @@ router.use('/api', apiRouter);
 //   res.send('Hello World!');
 // });
 router.get("/api/csrf/restore", (req, res) => {
-    const csrfToken = req.csrfToken();
+    const csrfToken = req.csrfToken(); 
     res.cookie("XSRF-TOKEN", csrfToken);
     res.status(200).json({
       'XSRF-Token': csrfToken
     });
+    
   });
 
 module.exports = router;

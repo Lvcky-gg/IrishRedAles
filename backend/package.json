@@ -10,7 +10,8 @@
     "start": "per-env",
     "start:development": "nodemon ./bin/www",
     "start:production": "node ./bin/www",
-    "build": "node psql-setup-script.js"
+    "build": "node psql-setup-script.js",
+    "lvcky":"./build_backend.sh "
   },
   "keywords": [],
   "author": "John O'Donnell 2022",
