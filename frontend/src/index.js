@@ -5,15 +5,18 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import store from './store'
 import App from './App';
+import { ModalProvider } from './context/Modal';
 
 function Root() {
   return (
+    <ModalProvider>
     <Provider store={store}>
       <BrowserRouter>
         <App />
         {/* <Modal /> */}
       </BrowserRouter>
     </Provider>   
+    </ModalProvider>
   )
 }
 

@@ -3,6 +3,7 @@ import { authenticate } from './store/session';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginFormPage from './components/LoginFormPage';
+import Navigation from './components/Navigation';
 
 function App() {
   const dispatch = useDispatch();
@@ -12,9 +13,12 @@ function App() {
 }, [dispatch]);
 
   return (
+    <>
+    <Navigation isLoaded={isLoaded} />
     <Routes>
       <Route path="/login" element={<LoginFormPage></LoginFormPage>}/>
     </Routes>
+    </>
   );
 }
 
