@@ -35,10 +35,13 @@ async (req, res) => {
     return res.json({"Message":"This Brewery does not exist."})
 }
 }); 
+
 router.put('/:breweryId',
+requireAuth,
 async (req, res) => {
 }); 
 router.delete('/:breweryId',
+requireAuth,
 async (req, res) => {
 }); 
 
@@ -79,6 +82,17 @@ async (req, res) => {
     return res.json({"Breweries":result});
 
 });
+
+router.post('/',
+requireAuth,
+async (req, res) => {
+    const { name, description, addressLineOne, city, state, country, lat, lng, zip} = req.body;
+    const brewery = await Brewery.create({
+        name, description, addressLineOne, zip, state, country, city, lat, lng, ownerId:req.user.id
+    })
+
+    res.json(brewery)
+}); 
 
 
 
