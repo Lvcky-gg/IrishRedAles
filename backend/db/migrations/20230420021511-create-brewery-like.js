@@ -12,7 +12,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      reviewId: {
+      breweryId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
