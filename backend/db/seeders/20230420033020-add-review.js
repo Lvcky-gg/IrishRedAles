@@ -10,7 +10,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     options.tableName = "Breweries"
 
-      await queryInterface.bulkInsert('options', [
+      await queryInterface.bulkInsert(options, [
         {
           "ownerId":1,
           "breweryId":1,
