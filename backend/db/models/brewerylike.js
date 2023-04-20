@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      ReviewLike.belongsTo(models.User, {foreignKey:'userId'})
-      ReviewLike.belongsTo(models.Brewery, {foreignKey:'breweryId'})
+      BreweryLike.belongsTo(models.User, {foreignKey:'userId'})
+      BreweryLike.belongsTo(models.Brewery, {foreignKey:'breweryId'})
     }
   }
   BreweryLike.init({
