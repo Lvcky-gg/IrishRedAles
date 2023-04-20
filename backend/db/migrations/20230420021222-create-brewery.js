@@ -16,6 +16,12 @@ module.exports = {
         type: Sequelize.STRING,
         unique:true
       },
+      addressLineOne:{
+        type: Sequelize.INTEGER
+      },
+      city:{
+        type: Sequelize.INTEGER
+      },
       description: {
         type: Sequelize.STRING
       },

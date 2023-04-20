@@ -25,6 +25,13 @@ module.exports = (sequelize, DataTypes) => {
         len:[5, 50]
       }
     },
+    addressLineOne:{
+      type:DataTypes.STRING,
+
+    },
+    city:{
+      type:DataTypes.STRING,
+    },
     description: DataTypes.STRING,
     zip: {
       type:DataTypes.STRING,
