@@ -12,30 +12,41 @@ module.exports = {
      await queryInterface.bulkInsert(options, [
       {
         "name":"Earth Rider",
+        "ownerId":1,
         "description":"Wisconsin's Best",
         "addressLineOne":"1715 N 3rd St #1617",
         "city":"Superior",
         "zip":"54880",
         "state":"Wisconsin",
-        "country":"United States"
+        "country":"United States",
+        "lat":46.73596303437364,
+        "lng":-92.10335126135686
   },
   {
     "name":"Bent Paddle",
+    "ownerId":2,
     "description":"From day one the founders have made the best beer",
     "addressLineOne":"1832 W Michigan St",
     "city":"Duluth",
     "zip":"55806",
     "state":"Minnestota",
-    "country":"United States"
+    "country":"United States",
+    "lat":46.768546458038166,
+    "lng":-92.12066727409862
+
 },
 {
   "name":"Castle Danger",
+  "ownerId":3,
   "description":"Great Beer",
   "addressLineOne":"17 7th St",
   "city":"Two Harbors",
   "zip":"55616",
   "state":"Minnestota",
-  "country":"United States"
+  "country":"United States",
+  "lat":47.01970375833848,
+  "lng":-91.67339801641828
+   
 }
        
       ], {});
