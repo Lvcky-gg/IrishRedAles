@@ -18,13 +18,13 @@ module.exports = {
           "description": "this place is great"
         },
         {
-          "ownerId":1,
+          "ownerId":2,
           "breweryId":1,
           "rating":2,
           "description": "this place is great"
         },
         {
-          "ownerId":1,
+          "ownerId":3,
           "breweryId":1,
           "rating":3,
           "description": "this place is great"
