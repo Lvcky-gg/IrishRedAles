@@ -1,12 +1,16 @@
 const express = require('express');
 const router = express.Router();
-import { Brewery, Review } from '../../db/models';
+const { Brewery, Review } = require('../../db/models');
 
 
 router.get('/',
 async (req, res) => {
 
-    let breweries = Brewery.findAll({include:[{model:Review}]})
+    let breweries = await Brewery.findAll()
+    const result = [];
+    for(let i = 0; i < breweries.length; i++){
+        console.log(breweries[i])
+    }
 
     return res.json({"Breweries":breweries})
 
