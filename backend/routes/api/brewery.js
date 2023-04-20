@@ -18,6 +18,7 @@ async (req, res) => {
 
     return res.json({
         id:brewery.id,
+        name:brewery.name,
         addressLineOne:brewery.addressLineOne,
         city:brewery.city,
         description:brewery.description,
@@ -42,12 +43,12 @@ async (req, res) => {
     const sessionId = req.user.id;
     const { breweryId } = req.params;
     const brewery = await Brewery.findOne({where:{id:+breweryId}, include:[{model:Review}]});
-    console.log(brewery)
     if (brewery){
         if(sessionId === +brewery.ownerId){
-
-            return res.json({sessionId})
-
+            const { name, description, addressLineOne, city, state, country, lat, lng, zip} = req.body;
+            const mod = await brewery.update({ name, description, addressLineOne, city, state, country, lat, lng, zip});
+            res.status(200);
+            return res.json(mod)
         }
     res.status(403)
     return res.json({"Message":"This Brewery does not belong to you."})
@@ -59,6 +60,21 @@ async (req, res) => {
 router.delete('/:breweryId',
 requireAuth,
 async (req, res) => {
+    const sessionId = req.user.id;
+    const { breweryId } = req.params;
+    const brewery = await Brewery.findOne({where:{id:+breweryId}, include:[{model:Review}]});
+    if (brewery){
+        if(sessionId === +brewery.ownerId){
+            const mod = await brewery.destroy();
+            res.status(200);
+            return res.json({"message":"Brewery successfully deleted."})
+        }
+    res.status(403)
+    return res.json({"Message":"This Brewery does not belong to you."})
+
+    }
+    res.status(404)
+    return res.json({"Message":"Brewery Does Not exist"})
 }); 
 
 router.get('/',
