@@ -3,38 +3,34 @@ const router = express.Router();
 const { requireAuth } = require("../../utils/auth.js");
 const { Brewery, Review } = require("../../db/models");
 
-
 router.get("/:breweryId/reviews", async (req, res) => {
-    const { breweryId } = req.params;
-    const reviews = await Review.findAll({where:{breweryId:+breweryId}});
-    if (reviews.length){
-        return res.json({"reviews":reviews})
-    }
-    else{
-        res.status(404);
-        return res.json({"message":"There are no reviews for this brewery."})
-    }
-
-})
-router.post("/:breweryId/reviews",requireAuth, async (req, res) => {
-    const { breweryId } = req.params;
-    const {description, rating} = req.body
-    const brewery = await Brewery.findOne({where:{id:+breweryId}})
-    if (brewery){
-        const newReview = await Review.create({
-            ownerId:req.user.id,
-            breweryId:+breweryId,
-            rating,
-            description
-        });
-        console.log(newReview)
-        return res.json(newReview)
-
-    }else{
-        res.status(404)
-        return res.json({"Message":"This Brewery does not exist"})
-    }
-})
+  const { breweryId } = req.params;
+  const reviews = await Review.findAll({ where: { breweryId: +breweryId } });
+  if (reviews.length) {
+    return res.json({ reviews: reviews });
+  } else {
+    res.status(404);
+    return res.json({ message: "There are no reviews for this brewery." });
+  }
+});
+router.post("/:breweryId/reviews", requireAuth, async (req, res) => {
+  const { breweryId } = req.params;
+  const { description, rating } = req.body;
+  const brewery = await Brewery.findOne({ where: { id: +breweryId } });
+  if (brewery) {
+    const newReview = await Review.create({
+      ownerId: req.user.id,
+      breweryId: +breweryId,
+      rating,
+      description,
+    });
+    console.log(newReview);
+    return res.json(newReview);
+  } else {
+    res.status(404);
+    return res.json({ Message: "This Brewery does not exist" });
+  }
+});
 router.get("/:breweryId", async (req, res) => {
   const { breweryId } = req.params;
   let sum = 0;
@@ -134,6 +130,11 @@ router.delete("/:breweryId", requireAuth, async (req, res) => {
 router.get("/", async (req, res) => {
   let breweries = await Brewery.findAll({ include: [{ model: Review }] });
   const result = [];
+  const {state, city} = req.query;
+  if(state)breweries = await Brewery.findAll({ include: [{ model: Review }], where:{state} });
+  if(city)breweries = await Brewery.findAll({ include: [{ model: Review }], where:{city} });
+  if(city && state)breweries = await Brewery.findAll({ include: [{ model: Review }], where:{city, state} });
+
 
   for (let i = 0; i < breweries.length; i++) {
     let sum = 0;
