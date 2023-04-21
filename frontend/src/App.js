@@ -20,7 +20,7 @@ function App() {
     dispatch(authenticate()).then(() => setIsLoaded(true));
 }, [dispatch]);
 library.add(fas, faUserCircle, faChevronDown, faChevronUp, faLocationPin)
-
+console.log(navigator.geolocation.getCurrentPosition((pos)=>pos.coords.latitude))
   return (
     <>
     <Navigation isLoaded={isLoaded} />

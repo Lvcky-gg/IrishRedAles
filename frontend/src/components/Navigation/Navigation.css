@@ -16,6 +16,7 @@
     justify-content: space-between;
     margin-top:1%;
     
+    
 }
 
 .navHomeLink{
@@ -36,20 +37,21 @@
     visibility: hidden;
 }
 .navLogo{
-    width:30%;
+    width:25%;
     padding-left: 10%;
-    margin-top:3%;
+    margin-top:5%;
 
 }
 .profile-dropdown {
     position:relative;
     right:100%;
-    top:250%;
+    top:270%;
    background-color:rgba(253, 253, 253, 0.26);
    backdrop-filter: blur(5px);
    border-radius:5%;
    height:170px;
    width:150px;
+   
 }
 .profile-dropdown li {
     width:fit-content;

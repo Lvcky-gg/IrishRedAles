@@ -76,6 +76,7 @@ const { isLoaded } = useJsApiLoader({
                 <Marker key={id} 
               position={{lat:lat, lng:lng}}
               title={breweryName}
+              id={id}
               icon={{
                 path: 'M 100 100 L 300 100 L 200 300 z',
                 fillColor: 'rgba(253, 253, 253, 0.26)',
