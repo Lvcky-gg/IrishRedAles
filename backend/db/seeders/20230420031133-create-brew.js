@@ -11,7 +11,7 @@ module.exports = {
     options.tableName = "Breweries"
      await queryInterface.bulkInsert(options, [
       {
-        "name":"Earth Rider",
+        "breweryName":"Earth Rider",
         "ownerId":1,
         "description":"Wisconsin's Best",
         "addressLineOne":"1715 N 3rd St #1617",
@@ -23,7 +23,7 @@ module.exports = {
         "lng":-92.10335126135686
   },
   {
-    "name":"Bent Paddle",
+    "nbreweryName":"Bent Paddle",
     "ownerId":2,
     "description":"From day one the founders have made the best beer",
     "addressLineOne":"1832 W Michigan St",
@@ -36,7 +36,7 @@ module.exports = {
 
 },
 {
-  "name":"Castle Danger",
+  "breweryName":"Castle Danger",
   "ownerId":3,
   "description":"Great Beer",
   "addressLineOne":"17 7th St",
@@ -58,7 +58,7 @@ module.exports = {
     const Op = Sequelize.Op;
 
      await queryInterface.bulkDelete(options, {
-      name:{[Op.in]:["Earth Rider","Bent Paddle","Castle Danger"]}
+      breweryName:{[Op.in]:["Earth Rider","Bent Paddle","Castle Danger"]}
      });
      
   }

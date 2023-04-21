@@ -48,7 +48,7 @@ router.get("/:breweryId", async (req, res) => {
 
     return res.json({
       id: brewery.id,
-      name: brewery.name,
+      breweryName: brewery.breweryName,
       addressLineOne: brewery.addressLineOne,
       city: brewery.city,
       description: brewery.description,
@@ -77,7 +77,7 @@ router.put("/:breweryId", requireAuth, async (req, res) => {
   if (brewery) {
     if (sessionId === +brewery.ownerId) {
       const {
-        name,
+        breweryName,
         description,
         addressLineOne,
         city,
@@ -88,7 +88,7 @@ router.put("/:breweryId", requireAuth, async (req, res) => {
         zip,
       } = req.body;
       const mod = await brewery.update({
-        name,
+        breweryName,
         description,
         addressLineOne,
         city,
@@ -191,7 +191,7 @@ router.get("/", async (req, res) => {
 
 router.post("/", requireAuth, async (req, res) => {
   const {
-    name,
+    breweryName,
     description,
     addressLineOne,
     city,
@@ -202,7 +202,7 @@ router.post("/", requireAuth, async (req, res) => {
     zip,
   } = req.body;
   const brewery = await Brewery.create({
-    name,
+    breweryName,
     description,
     addressLineOne,
     zip,

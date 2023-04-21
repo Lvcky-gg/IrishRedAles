@@ -12,7 +12,7 @@ module.exports = {
       ownerId: {
         type: Sequelize.INTEGER
       },
-      name: {
+      breweryName: {
         type: Sequelize.STRING,
         unique:true
       },

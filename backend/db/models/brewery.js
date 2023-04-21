@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Brewery.init({
     ownerId: DataTypes.INTEGER,
-    name: {
+    breweryName: {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
