@@ -130,11 +130,22 @@ router.delete("/:breweryId", requireAuth, async (req, res) => {
 router.get("/", async (req, res) => {
   let breweries = await Brewery.findAll({ include: [{ model: Review }] });
   const result = [];
-  const {state, city} = req.query;
-  if(state)breweries = await Brewery.findAll({ include: [{ model: Review }], where:{state} });
-  if(city)breweries = await Brewery.findAll({ include: [{ model: Review }], where:{city} });
-  if(city && state)breweries = await Brewery.findAll({ include: [{ model: Review }], where:{city, state} });
-
+  const { state, city } = req.query;
+  if (state)
+    breweries = await Brewery.findAll({
+      include: [{ model: Review }],
+      where: { state },
+    });
+  if (city)
+    breweries = await Brewery.findAll({
+      include: [{ model: Review }],
+      where: { city },
+    });
+  if (city && state)
+    breweries = await Brewery.findAll({
+      include: [{ model: Review }],
+      where: { city, state },
+    });
 
   for (let i = 0; i < breweries.length; i++) {
     let sum = 0;
