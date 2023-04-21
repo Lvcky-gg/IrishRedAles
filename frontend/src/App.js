@@ -9,6 +9,7 @@ import Navigation from './components/Navigation';
 import Home from './components/Home'
 import Map from './components/Map'
 import Loader from './components/Loader';
+import AllBrew from './components/AllBrewery';
 import {
  faUserCircle, faChevronUp, faChevronDown, faLocationPin
 } from '@fortawesome/free-solid-svg-icons';
@@ -27,7 +28,7 @@ console.log(navigator.geolocation.getCurrentPosition((pos)=>pos.coords.latitude)
     {isLoaded && <Routes>
       <Route path="/login" element={<LoginFormPage></LoginFormPage>}/>
       <Route path="/" element={<Home></Home>}/>
-      <Route path="/breweries" element={<Map></Map>}/>
+      <Route path="/breweries" element={<AllBrew></AllBrew>}/>
     </Routes>}
     </>
   );
