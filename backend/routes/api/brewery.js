@@ -48,7 +48,7 @@ router.get("/:breweryId", async (req, res) => {
 
     return res.json({
       id: brewery.id,
-      name: brewery.name,
+      breweryName: brewery.breweryName,
       addressLineOne: brewery.addressLineOne,
       city: brewery.city,
       description: brewery.description,
@@ -77,7 +77,7 @@ router.put("/:breweryId", requireAuth, async (req, res) => {
   if (brewery) {
     if (sessionId === +brewery.ownerId) {
       const {
-        name,
+        breweryName,
         description,
         addressLineOne,
         city,
@@ -88,7 +88,7 @@ router.put("/:breweryId", requireAuth, async (req, res) => {
         zip,
       } = req.body;
       const mod = await brewery.update({
-        name,
+        breweryName,
         description,
         addressLineOne,
         city,
@@ -130,11 +130,22 @@ router.delete("/:breweryId", requireAuth, async (req, res) => {
 router.get("/", async (req, res) => {
   let breweries = await Brewery.findAll({ include: [{ model: Review }] });
   const result = [];
-  const {state, city} = req.query;
-  if(state)breweries = await Brewery.findAll({ include: [{ model: Review }], where:{state} });
-  if(city)breweries = await Brewery.findAll({ include: [{ model: Review }], where:{city} });
-  if(city && state)breweries = await Brewery.findAll({ include: [{ model: Review }], where:{city, state} });
-
+  const { state, city } = req.query;
+  if (state)
+    breweries = await Brewery.findAll({
+      include: [{ model: Review }],
+      where: { state },
+    });
+  if (city)
+    breweries = await Brewery.findAll({
+      include: [{ model: Review }],
+      where: { city },
+    });
+  if (city && state)
+    breweries = await Brewery.findAll({
+      include: [{ model: Review }],
+      where: { city, state },
+    });
 
   for (let i = 0; i < breweries.length; i++) {
     let sum = 0;
@@ -142,6 +153,7 @@ router.get("/", async (req, res) => {
       sum += breweries[i].Reviews[j].rating;
     }
     let id = breweries[i].id;
+    let breweryName =breweries[i].breweryName
     let ownerId = breweries[i].ownerId;
     let addressLineOne = breweries[i].addressLineOne;
     let city = breweries[i].city;
@@ -159,6 +171,7 @@ router.get("/", async (req, res) => {
 
     result.push({
       id,
+      breweryName,
       ownerId,
       addressLineOne,
       city,
@@ -180,7 +193,7 @@ router.get("/", async (req, res) => {
 
 router.post("/", requireAuth, async (req, res) => {
   const {
-    name,
+    breweryName,
     description,
     addressLineOne,
     city,
@@ -191,7 +204,7 @@ router.post("/", requireAuth, async (req, res) => {
     zip,
   } = req.body;
   const brewery = await Brewery.create({
-    name,
+    breweryName,
     description,
     addressLineOne,
     zip,

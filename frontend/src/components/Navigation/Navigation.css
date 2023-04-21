@@ -1,0 +1,62 @@
+.nav {
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    background-color: rgba(253, 253, 253, 0);
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+
+}
+.navDrop{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.navHomeLink{
+    padding-right:10%;
+}
+.navHomeLink a{
+    text-decoration: none;
+    color:#B4C4BC;
+    font-size:30px;
+}
+.navDrop li {
+    list-style: none;
+}
+.hidden {
+    visibility: hidden;
+}
+.navLogo{
+    width:30%;
+    padding-left: 10%;
+
+}
+.profile-dropdown {
+    position:relative;
+    right:100%;
+    top:25%;
+   background-color:rgba(253, 253, 253, 0.26);
+   border-radius:5%;
+   height:170px;
+   width:150px;
+}
+.profile-dropdown li {
+    width:fit-content;
+    margin:auto;
+    margin-left:-10%;
+    padding-top:9%;
+}
+.profile-dropdown li a, p, button {
+    text-decoration:none;
+    color:black;
+}
+.profileButton{
+    height:20%;
+    width:20%;
+    margin-top:2.5%;
+    background-color: #B4C4BC;
+    border-radius: 15%;
+}

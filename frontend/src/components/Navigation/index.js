@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import logo  from  '../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png'
 
 
 
@@ -13,15 +14,15 @@ function Navigation({ isLoaded }) {
 
     return (
         <div className="nav">
-            <div className="nav-img-container" onClick={() => navigate('/')}>
-               
+            <div>
+                <img src={logo} alt="#" className='navLogo'></img>
             </div>
           
             <ul className="navDrop">
                 {isLoaded && (
                     <>
-                        <li>
-                            <NavLink to="/">Home</NavLink>
+                        <li className="navHomeLink">
+                            <NavLink  to="/">Home</NavLink>
                         </li>
 
                     </>
