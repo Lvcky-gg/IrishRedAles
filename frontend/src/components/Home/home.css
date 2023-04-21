@@ -45,6 +45,6 @@
 .homeCards{
     margin-top:25%;
     display:flex;
-    justify-content:space-between;
+    justify-content:space-evenly;
     flex-flow: wrap;
 }

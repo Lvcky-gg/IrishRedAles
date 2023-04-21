@@ -4,7 +4,7 @@ import './breweryCard.css'
 const BreweryCard = ({id, breweryName, city, state}) => {
     
     return (
-        <div className="breweryCard">
+        <div >
             <div className="breweryCard" loading="lazy">
                 <div className="breweryCardInner">
                 <h1>{breweryName}</h1>
