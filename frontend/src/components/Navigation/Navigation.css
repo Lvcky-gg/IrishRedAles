@@ -37,8 +37,9 @@
 .profile-dropdown {
     position:relative;
     right:100%;
-    top:25%;
+    top:8%;
    background-color:rgba(253, 253, 253, 0.26);
+   backdrop-filter: blur(5px);
    border-radius:5%;
    height:170px;
    width:150px;
@@ -56,7 +57,9 @@
 .profileButton{
     height:20%;
     width:20%;
-    margin-top:2.5%;
-    background-color: #B4C4BC;
+    background-color: rgba(253, 253, 253, 0.26);;
     border-radius: 15%;
+}
+.profileButton:hover{
+    cursor: pointer;
 }

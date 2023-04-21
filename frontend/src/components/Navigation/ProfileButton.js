@@ -14,11 +14,13 @@ function ProfileButton({ user }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
+    const [up, setUp] = useState(false)
     const ulRef = useRef();
 
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
+        setUp(false)
     };
 
     useEffect(() => {
@@ -27,6 +29,7 @@ function ProfileButton({ user }) {
         const closeMenu = (e) => {
             if (!ulRef.current.contains(e.target)) {
                 setShowMenu(false);
+                setUp(true)
             }
         };
 
@@ -57,8 +60,11 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button onClick={openMenu} className="profileButton">
-               <FontAwesomeIcon icon="fa-solid fa-circle-user" />
+            <button onClick={openMenu} className="profileButton buttonStyle">
+               {/* <FontAwesomeIcon icon="fa-solid fa-circle-user" /> */}
+               {up ?(<FontAwesomeIcon icon="fa-solid fa-chevron-up" />):
+               (<FontAwesomeIcon icon="fa-solid fa-chevron-down" />)
+               }
             </button>
             <ul className={ulClassName} ref={ulRef}>
                 {user ? (
@@ -67,7 +73,7 @@ function ProfileButton({ user }) {
                         <li className="dropComp">{user.email}</li>
                         <li className="button-container">
                             <button
-                                className="modalButton"
+                                className="modalButton buttonStyle"
                                 onClick={handleLogout}
                             >
                                 Log Out
@@ -96,7 +102,7 @@ function ProfileButton({ user }) {
 
                         <li className="button-container">
                             <button
-                                className="modalButton"
+                                className="modalButton buttonStyle"
                                 onClick={demoUserLogin}
                             >
                                 DemoUser

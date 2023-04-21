@@ -7,9 +7,10 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import LoginFormPage from './components/LoginFormPage';
 import Navigation from './components/Navigation';
 import Home from './components/Home'
+import Map from './components/Map'
 import Loader from './components/Loader';
 import {
- faUserCircle
+ faUserCircle, faChevronUp, faChevronDown, faLocationPin
 } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
 }, [dispatch]);
-library.add(fas, faUserCircle)
+library.add(fas, faUserCircle, faChevronDown, faChevronUp, faLocationPin)
 
   return (
     <>
@@ -26,6 +27,7 @@ library.add(fas, faUserCircle)
     {isLoaded && <Routes>
       <Route path="/login" element={<LoginFormPage></LoginFormPage>}/>
       <Route path="/" element={<Home></Home>}/>
+      <Route path="/breweries" element={<Map></Map>}/>
     </Routes>}
     </>
   );
