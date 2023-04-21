@@ -6,13 +6,15 @@
     justify-content: space-between;
     position: relative;
     z-index: 10;
-    height:100px
+    height:100px;
+    margin-top:-1%;
 
 }
 .navDrop{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top:1%;
     
 }
 
@@ -26,6 +28,9 @@
 }
 .navDrop li {
     list-style: none;
+    display:flex;
+    align-items: flex-end;
+    
 }
 .hidden {
     visibility: hidden;
@@ -33,12 +38,13 @@
 .navLogo{
     width:30%;
     padding-left: 10%;
+    margin-top:3%;
 
 }
 .profile-dropdown {
     position:relative;
     right:100%;
-    top:8%;
+    top:250%;
    background-color:rgba(253, 253, 253, 0.26);
    backdrop-filter: blur(5px);
    border-radius:5%;
