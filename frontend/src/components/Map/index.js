@@ -6,6 +6,7 @@ import { getAllBreweries } from '../../store/breweries';
 import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { mapStyle } from './mapStyle';
+import './map.css'
 
 
 
@@ -43,8 +44,8 @@ const { isLoaded } = useJsApiLoader({
   })
   
   const containerStyle = {
-    width: '800px',
-    height: '800px'
+    width: '100%',
+    height: '100%'
   };
 
   const [map, setMap] = useState(null)
@@ -60,8 +61,7 @@ const { isLoaded } = useJsApiLoader({
       // Important! Always set the container height explicitly
       
       <div className="map_page__container">
- 
-        <div style={{ height: '900px', width: '900px' }}>
+        <div className="GoogleMap">
             {isLoaded && <GoogleMap
             //   defaultCenter={{lat:breweries[0].lat,lng:breweries[0].lng}}
               mapContainerStyle={containerStyle}
@@ -69,7 +69,7 @@ const { isLoaded } = useJsApiLoader({
               center={currentPosition}
               onUnmount={onUnmount}
               backgroundColor='rgba(253, 253, 253, 0.25)'
-              styles={mapStyle}
+              options={{styles:mapStyle}}
               >
                          
             {breweries && breweries.map(({id, breweryName, lat, lng})=>(
@@ -78,24 +78,18 @@ const { isLoaded } = useJsApiLoader({
               title={breweryName}
               icon={{
                 path: 'M 100 100 L 300 100 L 200 300 z',
-                fillColor: 'gray',
+                fillColor: 'rgba(253, 253, 253, 0.26)',
                 fillOpacity: 1,
                 scale: .2,
-                strokeColor: 'gold',
+                strokeColor: '#04873C',
                 strokeWeight: 2
               }}
               onClick={()=>console.log('hello world')}
               streetView={false} /> 
             ))
             }
-            </GoogleMap>}
-
-
-         
-            
-
-        </div>
-       
+            </GoogleMap>}   
+            </div>  
       </div>
     );
           
