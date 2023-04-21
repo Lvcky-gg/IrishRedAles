@@ -77,14 +77,14 @@ const { isLoaded } = useJsApiLoader({
               position={{lat:lat, lng:lng}}
               title={breweryName}
               id={id}
-              icon={{
-                path: 'M 100 100 L 300 100 L 200 300 z',
-                fillColor: 'rgba(253, 253, 253, 0.26)',
-                fillOpacity: 1,
-                scale: .2,
-                strokeColor: '#04873C',
-                strokeWeight: 2
-              }}
+            //   icon={{
+            //     path: 'M 100 100 L 300 100 L 200 300 z',
+            //     fillColor: 'rgba(253, 253, 253, 0.26)',
+            //     fillOpacity: 1,
+            //     scale: .2,
+            //     strokeColor: '#04873C',
+            //     strokeWeight: 2
+            //   }}
               onClick={()=>console.log('hello world')}
               streetView={false} /> 
             ))

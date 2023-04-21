@@ -4,4 +4,10 @@
     background-color:rgba(253, 253, 253, 0.26);
     position: absolute;
     top:18%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.allBrewContainer:hover{
+    overflow-x: hidden;
+    overflow-y: scroll;
 }

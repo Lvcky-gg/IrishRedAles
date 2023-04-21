@@ -24,6 +24,7 @@ library.add(fas, faUserCircle, faChevronDown, faChevronUp, faLocationPin)
 console.log(navigator.geolocation.getCurrentPosition((pos)=>pos.coords.latitude))
   return (
     <>
+    <Loader></Loader>
     <Navigation isLoaded={isLoaded} />
     {isLoaded && <Routes>
       <Route path="/login" element={<LoginFormPage></LoginFormPage>}/>
