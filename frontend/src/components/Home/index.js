@@ -4,16 +4,20 @@ import topImage from '../../images/view-beer-taps-brewery.jpg'
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllReviews } from "../../store/reviews";
-import { getAllBreweries } from "../../store/breweries";
+import { getAllBreweries, sortBreweriesByNewest } from "../../store/breweries";
+import { useSelector } from "react-redux";
+import BreweryCard from "../BreweryCard";
 
 
 const HomePage = () => {
     const dispatch = useDispatch();
+    const breweries = useSelector((state) => state.breweries.allBreweries)
     useEffect(()=> {
+        dispatch(sortBreweriesByNewest())
         dispatch(getAllBreweries())
         dispatch(getAllReviews())
     }, [dispatch])
-
+console.log(breweries)
    return (
     <div className="homeRoot">
         <img 
@@ -27,6 +31,13 @@ const HomePage = () => {
                     <h1 className="brewsAndReviewsGreen">Brews</h1>
                     <h1 className="brewsAndReviewsWhite">and</h1>
                     <h1 className="brewsAndReviewsOrange">Reviews</h1>
+                </div>
+                <div className="homeCards">
+                    {breweries.map(({id, breweryName, city, state})=>(
+                        <BreweryCard id={id} breweryName={breweryName} city={city} state={state}></BreweryCard>
+                    ))
+                    }
+
                 </div>
             </div>
         </div>

@@ -42,3 +42,9 @@
 .brewsAndReviewsOrange{
     color:#F49924;
 }
+.homeCards{
+    margin-top:25%;
+    display:flex;
+    justify-content:space-between;
+    flex-flow: wrap;
+}

@@ -105,14 +105,14 @@ export const getABrewery = createAsyncThunk(
 )
 export const createBrewery =  createAsyncThunk(
     'breweries/createBreweries',
-    async({name, description, addressLineOne, zip, state, country, lat, lng, ownerId}, 
+    async({breweryName, description, addressLineOne, zip, state, country, lat, lng, ownerId}, 
         {rejectWithValue}) => {
             const response = await csrfFetch('/api/breweries', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({name, description, addressLineOne, zip, state, country, lat, lng, ownerId}),
+                body: JSON.stringify({breweryName, description, addressLineOne, zip, state, country, lat, lng, ownerId}),
             });
     
             const data = await response.json();
@@ -160,13 +160,13 @@ export const deleteBrewery = createAsyncThunk(
 
 export const updateBreweries = createAsyncThunk(
     'breweries/updateBrewery',
-    async ({name, description, addressLineOne, zip, state, country, lat, lng, ownerId}, breweryId, { rejectWithValue }) => {
+    async ({breweryName, description, addressLineOne, zip, state, country, lat, lng, ownerId}, breweryId, { rejectWithValue }) => {
         const response = await csrfFetch(`/api/breweries/${breweryId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({name, description, addressLineOne, zip, state, country, lat, lng, ownerId}),
+            body: JSON.stringify({breweryName, description, addressLineOne, zip, state, country, lat, lng, ownerId}),
         });
         if (!response.ok) {
             rejectWithValue(await response.json());

@@ -7,6 +7,8 @@ import SignupFormModal from '../SignupFormModal';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { login } from '../../store/session';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 function ProfileButton({ user }) {
     const navigate = useNavigate();
@@ -55,19 +57,14 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button onClick={openMenu} className="modalButton">
-                <i className="fas fa-user-circle" />
+            <button onClick={openMenu} className="profileButton">
+               <FontAwesomeIcon icon="fa-solid fa-circle-user" />
             </button>
             <ul className={ulClassName} ref={ulRef}>
                 {user ? (
                     <>
-                        <li>{user.username}</li>
-                        <li>{user.email}</li>
-                        <li>
-                            <NavLink onClick={closeMenu} to="/user/profile">
-                                Profile
-                            </NavLink>
-                        </li>
+                        <li className="dropComp">{user.username}</li>
+                        <li className="dropComp">{user.email}</li>
                         <li className="button-container">
                             <button
                                 className="modalButton"

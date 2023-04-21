@@ -153,6 +153,7 @@ router.get("/", async (req, res) => {
       sum += breweries[i].Reviews[j].rating;
     }
     let id = breweries[i].id;
+    let breweryName =breweries[i].breweryName
     let ownerId = breweries[i].ownerId;
     let addressLineOne = breweries[i].addressLineOne;
     let city = breweries[i].city;
@@ -170,6 +171,7 @@ router.get("/", async (req, res) => {
 
     result.push({
       id,
+      breweryName,
       ownerId,
       addressLineOne,
       city,

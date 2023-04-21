@@ -1,0 +1,143 @@
+
+.breweryCard {
+    height: clamp(15rem, 25vw, 19rem);
+    aspect-ratio: 1/1.2;
+    margin: calc(clamp(15rem, 25vw, 19rem)*.04);
+    animation: cardBgAnimation 30s infinite ;
+    position: relative;
+    cursor: pointer;
+    transition: 200ms ease-in-out;
+    border-radius: calc(clamp(15rem, 25vw, 19rem)*.05);
+    display:flex;
+}
+.breweryCardInner{
+    position:relative;
+    top:5%;
+    width:50%;
+    margin:auto;
+}
+.breweryCardInner h2{
+    color:#F49924;
+    width:fit-content;
+}
+.breweryCardInner h1{
+    color:white;
+    width:fit-content;
+}
+
+.breweryCard::before{
+    content: '';
+    position: absolute;
+    background-color: #000000;
+    height: 100%;
+    width: 100%;
+    mix-blend-mode: color;
+    transition: 200ms ease-in-out;
+    border-radius: calc(clamp(15rem, 25vw, 19rem)*.05);
+}
+.breweryCard::after {
+    content: '';
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    border: 1px solid #04873C;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0px 0px 5px #04873C);
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+    border-radius: calc(clamp(15rem, 25vw, 19rem)*.05);
+}
+.breweryCard:hover:before {
+    opacity: 0;
+}
+.breweryCard:hover {
+    scale: 1.05;
+    z-index: 1;
+}
+
+.bg-blur {
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    pointer-events: none;
+    transition: 200ms ease;
+}
+.breweryCard:hover ~ .bg-blur {
+    backdrop-filter: blur(15px);
+}
+.breweryCard:hover a i{
+    
+    filter: drop-shadow(0px 0px 5px #04873C);
+}
+.breweryCard{
+    background: url(https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp);
+}
+
+
+
+@keyframes breweryCardBgAnimation {
+    0% {
+        background-size: 200%;
+        background-position: 27% 10%;
+    }
+    20% {
+        background-size: 200%;
+        background-position: 35% 40%;
+    }
+
+    20.00001% {
+        background-size: 300%;
+        background-position: 75% 40%;
+    }
+    40% {
+        background-size: 300%;
+        background-position: 85% 90%;
+    }
+
+    40.00001% {
+        background-size: 350%;
+        background-position: 25% 70%;
+    }
+    60% {
+        background-size: 350%;
+        background-position: 5% 10%;
+    }
+
+    60.00001% {
+        background-size: 150%;
+        background-position: 20% 0%;
+    }
+    80% {
+        background-size: 150%;
+        background-position: 90% 10%;
+    }
+
+    80.00001% {
+        background-size: 200%;
+        background-position: 5% 10%;
+    }
+    100% {
+        background-size: 200%;
+        background-position: 65% 20%;
+    }
+
+}
+
+
+.breweryCard a {
+    text-decoration: none;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    position: relative;
+}
+.breweryCard  a i {
+    font-size: clamp(1em, 2vw, 2em);
+    color: #04873C;
+}
+
