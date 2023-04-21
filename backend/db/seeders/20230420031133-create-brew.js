@@ -23,7 +23,7 @@ module.exports = {
         "lng":-92.10335126135686
   },
   {
-    "nbreweryName":"Bent Paddle",
+    "breweryName":"Bent Paddle",
     "ownerId":2,
     "description":"From day one the founders have made the best beer",
     "addressLineOne":"1832 W Michigan St",
