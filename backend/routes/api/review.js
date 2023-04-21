@@ -1,7 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const { Review } = require("../../db/models");
+const { Review, User } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth.js");
+
+
+router.get("/", async (req, res) => {
+  
+  const reviews = await Review.findAll({include: [{ model: User }],});
+  if (reviews.length) {
+    return res.json({ reviews: reviews });
+  } else {
+    res.status(404);
+    return res.json({ message: "There are no reviews" });
+  }
+});
 
 router.get("/:reviewId", async (req, res) => {
   const { reviewId } = req.params;

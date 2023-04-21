@@ -82,7 +82,8 @@ export const getAllBreweries = createAsyncThunk(
         if (!response.ok) {
             return rejectWithValue(await response.json());
         }
-        return data.breweries
+        console.log(data)
+        return data.Breweries
     }
 )
 export const getABrewery = createAsyncThunk(
@@ -157,7 +158,7 @@ export const deleteBrewery = createAsyncThunk(
     }
 );
 
-export const updateBrewery = createAsyncThunk(
+export const updateBreweries = createAsyncThunk(
     'breweries/updateBrewery',
     async ({name, description, addressLineOne, zip, state, country, lat, lng, ownerId}, breweryId, { rejectWithValue }) => {
         const response = await csrfFetch(`/api/breweries/${breweryId}`, {

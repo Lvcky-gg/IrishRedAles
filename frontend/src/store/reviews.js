@@ -43,7 +43,7 @@ export const reviewSlice = createSlice({
 export const getAllReviews = createAsyncThunk(
     'reviews/getAllReviews',
     async (_, { rejectWithValue }) => {
-        const response = await csrfFetch('/api/reviews/', {
+        const response = await csrfFetch('/api/reviews', {
             headers: {
                 'Content-Type': 'application/json',
             },
