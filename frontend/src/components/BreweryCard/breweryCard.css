@@ -57,18 +57,6 @@
     z-index: 1;
 }
 
-.bg-blur {
-    top: 0;
-    left: 0;
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    pointer-events: none;
-    transition: 200ms ease;
-}
-.breweryCard:hover ~ .bg-blur {
-    backdrop-filter: blur(15px);
-}
 .breweryCard:hover a i{
     
     filter: drop-shadow(0px 0px 5px #04873C);
