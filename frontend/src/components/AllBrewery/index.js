@@ -1,12 +1,23 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import './allBrew.css'
 import MapPageA from '../Map'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import BreweryCardHome from './BreweryCardAllBrew';
+import { useLocation } from 'react-router-dom';
+import { filterBreweries, getAllBreweries } from '../../store/breweries';
+
+
 
 const AllBrew = () => {
     const breweries = useSelector((state) => state.breweries.allBreweries)
+    const location = useLocation()
+    const parameter = location.search;
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        if(parameter)dispatch(filterBreweries(parameter))
+        else dispatch(getAllBreweries())
+    },[dispatch, parameter])
     
     return (
         <div>

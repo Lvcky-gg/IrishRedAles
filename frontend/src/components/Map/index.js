@@ -73,7 +73,8 @@ const { isLoaded } = useJsApiLoader({
               >
                          
             {breweries && breweries.map(({id, breweryName, lat, lng})=>(
-                <Marker key={id} 
+                <Marker 
+              key={id} 
               position={{lat:lat, lng:lng}}
               title={breweryName}
               id={id}

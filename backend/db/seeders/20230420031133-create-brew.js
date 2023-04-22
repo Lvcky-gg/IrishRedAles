@@ -42,7 +42,7 @@ module.exports = {
   "addressLineOne":"17 7th St",
   "city":"Two Harbors",
   "zip":"55616",
-  "state":"Minnestota",
+  "state":"minnesota",
   "country":"United States",
   "lat":47.01970375833848,
   "lng":-91.67339801641828

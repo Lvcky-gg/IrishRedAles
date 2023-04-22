@@ -71,7 +71,7 @@ export const brewerySlice = createSlice({
 export const getAllBreweries = createAsyncThunk(
     'breweries/getAllbreweries',
     async (_, {rejectWithValue}) => {
-        const response = await csrfFetch('/api/breweries',{
+        const response = await csrfFetch(`/api/breweries`,{
             headers:{
             'Content-Type': 'application/json',
         },
@@ -134,7 +134,7 @@ export const filterBreweries = createAsyncThunk(
         }
         const data = await response.json();
 
-        return data.breweries;
+        return data.Breweries;
     }
 );
 
