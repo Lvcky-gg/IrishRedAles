@@ -21,15 +21,16 @@ const Search = () => {
         else if(stateInput != ''){
             console.log("hello")
             setSearchUrl(`?state=${stateVal}`)}
-        else navigate('/breweries')
 
     }
 
   
     useEffect(()=>{
-        if(searchUrl){
+        if(searchUrl.length > 1 && !searchUrl.startsWith('/') ){
+            console.log(searchUrl.length)
             
             navigate(`/breweries${searchUrl}`)
+
             setStateInput('')
             setCityInput('')
             setSearchUrl('')
@@ -43,14 +44,14 @@ const Search = () => {
             placeholder='City'
             value={cityInput}
             onChange={(e)=>setCityInput(e.target.value)}
-            className="buttonStyle"
+            className="buttonStyle search"
             ></input>
             <input
             type="text"
             placeholder="State"
             value={stateInput}
             onChange={(e)=>setStateInput(e.target.value)}
-            className="buttonStyle"
+            className="buttonStyle search"
 
             ></input>
             <button className="buttonStyle"

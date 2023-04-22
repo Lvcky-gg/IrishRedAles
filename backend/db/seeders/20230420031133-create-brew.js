@@ -29,7 +29,7 @@ module.exports = {
     "addressLineOne":"1832 W Michigan St",
     "city":"Duluth",
     "zip":"55806",
-    "state":"Minnestota",
+    "state":"Minnesota",
     "country":"United States",
     "lat":46.768546458038166,
     "lng":-92.12066727409862
@@ -42,7 +42,7 @@ module.exports = {
   "addressLineOne":"17 7th St",
   "city":"Two Harbors",
   "zip":"55616",
-  "state":"minnesota",
+  "state":"Minnesota",
   "country":"United States",
   "lat":47.01970375833848,
   "lng":-91.67339801641828

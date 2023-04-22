@@ -21,7 +21,7 @@ function App() {
     dispatch(authenticate()).then(() => setIsLoaded(true));
 }, [dispatch]);
 library.add(fas, faUserCircle, faChevronDown, faChevronUp, faLocationPin)
-console.log(navigator.geolocation.getCurrentPosition((pos)=>pos.coords.latitude))
+// console.log(navigator.geolocation.getCurrentPosition((pos)=>pos.coords.latitude))
   return (
     <>
     <Loader></Loader>
@@ -29,7 +29,9 @@ console.log(navigator.geolocation.getCurrentPosition((pos)=>pos.coords.latitude)
     {isLoaded && <Routes>
       <Route path="/login" element={<LoginFormPage></LoginFormPage>}/>
       <Route path="/" element={<Home></Home>}/>
+      {/* <Route path="/login" element={<LoginFormPage></LoginFormPage>}/> */}
       <Route path="/breweries" element={<AllBrew></AllBrew>}/>
+      
     </Routes>}
     </>
   );
