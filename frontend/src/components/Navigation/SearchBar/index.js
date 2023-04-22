@@ -11,16 +11,16 @@ const Search = () => {
     const [searchUrl, setSearchUrl] = useState('/');
 
     const handleSearch = (e) => {
-        e.preventDefault();
-        if(stateInput){
-            let stateVal = filterState(stateInput)
-            console.log(stateVal)
+        e.preventDefault();  
+        let stateVal = filterState(stateInput)
+        if((stateInput != '') &&(cityInput != '')){
+            setSearchUrl(`?city=${cityInput}&state=${stateVal}`)
         }
-        
-        if((stateInput != '') &&(cityInput != ''))
-            setSearchUrl(`?city=${cityInput}&state=${stateInput}`)
-        else if(cityInput != '')setSearchUrl(`?city=${cityInput}`)
-        else if(stateInput != '')setSearchUrl(`?state=${stateInput}`)
+        else if(cityInput != ''){
+            setSearchUrl(`?city=${cityInput}`)}
+        else if(stateInput != ''){
+            console.log("hello")
+            setSearchUrl(`?state=${stateVal}`)}
         else navigate('/breweries')
 
     }
@@ -43,15 +43,17 @@ const Search = () => {
             placeholder='City'
             value={cityInput}
             onChange={(e)=>setCityInput(e.target.value)}
+            className="buttonStyle"
             ></input>
             <input
             type="text"
             placeholder="State"
             value={stateInput}
             onChange={(e)=>setStateInput(e.target.value)}
+            className="buttonStyle"
 
             ></input>
-            <button
+            <button className="buttonStyle"
             >Locate Brewery</button>
 
         </form>
