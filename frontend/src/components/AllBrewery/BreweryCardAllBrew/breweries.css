@@ -1,0 +1,26 @@
+.breweryCardcontainer{
+   padding-left:10%;
+   width:80%;
+   margin-top:5%;
+   display:flex;
+   flex-direction: row;
+   /* margin:auto; */
+   box-shadow:2px 2px 2px black;
+
+}
+
+.breweryCardcontainer:hover{
+    background-color: rgba(253, 253, 253, 0.36);
+}
+.breweryCardcontainerInner h2, p{
+    width:100%;
+}
+.breweryCardcontainerUpper img{
+    width:90%;
+    margin:auto;
+    border-radius:10%;
+}
+.breweryCardcontainerUpper{
+    display:flex;
+    width:30%;
+}

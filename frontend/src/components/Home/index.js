@@ -34,7 +34,7 @@ console.log(breweries)
                 </div>
                 <div className="homeCards">
                     {breweries.map(({id, breweryName, city, state})=>(
-                        <BreweryCard id={id} breweryName={breweryName} city={city} state={state}></BreweryCard>
+                        <BreweryCard id={id} key={id} breweryName={breweryName} city={city} state={state}></BreweryCard>
                     ))
                     }
 
