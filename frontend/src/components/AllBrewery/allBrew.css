@@ -11,3 +11,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
 }
+
+.allBrewContainer::-webkit-scrollbar {
+    display:none;
+}
