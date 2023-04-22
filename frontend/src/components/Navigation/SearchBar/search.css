@@ -1,0 +1,10 @@
+.searchBar{
+    display: flex;
+    height:30%;
+    margin-top:3%;
+
+}
+
+.search::placeholder{
+    color:black;
+}

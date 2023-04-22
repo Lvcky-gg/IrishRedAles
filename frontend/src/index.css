@@ -25,6 +25,8 @@ body{
     font: inherit;
     line-height: 1;
     font-weight: 400;
+    background-color: rgba(253, 253, 253, 0.25);
+    color:black;
    
 }
 .buttonStyle:hover, 
