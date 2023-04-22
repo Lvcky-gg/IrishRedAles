@@ -3,13 +3,12 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    background-color: #04873C;
     transform-origin: center;
     transform: translate(-50%, -50%);
-    opacity: 0.5;
+    /* opacity: ; */
     animation: none !important;
 }
 .countRedirect>span {
@@ -19,7 +18,7 @@
     transform: translate(-50%, -50%) rotate(0deg);
     font-size: 3em;
     font-weight: bold;
-    color: #B4C4BC;
+    color: black;
     /* animation: backward-spin 2s linear infinite; */
 }
 .redirect {

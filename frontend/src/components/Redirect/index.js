@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png'
 
 import './Redirect.css';
 import { useSelector } from 'react-redux';
@@ -28,8 +29,8 @@ const Redirect = () => {
         <div className='redirect'>
 
             <div className="countRedirect"> 
-            <div className="inner-countRedirect">
-            </div>
+            <img src={logo} className="inner-countRedirect"/>
+            
             <span>{redirectTimer}</span>
             </div>
             <h1>{message}</h1>
