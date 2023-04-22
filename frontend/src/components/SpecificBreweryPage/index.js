@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAllBreweries } from "../../store/breweries";
 import RatingDisplay from "../RatingDisplay";
+import Redirect from "../Redirect";
 import './specificBrew.css'
 
 
@@ -48,7 +49,7 @@ export const SpecificBrewery = () => {
                     
                 </div>):(
                 <div>
-                     //this key is empty going to be a redirect  
+                     <Redirect></Redirect> 
                 </div>)
             }
 

@@ -1,0 +1,34 @@
+
+.inner-countRedirect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #04873C;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    animation: none !important;
+}
+.countRedirect>span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    font-size: 3em;
+    font-weight: bold;
+    color: #B4C4BC;
+    /* animation: backward-spin 2s linear infinite; */
+}
+.redirect {
+    height:1000px;
+}
+.redirect h1 {
+    position:relative;
+    bottom:-50%;
+    width:fit-content;
+    margin:auto;
+    font-family: Rye;
+}

@@ -4,14 +4,15 @@ import './allBrew.css'
 import MapPageA from '../Map'
 import { useDispatch, useSelector } from 'react-redux';
 import BreweryCardHome from './BreweryCardAllBrew';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { filterBreweries, getAllBreweries } from '../../store/breweries';
+import Redirect from '../Redirect';
 
 
 
 const AllBrew = () => {
-    const navigate = useNavigate()
     const breweries = useSelector((state) => state.breweries.allBreweries)
+    // const filterBreweries = useSelector((state)=>state.breweries.filterBreweries)
     const location = useLocation()
     const parameter = location.search;
     const dispatch = useDispatch()
@@ -19,10 +20,11 @@ const AllBrew = () => {
         if(parameter)dispatch(filterBreweries(parameter))
         else dispatch(getAllBreweries())
     },[dispatch, parameter])
-  
-    
+ const val = breweries.length
     return (
-        <div>
+        <>
+         {val?(
+            <div>
             <MapPageA></MapPageA>
             <div className='allBrewContainer'>
             {breweries && breweries.map(({id, breweryName, city, state, rating})=>(
@@ -32,7 +34,7 @@ const AllBrew = () => {
                 breweryName={breweryName}
                 city={city}
                 state={state}
-                rating={rating}             
+                rating={rating}
                 />
        
             ))
@@ -41,6 +43,11 @@ const AllBrew = () => {
 
             </div>
         </div>
+        ):(<div>
+            <Redirect></Redirect>
+            </div>)
+        }
+        </>
     )
 };
 export default AllBrew;
