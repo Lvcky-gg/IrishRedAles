@@ -16,11 +16,11 @@ const AllBrew = () => {
     const location = useLocation()
     const parameter = location.search;
     const dispatch = useDispatch()
+    // if(parameter)dispatch(filterBreweries(parameter))
     useEffect(()=>{
         if(parameter)dispatch(filterBreweries(parameter))
-        else dispatch(getAllBreweries())
     },[dispatch, parameter])
-
+ 
     return (
         <>
          {breweries.length?(
