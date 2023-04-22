@@ -20,10 +20,10 @@ const AllBrew = () => {
         if(parameter)dispatch(filterBreweries(parameter))
         else dispatch(getAllBreweries())
     },[dispatch, parameter])
- const val = breweries.length
+
     return (
         <>
-         {val?(
+         {breweries.length?(
             <div>
             <MapPageA></MapPageA>
             <div className='allBrewContainer'>
