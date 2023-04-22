@@ -1,8 +1,8 @@
 import React from "react";
 import './breweries.css'
+import RatingDisplay from "../../RatingDisplay"; 
 
 const BreweryCardHome = ({breweryName, rating, description, id, city, state}) => {
-
     return (
         <div className="breweryCardcontainer">
             <div className="breweryCardcontainerUpper"> 
@@ -12,7 +12,9 @@ const BreweryCardHome = ({breweryName, rating, description, id, city, state}) =>
             <div className="breweryCardcontainerInner">
                 <h2>{breweryName}</h2>
                 <p>{city}, {state}</p>
-                <p>rating placeholder</p>
+                <RatingDisplay
+                rating={rating}
+                ></RatingDisplay>
             </div>
         </div>
     )

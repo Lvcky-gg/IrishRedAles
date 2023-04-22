@@ -21,16 +21,14 @@ const Search = () => {
         else if(stateInput != ''){
             console.log("hello")
             setSearchUrl(`?state=${stateVal}`)}
+            navigate('/breweries')
 
     }
 
   
     useEffect(()=>{
         if(searchUrl.length > 1 && !searchUrl.startsWith('/') ){
-            console.log(searchUrl.length)
-            
             navigate(`/breweries${searchUrl}`)
-
             setStateInput('')
             setCityInput('')
             setSearchUrl('')

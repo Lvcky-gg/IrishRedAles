@@ -10,8 +10,9 @@ import Home from './components/Home'
 import Map from './components/Map'
 import Loader from './components/Loader';
 import AllBrew from './components/AllBrewery';
+import SpecificBrewery from './components/SpecificBreweryPage';
 import {
- faUserCircle, faChevronUp, faChevronDown, faLocationPin
+ faUserCircle, faChevronUp, faChevronDown, faLocationPin, faStar
 } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
 }, [dispatch]);
-library.add(fas, faUserCircle, faChevronDown, faChevronUp, faLocationPin)
+library.add(fas, faUserCircle, faChevronDown, faChevronUp, faLocationPin, faStar)
 // console.log(navigator.geolocation.getCurrentPosition((pos)=>pos.coords.latitude))
   return (
     <>
@@ -29,7 +30,7 @@ library.add(fas, faUserCircle, faChevronDown, faChevronUp, faLocationPin)
     {isLoaded && <Routes>
       <Route path="/login" element={<LoginFormPage></LoginFormPage>}/>
       <Route path="/" element={<Home></Home>}/>
-      {/* <Route path="/login" element={<LoginFormPage></LoginFormPage>}/> */}
+      <Route path="/breweries/:breweryId" element={<SpecificBrewery></SpecificBrewery>}/>
       <Route path="/breweries" element={<AllBrew></AllBrew>}/>
       
     </Routes>}
