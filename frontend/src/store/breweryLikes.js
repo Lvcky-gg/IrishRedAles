@@ -1,14 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { csrfFetch } from "./csrf";
 
-const initialState = {
-    breweryLikes: [],
-}
+// const initialState = {
+//     breweryLikes: [],
+// }
 export const breweryLikeSlice = createSlice({
     name:'breweryLikes',
-    initialState,
+    initialState:{
+        breweryLikes:[]
+    },
     reducers: {
-        clearBreweryLikes: () => {
+        clearBreweryLikes: (state) => {
             state.breweryLikes = []
         },
     },
@@ -40,7 +42,7 @@ export const breweryLikeSlice = createSlice({
 })
 export const getBreweryLikes = createAsyncThunk(
     'breweryLikes/getbreweryLikes',
-    async({breweryId}, {rejectWithValue}) => {
+    async(breweryId, {rejectWithValue}) => {
         const response = await csrfFetch(`/api/brewery-likes/${breweryId}`,{
             headers: {
                 'Content-Type': 'application/json',
@@ -51,7 +53,7 @@ export const getBreweryLikes = createAsyncThunk(
             return rejectWithValue(errData);
         }
         const data = await response.json();
-        return data.breweryLikes;
+        return data;
         }
 );
 export const deleteBreweryLike = createAsyncThunk(

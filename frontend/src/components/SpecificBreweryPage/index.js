@@ -7,6 +7,7 @@ import RatingDisplay from "../RatingDisplay";
 import Redirect from "../Redirect";
 import "./specificBrew.css";
 import { getReviewsByBrewery } from "../../store/reviews";
+import { getBreweryLikes } from "../../store/breweryLikes";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -20,6 +21,7 @@ export const SpecificBrewery = () => {
   useEffect(() => {
     dispatch(getAllBreweries());
     dispatch(getReviewsByBrewery(+breweryId))
+    dispatch(getBreweryLikes(+breweryId))
   }, [dispatch, breweryId]);
   
   return (
@@ -49,16 +51,23 @@ export const SpecificBrewery = () => {
                 </button>
 
                {+sessionUser.id === brewery.ownerId && <button className="specificButton">
-                <FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" />
+               <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
                   <p>Edit Brewery</p>
                 </button> }
-                <button className="specificButton">placeholder</button>
+                <button className="specificButton">
+                <FontAwesomeIcon icon="fa-solid fa-thumbs-up" />
+                  <p>Like Brewery</p>
+                </button>
               </div>
             </div>
           </div>
-          <div className="specificBreweryContainerimgs">images placeholder</div>
+          {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}
           {reviews.length?
-          (<div>hello</div>):(<div>
+          (
+          <div>
+            hello
+            </div>)
+          :(<div className='specificHolder'>
             <h2>There are no reviews</h2>
           </div>)}
         </div>

@@ -5,6 +5,7 @@
     display:flex;
     flex-direction:row;
     height:100%;
+    border-bottom:black 2px solid;
 }
 .specificBreweryContainerIMG{
     width:35%;
@@ -34,4 +35,14 @@
     word-wrap: break-word;
     white-space: pre-wrap;
     word-break: break-word;
+}
+.specificHolder{
+    height:400px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.specificHolder h2 {
+    font-family: Rye;
+    font-size:40px;
 }
