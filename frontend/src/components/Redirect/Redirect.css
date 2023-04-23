@@ -13,12 +13,12 @@
 }
 .countRedirect>span {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(0deg);
     font-size: 3em;
     font-weight: bold;
-    color: black;
+    color: white;
     /* animation: backward-spin 2s linear infinite; */
 }
 .redirect {
