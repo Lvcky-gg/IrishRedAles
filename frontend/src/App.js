@@ -14,7 +14,8 @@ import SpecificBrewery from './components/SpecificBreweryPage';
 import {
  faUserCircle, faChevronUp, faChevronDown, faLocationPin, faStar, faBeerMugEmpty,
  faThumbsUp,
- faPenToSquare
+ faPenToSquare,
+ faThumbsDown,
 
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -33,8 +34,9 @@ library.add(fas,
   faBeerMugEmpty,
   faThumbsUp,
   faPenToSquare,
+  faThumbsDown,
   )
-// console.log(navigator.geolocation.getCurrentPosition((pos)=>pos.coords.latitude))
+
   return (
     <>
     <Loader></Loader>

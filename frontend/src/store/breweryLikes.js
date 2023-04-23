@@ -60,6 +60,7 @@ export const deleteBreweryLike = createAsyncThunk(
     'breweryLikes/deleteBreweryLike',
     async({breweryId, likeId}, {rejectWithValue}) => {
         const response = await csrfFetch(`/api/brewery-likes/${breweryId}/${likeId}`,{
+            method:'DELETE',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -73,18 +74,20 @@ export const deleteBreweryLike = createAsyncThunk(
 )
 export const createBreweryLike = createAsyncThunk(
     'breweryLikes/createBreweryLike',
-    async ({ userId,breweryLikeId, breweryId }, { rejectWithValue }) => {
-        const response = await csrfFetch(`/api/brewery-likes/${breweryLikeId}`, {
+    async ({ userId, breweryId }, { rejectWithValue }) => {
+        console.log(breweryId)
+        const response = await csrfFetch(`/api/brewery-likes/${breweryId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ userId, breweryId}),
+            body: JSON.stringify(),
         });
         const data = await response.json();
         if (!response.ok) {
             return rejectWithValue(data);
         }
+        
         return data;
     }
 

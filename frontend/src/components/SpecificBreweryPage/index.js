@@ -1,28 +1,60 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getAllBreweries } from "../../store/breweries";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RatingDisplay from "../RatingDisplay";
 import Redirect from "../Redirect";
 import "./specificBrew.css";
 import { getReviewsByBrewery } from "../../store/reviews";
-import { getBreweryLikes } from "../../store/breweryLikes";
+import { deleteBreweryLike, getBreweryLikes } from "../../store/breweryLikes";
+import {createBreweryLike } from "../../store/breweryLikes";
+import { useState } from "react";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
+  const [isLiked, setIsLiked] = useState('');
+  const [likeIdState, setLikeIdState] = useState()
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const breweries = useSelector((state) => state.breweries.allBreweries);
   const reviews = useSelector((state)=>state.reviews.allReviews);
-  
-  const sessionUser = useSelector((state)=>state.session.user);
-  console.log(reviews)
-  const brewery = breweries[+breweryId - 1];
+  const brewLikes = useSelector((state)=>state.breweryLikes.breweryLikes);
+ const sessionUser = useSelector((state)=>state.session.user);
+ const brewery = breweries[+breweryId - 1];
+
+ useEffect(()=>{
+    for(let i = 0; i < brewLikes.length; i++){
+        if(brewLikes[i].userId === +sessionUser.id){
+            setLikeIdState(brewLikes[i].id)
+            setIsLiked(true)
+        }
+        else setIsLiked(false)
+    }
+ },[brewLikes, sessionUser, isLiked])
+ console.log(isLiked)
+ console.log(isLiked)
   useEffect(() => {
     dispatch(getAllBreweries());
     dispatch(getReviewsByBrewery(+breweryId))
     dispatch(getBreweryLikes(+breweryId))
   }, [dispatch, breweryId]);
+
+  const onAddReview = (e) => {
+    e.preventDefault()
+    navigate('/add-review')
+  }
+  const onAddLike = (e)=> {
+    e.preventDefault();
+    dispatch(createBreweryLike({userId:+sessionUser.id, breweryId:+breweryId}))
+    setIsLiked(!isLiked)
+
+  }
+  const onDeleteLike = (e) => {
+    e.preventDefault()
+    dispatch(deleteBreweryLike({breweryId:+breweryId,likeId:likeIdState}))
+    setIsLiked(!isLiked)
+  }
   
   return (
     <div>
@@ -45,7 +77,7 @@ export const SpecificBrewery = () => {
               <p>{brewery.description}</p>
               <RatingDisplay rating={brewery.rating}></RatingDisplay>
               <div className="specificBreweryContainerBtn">
-                <button className="specificButton">
+                <button className="specificButton" onClick={onAddReview}>
                   <FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" />
                   <p>Add review</p>
                 </button>
@@ -54,10 +86,18 @@ export const SpecificBrewery = () => {
                <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
                   <p>Edit Brewery</p>
                 </button> }
-                <button className="specificButton">
+
+
+                {isLiked === false ?(<button className="specificButton" onClick={onAddLike}>
                 <FontAwesomeIcon icon="fa-solid fa-thumbs-up" />
                   <p>Like Brewery</p>
-                </button>
+                </button>):
+                (
+                <button className="specificButton" onClick={onDeleteLike}>
+                <FontAwesomeIcon icon="fa-solid fa-thumbs-down" />
+                  <p>Unlike Brewery</p>
+                </button>)
+                }
               </div>
             </div>
           </div>

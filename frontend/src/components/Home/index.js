@@ -19,8 +19,9 @@ const HomePage = () => {
         dispatch(getAllBreweries())
         dispatch(getAllReviews())
     }, [dispatch])
-  
-console.log(breweries)
+
+
+
    return (
     <div className="homeRoot">
         <img 
