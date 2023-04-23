@@ -2,9 +2,12 @@ import React from "react";
 import './breweries.css'
 import RatingDisplay from "../../RatingDisplay"; 
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getReviewsByBrewery } from "../../../store/reviews";
 
 const BreweryCardHome = ({breweryName, rating, description, id, city, state}) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch =useDispatch()
     return (
         <div className="breweryCardcontainer">
             <div className="breweryCardcontainerUpper"> 
@@ -14,8 +17,8 @@ const BreweryCardHome = ({breweryName, rating, description, id, city, state}) =>
             <div className="breweryCardcontainerInner">
                 <h2
                     onClick={(e)=>{
-                    console.log(e)
                     e.preventDefault();
+                    dispatch(getReviewsByBrewery(+id))
                     navigate(`/breweries/${id}`)
                 }}
                 >{breweryName}</h2>

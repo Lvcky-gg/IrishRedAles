@@ -11,16 +11,7 @@
     /* opacity: ; */
     animation: none !important;
 }
-.countRedirect>span {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(0deg);
-    font-size: 3em;
-    font-weight: bold;
-    color: white;
-    /* animation: backward-spin 2s linear infinite; */
-}
+
 .redirect {
     height:1000px;
 }

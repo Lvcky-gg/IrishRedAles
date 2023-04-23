@@ -8,7 +8,7 @@ import './Redirect.css';
 const Redirect = () => {
     const [redirectTimer, setRedirectTimer] = useState(5);
     const navigate = useNavigate();
-    const message = "This keg is empty, returning home."
+    const message = "This keg is empty, returning home"
  
 
     useEffect(()=>{
@@ -34,10 +34,8 @@ const Redirect = () => {
 
             <div className="countRedirect"> 
             <img src={logo} className="inner-countRedirect"/>
-            
-            <span>{redirectTimer}</span>
             </div>
-            <h1>{message}</h1>
+            <h1>{message} in {redirectTimer}.</h1>
         </div>
     )
 }

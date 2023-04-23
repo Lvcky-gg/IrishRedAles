@@ -35,4 +35,20 @@ body{
   box-shadow: 0 0 0 2em transparent;
   cursor:pointer;
 }
-
+.specificButton{
+    height:50px;
+    width:130px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    margin:2%;
+    background-color: black;
+    color:rgba(253, 253, 253, 0.25);
+}
+.specificButton:hover{
+    background-color:rgba(253, 253, 253, 0.25);
+    color:black;
+}
+.specificButton p {
+    color: rgba(253, 253, 253, 0.25);
+}

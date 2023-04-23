@@ -12,7 +12,7 @@ import Loader from './components/Loader';
 import AllBrew from './components/AllBrewery';
 import SpecificBrewery from './components/SpecificBreweryPage';
 import {
- faUserCircle, faChevronUp, faChevronDown, faLocationPin, faStar
+ faUserCircle, faChevronUp, faChevronDown, faLocationPin, faStar, faBeerMugEmpty
 } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
 }, [dispatch]);
-library.add(fas, faUserCircle, faChevronDown, faChevronUp, faLocationPin, faStar)
+library.add(fas, faUserCircle, faChevronDown, faChevronUp, faLocationPin, faStar,faBeerMugEmpty)
 // console.log(navigator.geolocation.getCurrentPosition((pos)=>pos.coords.latitude))
   return (
     <>

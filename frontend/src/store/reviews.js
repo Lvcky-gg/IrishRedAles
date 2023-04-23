@@ -20,6 +20,12 @@ export const reviewSlice = createSlice({
             .addCase(getAllReviews.fulfilled, (state, action) => {
                 state.allReviews = action.payload;
             })
+            .addCase(getReviewsByBrewery.fulfilled, (state, action) => {
+                state.allReviews = action.payload;
+            })
+            .addCase(getReviewsByBrewery.rejected, (state, action) => {
+                state.allReviews = [];
+            })
             .addCase(createReveiwByBrewery.fulfilled, (state, action) => {
                 const createdReview = action.payload;
 
@@ -63,7 +69,7 @@ export const getAllReviews = createAsyncThunk(
 export const getReviewsByBrewery = createAsyncThunk(
     'reviews/getReviewsByBrewery',
     async (breweryId, { rejectWithValue }) => {
-        const response = await csrfFetch(`/api/breweriess/${breweryId}/reviews`, {
+        const response = await csrfFetch(`/api/breweries/${breweryId}/reviews`, {
             headers: {
                 'Content-Type': 'application/json',
             },

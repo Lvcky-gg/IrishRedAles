@@ -7,10 +7,11 @@ const RatingDisplay = ({rating}) => {
     for(let i = 0; i < rating; i++){
         val.push(1)
     }
+    let sum = 0;
     return (
         <div>
             {rating ?(val.map(()=>(
-                <FontAwesomeIcon icon="fa-solid fa-star" />
+                <FontAwesomeIcon id={sum+=1} key={sum+=1} icon="fa-solid fa-star" />
             ))):(<p>No rating</p>)}
         </div>
     )

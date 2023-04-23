@@ -12,7 +12,7 @@ function LoginFormModal() {
   const validationErrors = useSelector(
     (state) => state.session.validationErrors
   );
-
+console.log(validationErrors)
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const { closeModal, setOnModalClose } = useModal();
