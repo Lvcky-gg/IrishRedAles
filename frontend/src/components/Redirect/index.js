@@ -19,7 +19,7 @@ const Redirect = () => {
             setRedirectTimer(Math.ceil((startTime + 5000 - Date.now()) / 1000));
         }, 1000);
         const redirectTimeout = setTimeout(() => {
-            // navigate('/');
+            navigate('/');
 
         }, 5000);
         return () => {
