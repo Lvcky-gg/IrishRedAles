@@ -13,7 +13,7 @@ import { useState } from "react";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
-  const [isLiked, setIsLiked] = useState('');
+  const [isLiked, setIsLiked] = useState(false);
   const [likeIdState, setLikeIdState] = useState()
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -29,11 +29,11 @@ export const SpecificBrewery = () => {
             setLikeIdState(brewLikes[i].id)
             setIsLiked(true)
         }
-        else setIsLiked(false)
+      else  setIsLiked(false)
+
     }
  },[brewLikes, sessionUser, isLiked])
- console.log(isLiked)
- console.log(isLiked)
+
   useEffect(() => {
     dispatch(getAllBreweries());
     dispatch(getReviewsByBrewery(+breweryId))
@@ -47,13 +47,13 @@ export const SpecificBrewery = () => {
   const onAddLike = (e)=> {
     e.preventDefault();
     dispatch(createBreweryLike({userId:+sessionUser.id, breweryId:+breweryId}))
-    setIsLiked(!isLiked)
+    setIsLiked(true)
 
   }
   const onDeleteLike = (e) => {
     e.preventDefault()
     dispatch(deleteBreweryLike({breweryId:+breweryId,likeId:likeIdState}))
-    setIsLiked(!isLiked)
+    setIsLiked(false)
   }
   
   return (
@@ -75,6 +75,8 @@ export const SpecificBrewery = () => {
               <p>{brewery.state} </p>
               <h2 className="specificHeader">About</h2>
               <p>{brewery.description}</p>
+              <h2 className="specificHeader">Likes</h2>
+              <p>{brewLikes.length}</p>
               <RatingDisplay rating={brewery.rating}></RatingDisplay>
               <div className="specificBreweryContainerBtn">
                 <button className="specificButton" onClick={onAddReview}>
