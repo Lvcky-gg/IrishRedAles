@@ -10,6 +10,7 @@ import { getReviewsByBrewery } from "../../store/reviews";
 import { deleteBreweryLike, getBreweryLikes } from "../../store/breweryLikes";
 import { createBreweryLike } from "../../store/breweryLikes";
 import { useState } from "react";
+import MapPageA from "../Map";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -76,14 +77,22 @@ export const SpecificBrewery = () => {
             <div className="specificBreweryContainerinfo">
               <h1>{brewery.breweryName}</h1>
               <RatingDisplay rating={brewery.rating}></RatingDisplay>
-              <h2 className="specificHeader">Location</h2>
-              <p>
-                {brewery.addressLineOne}, {brewery.city}
-              </p>
-              <p>{brewery.state}, {brewery.zip} </p>
+              
               <h2 className="specificHeader">About</h2>
-              <p>{brewery.description}</p>
+              <div className="specificDesc"><p>{brewery.description}</p></div>
+              <h2 className="specificHeader">Location</h2>
+              <div className="locationHolder">
+                <div>
+                    <p>{brewery.addressLineOne}, {brewery.city}</p>
+                     <p>{brewery.state}, {brewery.zip} </p>
+                </div>
+                <div>
+ 
+                </div>
+             </div>
               <h2 className="specificHeader">Likes:{brewLikes.length}</h2>
+
+              
               
               <div className="specificBreweryContainerBtn">
                 <button className="specificButton" onClick={onAddReview}>

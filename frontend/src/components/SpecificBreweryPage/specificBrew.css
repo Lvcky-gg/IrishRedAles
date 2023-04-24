@@ -46,3 +46,9 @@
     font-family: Rye;
     font-size:40px;
 }
+.locationHolder{
+    display:flex;
+}
+.specificDesc{
+    width:fit-content;
+}
