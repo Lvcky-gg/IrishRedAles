@@ -80,7 +80,7 @@ export const SpecificBrewery = () => {
               <p>
                 {brewery.addressLineOne}, {brewery.city}
               </p>
-              <p>{brewery.state} </p>
+              <p>{brewery.state}, {brewery.zip} </p>
               <h2 className="specificHeader">About</h2>
               <p>{brewery.description}</p>
               <h2 className="specificHeader">Likes:{brewLikes.length}</h2>
