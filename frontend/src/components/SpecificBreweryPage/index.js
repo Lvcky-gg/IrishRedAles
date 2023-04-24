@@ -26,6 +26,7 @@ export const SpecificBrewery = () => {
 
   useEffect(() => {
     if(sessionUser){
+        if(brewLikes.length === 0)setIsLiked(false)
     for (let i = 0; i < brewLikes.length; i++) {
       if (brewLikes[i].userId === +sessionUser.id) {
         setLikeIdState(brewLikes[i].id);
