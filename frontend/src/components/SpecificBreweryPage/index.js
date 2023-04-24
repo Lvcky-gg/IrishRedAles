@@ -75,6 +75,7 @@ export const SpecificBrewery = () => {
 
             <div className="specificBreweryContainerinfo">
               <h1>{brewery.breweryName}</h1>
+              <RatingDisplay rating={brewery.rating}></RatingDisplay>
               <h2 className="specificHeader">Location</h2>
               <p>
                 {brewery.addressLineOne}, {brewery.city}
@@ -83,7 +84,7 @@ export const SpecificBrewery = () => {
               <h2 className="specificHeader">About</h2>
               <p>{brewery.description}</p>
               <h2 className="specificHeader">Likes:{brewLikes.length}</h2>
-              <RatingDisplay rating={brewery.rating}></RatingDisplay>
+              
               <div className="specificBreweryContainerBtn">
                 <button className="specificButton" onClick={onAddReview}>
                   <FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" />
