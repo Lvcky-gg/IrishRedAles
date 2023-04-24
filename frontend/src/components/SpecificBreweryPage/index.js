@@ -69,32 +69,12 @@ export const SpecificBrewery = () => {
       {brewery ? (
         <div>
           <div className="specificBreweryContainer">
+            <div className="specificLeft">
             <img
               className="specificBreweryContainerIMG"
               src="https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp"
             />
-
-            <div className="specificBreweryContainerinfo">
-              <h1>{brewery.breweryName}</h1>
-              <RatingDisplay rating={brewery.rating}></RatingDisplay>
-              
-              <h2 className="specificHeader">About</h2>
-              <div className="specificDesc"><p>{brewery.description}</p></div>
-              <h2 className="specificHeader">Location</h2>
-              <div className="locationHolder">
-                <div>
-                    <p>{brewery.addressLineOne}, {brewery.city}</p>
-                     <p>{brewery.state}, {brewery.zip} </p>
-                </div>
-                <div>
- 
-                </div>
-             </div>
-              <h2 className="specificHeader">Likes:{brewLikes.length}</h2>
-
-              
-              
-              <div className="specificBreweryContainerBtn">
+                          <div className="specificBreweryContainerBtn">
                 <button className="specificButton" onClick={onAddReview}>
                   <FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" />
                   <p>Add review</p>
@@ -119,6 +99,30 @@ export const SpecificBrewery = () => {
                   </button>
                 )}
               </div>
+
+            
+            </div>
+            <div className="specificBreweryContainerinfo">
+              <h1>{brewery.breweryName}</h1>
+              <RatingDisplay rating={brewery.rating}></RatingDisplay>
+              
+              <h2 className="specificHeader">About</h2>
+              <div className="specificDesc"><p>{brewery.description}</p></div>
+              <h2 className="specificHeader">Location</h2>
+              <div className="locationHolder">
+                <div>
+                    <p>{brewery.addressLineOne}, {brewery.city}</p>
+                     <p>{brewery.state}, {brewery.zip} </p>
+                </div>
+                <div>
+ 
+                </div>
+             </div>
+              <h2 className="specificHeader">Likes:{brewLikes.length}</h2>
+
+              
+              
+
             </div>
           </div>
           {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}

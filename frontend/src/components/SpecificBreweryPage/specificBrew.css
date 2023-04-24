@@ -1,5 +1,5 @@
 .specificBreweryContainer{
-    width:70%;
+    width:40%;
     margin:auto;
     margin-top:5%;
     display:flex;
@@ -8,9 +8,10 @@
     border-bottom:black 2px solid;
 }
 .specificBreweryContainerIMG{
-    width:35%;
+    width:95%;
     margin:auto;
     border-radius: 5%;
+    display:flex;
 }
 .specificBreweryContainerBtn{
     display:flex;
@@ -25,7 +26,7 @@
     margin:auto;
     width:60%;
     padding-top:3%;
-    margin-left:5%;
+    margin-left:10%;
 }
 .specificHeader{
     color:#B4C4BC;
@@ -51,4 +52,8 @@
 }
 .specificDesc{
     width:fit-content;
+}
+.specificLeft{
+    display:flex;
+    flex-direction: column;
 }
