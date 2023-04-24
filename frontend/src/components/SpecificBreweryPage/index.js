@@ -25,11 +25,13 @@ export const SpecificBrewery = () => {
 
 
   useEffect(() => {
+    if(sessionUser){
     for (let i = 0; i < brewLikes.length; i++) {
       if (brewLikes[i].userId === +sessionUser.id) {
         setLikeIdState(brewLikes[i].id);
         setIsLiked(true);
-      } else setIsLiked(false);
+      } 
+    }
     }
   }, [brewLikes, sessionUser, isLiked]);
 
@@ -45,10 +47,14 @@ export const SpecificBrewery = () => {
   };
   const onAddLike = (e) => {
     e.preventDefault();
+    if(sessionUser){
     dispatch(
       createBreweryLike({ userId: +sessionUser.id, breweryId: +breweryId })
     );
     setIsLiked(true);
+    }else{
+        navigate('/redirectLogin')
+    }
   };
   const onDeleteLike = (e) => {
     e.preventDefault();
@@ -75,8 +81,7 @@ export const SpecificBrewery = () => {
               <p>{brewery.state} </p>
               <h2 className="specificHeader">About</h2>
               <p>{brewery.description}</p>
-              <h2 className="specificHeader">Likes</h2>
-              <p>{brewLikes.length}</p>
+              <h2 className="specificHeader">Likes:{brewLikes.length}</h2>
               <RatingDisplay rating={brewery.rating}></RatingDisplay>
               <div className="specificBreweryContainerBtn">
                 <button className="specificButton" onClick={onAddReview}>
@@ -84,7 +89,7 @@ export const SpecificBrewery = () => {
                   <p>Add review</p>
                 </button>
 
-                {+sessionUser.id === brewery.ownerId && (
+                {sessionUser && +sessionUser.id === brewery.ownerId && (
                   <button className="specificButton">
                     <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
                     <p>Edit Brewery</p>
