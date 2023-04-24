@@ -98,6 +98,10 @@ export const SpecificBrewery = () => {
                     <p>Unlike</p>
                   </button>
                 )}
+                    {/* <button className="specificButton">
+                    <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
+                    <p>Images</p>
+                  </button> */}
               </div>
 
             
