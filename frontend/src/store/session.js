@@ -1,6 +1,7 @@
 import { csrfFetch } from './csrf';
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios'
 
 export const sessionSlice = createSlice({
     name: 'session',
@@ -39,7 +40,7 @@ export const sessionSlice = createSlice({
             .addCase(login.rejected, (state, action) => {
                 console.log(action)
                 state.error = action.payload;
-                state.validationErrors = ['message:The provided credentials were invalid.'];
+                // state.validationErrors = ['message:The provided credentials were invalid.'];
                 state.user = null;
             })
             .addCase(logout.fulfilled, (state) => {
@@ -111,10 +112,20 @@ export const login = createAsyncThunk(
             
             return data.user;
                  } catch (error) {
-                    if(!error){
-                        throw error
-                    }
-                 return rejectWithValue({ message: "The provided credentials were invalid."});
+                    const response = await axios('/api/session', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            credential,
+                            password
+                        }),
+                    });
+        
+                    const data = await response.json();
+                    // message: "The provided credentials were invalid."
+                 return rejectWithValue(error.response);
               }
    
     }

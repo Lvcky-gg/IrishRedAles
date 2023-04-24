@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import axios from 'axios'
 
 export async function csrfFetch(url, options = {}) {
   // set options.method to 'GET' if there is no method
@@ -16,6 +17,9 @@ export async function csrfFetch(url, options = {}) {
   }
   // call the default window's fetch with the url and the options passed in
   const res = await window.fetch(url, options);
+  console.log(options.method)
+
+  // const res = await axios(url, {options})
 
   // if the response status code is 400 or above, then throw an error with the
     // error being the response
