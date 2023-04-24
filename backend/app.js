@@ -76,6 +76,7 @@ app.use((err, _req, res, _next) => {
       errors: err.errors,
       stack: isProduction ? null : err.stack
     });
+    
   });
 
 

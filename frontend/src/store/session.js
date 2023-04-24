@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
+import Cookies from 'js-cookie';
 
 export const sessionSlice = createSlice({
     name: 'session',
@@ -39,8 +40,8 @@ export const sessionSlice = createSlice({
             })
             .addCase(login.rejected, (state, action) => {
                 console.log(action)
-                state.error = action.payload;
-                // state.validationErrors = ['message:The provided credentials were invalid.'];
+                state.error = action.payload.errors;
+                state.validationErrors = action.payload.errors;
                 state.user = null;
             })
             .addCase(logout.fulfilled, (state) => {
@@ -88,44 +89,40 @@ export const login = createAsyncThunk(
     'session/login',
     async ({ credential, password }, { rejectWithValue }) => {
         try {
-            const response = await csrfFetch('/api/session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    credential,
-                    password
-                }),
-            });
-
-            const data = await response.json();
-            
-
-            if (!response.ok) {
-                // console.log(Promise.reject(response))
-                // return Promise.reject(response)
-                // if (data) {
-                    rejectWithValue({ errors: data});
-                // }
-            }
-            
-            return data.user;
-                 } catch (error) {
-                    const response = await axios('/api/session', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
+            // const response = await csrfFetch('/api/session', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({
+            //         credential,
+            //         password
+            //     }),
+            // });
+            const response = await axios.post(
+                '/api/session',
+                JSON.stringify({
                             credential,
                             password
                         }),
-                    });
-        
-                    const data = await response.json();
+            {headers:{
+                'Content-Type': 'application/json',
+                'XSRF-Token':Cookies.get('XSRF-TOKEN')
+                }
+            }
+            )
+            .then((res)=>res)
+            // .catch((e)=>console.log(e))
+            // const data = await response.json();
+            
+         
+            // return
+            if(response.data.user)return response.data.user;
+                 } catch (error) {
+                    console.log(error.response.data.errors)
+                    
                     // message: "The provided credentials were invalid."
-                 return rejectWithValue(error.response);
+                 return rejectWithValue({errors:error.response.data.errors});
               }
    
     }

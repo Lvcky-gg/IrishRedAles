@@ -42,17 +42,7 @@ function LoginFormModal() {
     setOnModalClose(clearErrorMessages);
   }, [user, closeModal, setOnModalClose, dispatch]);
 
-  let errorObject = [];
-  if (validationErrors) {
-    errorObject = Object.values(
-      validationErrors.reduce((acc, error) => {
-
-        const [key, value] = error.split(":");
-        acc[key] = value;
-        return acc;
-      }, {})
-    );
-  }
+ 
 
   return (
     <div className="modalLogin">
@@ -86,8 +76,8 @@ function LoginFormModal() {
                 {error}
               </li>
             ))}
-          {errorObject &&
-            errorObject.map((error, idx) => (
+          {validationErrors &&
+            validationErrors.map((error, idx) => (
               <li key={idx}>
                 <span style={{ color: "red", padding: "5px" }}>
                   <i className="fas fa-exclamation-circle"></i>
