@@ -31,7 +31,7 @@ export const SpecificBrewery = () => {
       if (brewLikes[i].userId === +sessionUser.id) {
         setLikeIdState(brewLikes[i].id);
         setIsLiked(true);
-      } 
+      } else setIsLiked(false)
     }
     }
   }, [brewLikes, sessionUser, isLiked]);
@@ -62,7 +62,7 @@ export const SpecificBrewery = () => {
     dispatch(deleteBreweryLike({ breweryId: +breweryId, likeId: likeIdState }));
     setIsLiked(false);
   };
-//need a way to force fontawesome rerender
+
   return (
     <div>
       {brewery ? (
