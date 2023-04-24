@@ -8,54 +8,54 @@ import Redirect from "../Redirect";
 import "./specificBrew.css";
 import { getReviewsByBrewery } from "../../store/reviews";
 import { deleteBreweryLike, getBreweryLikes } from "../../store/breweryLikes";
-import {createBreweryLike } from "../../store/breweryLikes";
+import { createBreweryLike } from "../../store/breweryLikes";
 import { useState } from "react";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
   const [isLiked, setIsLiked] = useState(false);
-  const [likeIdState, setLikeIdState] = useState()
-  const navigate = useNavigate()
+  const [likeIdState, setLikeIdState] = useState();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const breweries = useSelector((state) => state.breweries.allBreweries);
-  const reviews = useSelector((state)=>state.reviews.allReviews);
-  const brewLikes = useSelector((state)=>state.breweryLikes.breweryLikes);
- const sessionUser = useSelector((state)=>state.session.user);
- const brewery = breweries[+breweryId - 1];
+  const reviews = useSelector((state) => state.reviews.allReviews);
+  const brewLikes = useSelector((state) => state.breweryLikes.breweryLikes);
+  const sessionUser = useSelector((state) => state.session.user);
+  const brewery = breweries[+breweryId - 1];
 
- useEffect(()=>{
-    for(let i = 0; i < brewLikes.length; i++){
-        if(brewLikes[i].userId === +sessionUser.id){
-            setLikeIdState(brewLikes[i].id)
-            setIsLiked(true)
-        }
-      else  setIsLiked(false)
 
+  useEffect(() => {
+    for (let i = 0; i < brewLikes.length; i++) {
+      if (brewLikes[i].userId === +sessionUser.id) {
+        setLikeIdState(brewLikes[i].id);
+        setIsLiked(true);
+      } else setIsLiked(false);
     }
- },[brewLikes, sessionUser, isLiked])
+  }, [brewLikes, sessionUser, isLiked]);
 
   useEffect(() => {
     dispatch(getAllBreweries());
-    dispatch(getReviewsByBrewery(+breweryId))
-    dispatch(getBreweryLikes(+breweryId))
+    dispatch(getReviewsByBrewery(+breweryId));
+    dispatch(getBreweryLikes(+breweryId));
   }, [dispatch, breweryId]);
 
   const onAddReview = (e) => {
-    e.preventDefault()
-    navigate('/add-review')
-  }
-  const onAddLike = (e)=> {
     e.preventDefault();
-    dispatch(createBreweryLike({userId:+sessionUser.id, breweryId:+breweryId}))
-    setIsLiked(true)
-
-  }
+    navigate("/add-review");
+  };
+  const onAddLike = (e) => {
+    e.preventDefault();
+    dispatch(
+      createBreweryLike({ userId: +sessionUser.id, breweryId: +breweryId })
+    );
+    setIsLiked(true);
+  };
   const onDeleteLike = (e) => {
-    e.preventDefault()
-    dispatch(deleteBreweryLike({breweryId:+breweryId,likeId:likeIdState}))
-    setIsLiked(false)
-  }
-  
+    e.preventDefault();
+    dispatch(deleteBreweryLike({ breweryId: +breweryId, likeId: likeIdState }));
+    setIsLiked(false);
+  };
+//need a way to force fontawesome rerender
   return (
     <div>
       {brewery ? (
@@ -84,34 +84,35 @@ export const SpecificBrewery = () => {
                   <p>Add review</p>
                 </button>
 
-               {+sessionUser.id === brewery.ownerId && <button className="specificButton">
-               <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
-                  <p>Edit Brewery</p>
-                </button> }
+                {+sessionUser.id === brewery.ownerId && (
+                  <button className="specificButton">
+                    <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
+                    <p>Edit Brewery</p>
+                  </button>
+                )}
 
-
-                {isLiked === false ?(<button className="specificButton" onClick={onAddLike}>
-                <FontAwesomeIcon icon="fa-solid fa-thumbs-up" />
-                  <p>Like Brewery</p>
-                </button>):
-                (
-                <button className="specificButton" onClick={onDeleteLike}>
-                <FontAwesomeIcon icon="fa-solid fa-thumbs-down" />
-                  <p>Unlike Brewery</p>
-                </button>)
-                }
+                {isLiked === false ? (
+                  <button className="specificButton" onClick={onAddLike}>
+                    <FontAwesomeIcon icon="fa-solid fa-thumbs-up" />
+                    <p>Like</p>
+                  </button>
+                ) : (
+                  <button className="specificButton" onClick={onDeleteLike}>
+                    <FontAwesomeIcon icon="fa-solid fa-thumbs-down" />
+                    <p>Unlike</p>
+                  </button>
+                )}
               </div>
             </div>
           </div>
           {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}
-          {reviews.length?
-          (
-          <div>
-            hello
-            </div>)
-          :(<div className='specificHolder'>
-            <h2>There are no reviews</h2>
-          </div>)}
+          {reviews.length ? (
+            <div>hello</div>
+          ) : (
+            <div className="specificHolder">
+              <h2>There are no reviews</h2>
+            </div>
+          )}
         </div>
       ) : (
         <div>

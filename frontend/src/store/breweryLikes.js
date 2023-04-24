@@ -21,6 +21,7 @@ export const breweryLikeSlice = createSlice({
             state.breweryLikes = action.payload;
         })
         .addCase(getBreweryLikes.rejected, (state, action) => {
+            state.breweryLikes = []
 
         })
 
