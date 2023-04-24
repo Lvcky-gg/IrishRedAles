@@ -101,7 +101,7 @@ console.log(state.toLowerCase().startsWith('mn'))
     if (state.toLowerCase().startsWith('wisc')) return 'Wisconsin'
     if (state.toLowerCase().startsWith('wyo')) return 'Wyoming'
 }
-    for(let i = 0; i< 10; i++){
+    for(let i = 0; i< 18; i++){
 
         if (Alabama[i] &&state.toLowerCase() === Alabama[i].toLowerCase()) return 'Alabama'
         if (Alaska[i] && state.toLowerCase() === Alaska[i].toLowerCase()) return 'Alaska'
