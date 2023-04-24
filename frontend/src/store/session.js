@@ -37,8 +37,9 @@ export const sessionSlice = createSlice({
                 state.validationErrors = null;
             })
             .addCase(login.rejected, (state, action) => {
-                state.error = action.payload.message;
-                state.validationErrors = action.payload.errors;
+                console.log(action)
+                state.error = action.payload;
+                state.validationErrors = ['message:The provided credentials were invalid.'];
                 state.user = null;
             })
             .addCase(logout.fulfilled, (state) => {
@@ -93,22 +94,29 @@ export const login = createAsyncThunk(
                 },
                 body: JSON.stringify({
                     credential,
-                    password,
+                    password
                 }),
             });
 
             const data = await response.json();
+            
 
             if (!response.ok) {
-                if (data.errors) {
-                    return rejectWithValue({ errors: data.errors });
-                }
+                // console.log(Promise.reject(response))
+                // return Promise.reject(response)
+                // if (data) {
+                    rejectWithValue({ errors: data});
+                // }
             }
-
+            
             return data.user;
-        } catch (error) {
-            return rejectWithValue({ message: error.message });
-        }
+                 } catch (error) {
+                    if(!error){
+                        throw error
+                    }
+                 return rejectWithValue({ message: "The provided credentials were invalid."});
+              }
+   
     }
 );
 

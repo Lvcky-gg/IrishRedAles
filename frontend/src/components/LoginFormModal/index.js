@@ -12,7 +12,7 @@ function LoginFormModal() {
   const validationErrors = useSelector(
     (state) => state.session.validationErrors
   );
-console.log(validationErrors)
+
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const { closeModal, setOnModalClose } = useModal();
@@ -46,7 +46,8 @@ console.log(validationErrors)
   if (validationErrors) {
     errorObject = Object.values(
       validationErrors.reduce((acc, error) => {
-        const [key, value] = error.split(" : ");
+
+        const [key, value] = error.split(":");
         acc[key] = value;
         return acc;
       }, {})
