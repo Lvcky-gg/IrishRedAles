@@ -82,7 +82,6 @@ export const getAllBreweries = createAsyncThunk(
         if (!response.ok) {
             return rejectWithValue(await response.json());
         }
-        console.log(data)
         return data.Breweries
     }
 )

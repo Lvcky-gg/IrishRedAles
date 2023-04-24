@@ -44,9 +44,10 @@ function LoginFormPage() {
   if (sessionUser) return <Navigate to="/" />;
   let errorObject = [];
   if (validationErrors) {
+    
     errorObject = Object.values(
       validationErrors.reduce((acc, error) => {
-        const [key, value] = error.split(" : ");
+        const [key, value] = error.split(":");
         acc[key] = value;
         return acc;
       }, {})

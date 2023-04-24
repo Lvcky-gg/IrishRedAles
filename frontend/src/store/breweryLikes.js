@@ -1,14 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { csrfFetch } from "./csrf";
 
-const initialState = {
-    breweryLikes: [],
-}
+// const initialState = {
+//     breweryLikes: [],
+// }
 export const breweryLikeSlice = createSlice({
     name:'breweryLikes',
-    initialState,
+    initialState:{
+        breweryLikes:[]
+    },
     reducers: {
-        clearBreweryLikes: () => {
+        clearBreweryLikes: (state) => {
             state.breweryLikes = []
         },
     },
@@ -19,6 +21,7 @@ export const breweryLikeSlice = createSlice({
             state.breweryLikes = action.payload;
         })
         .addCase(getBreweryLikes.rejected, (state, action) => {
+            state.breweryLikes = []
 
         })
 
@@ -40,7 +43,7 @@ export const breweryLikeSlice = createSlice({
 })
 export const getBreweryLikes = createAsyncThunk(
     'breweryLikes/getbreweryLikes',
-    async({breweryId}, {rejectWithValue}) => {
+    async(breweryId, {rejectWithValue}) => {
         const response = await csrfFetch(`/api/brewery-likes/${breweryId}`,{
             headers: {
                 'Content-Type': 'application/json',
@@ -51,13 +54,14 @@ export const getBreweryLikes = createAsyncThunk(
             return rejectWithValue(errData);
         }
         const data = await response.json();
-        return data.breweryLikes;
+        return data;
         }
 );
 export const deleteBreweryLike = createAsyncThunk(
     'breweryLikes/deleteBreweryLike',
     async({breweryId, likeId}, {rejectWithValue}) => {
         const response = await csrfFetch(`/api/brewery-likes/${breweryId}/${likeId}`,{
+            method:'DELETE',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -71,18 +75,20 @@ export const deleteBreweryLike = createAsyncThunk(
 )
 export const createBreweryLike = createAsyncThunk(
     'breweryLikes/createBreweryLike',
-    async ({ userId,breweryLikeId, breweryId }, { rejectWithValue }) => {
-        const response = await csrfFetch(`/api/brewery-likes/${breweryLikeId}`, {
+    async ({ userId, breweryId }, { rejectWithValue }) => {
+        console.log(breweryId)
+        const response = await csrfFetch(`/api/brewery-likes/${breweryId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ userId, breweryId}),
+            body: JSON.stringify(),
         });
         const data = await response.json();
         if (!response.ok) {
             return rejectWithValue(data);
         }
+        
         return data;
     }
 

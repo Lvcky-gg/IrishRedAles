@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { filterBreweries, getAllBreweries } from "../../../store/breweries";
 import './search.css'
 import { filterState } from "../../../utils/filterState";
+import { useDispatch } from "react-redux";
 
 const Search = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate();
     const [stateInput, setStateInput] = useState('');
     const [cityInput, setCityInput] = useState('');
@@ -29,6 +31,8 @@ const Search = () => {
     useEffect(()=>{
         if(searchUrl.length > 1 && !searchUrl.startsWith('/') ){
             navigate(`/breweries${searchUrl}`)
+
+            dispatch(filterBreweries())
             setStateInput('')
             setCityInput('')
             setSearchUrl('')

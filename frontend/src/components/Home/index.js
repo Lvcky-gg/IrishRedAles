@@ -6,10 +6,12 @@ import { useEffect } from "react";
 import { getAllReviews } from "../../store/reviews";
 import { getAllBreweries, sortBreweriesByNewest } from "../../store/breweries";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import BreweryCard from "../BreweryCard";
 
 
 const HomePage = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const breweries = useSelector((state) => state.breweries.allBreweries)
     useEffect(()=> {
@@ -17,7 +19,9 @@ const HomePage = () => {
         dispatch(getAllBreweries())
         dispatch(getAllReviews())
     }, [dispatch])
-console.log(breweries)
+
+
+
    return (
     <div className="homeRoot">
         <img 
@@ -34,7 +38,13 @@ console.log(breweries)
                 </div>
                 <div className="homeCards">
                     {breweries.map(({id, breweryName, city, state})=>(
-                        <BreweryCard id={id} key={id} breweryName={breweryName} city={city} state={state}></BreweryCard>
+                        <BreweryCard 
+                        id={id} 
+                        key={id} 
+                        breweryName={breweryName} 
+                        city={city} 
+                        state={state}
+                        ></BreweryCard>
                     ))
                     }
 
