@@ -44,30 +44,22 @@ function LoginFormPage() {
   }, [sessionUser, dispatch]);
 
   if (sessionUser) return <Navigate to="/" />;
-  let errorObject = [];
-  if (validationErrors) {
-    
-    errorObject = Object.values(
-      validationErrors.reduce((acc, error) => {
-        const [key, value] = error.split(":");
-        acc[key] = value;
-        return acc;
-      }, {})
-    );
-  }
+
 
   return (
     <div className="loginPage">
+        <div>
+        <img src={logo} alt="#"></img>
+        </div>
       <form onSubmit={handleSubmit}>
         <div>
         <h1>Log In</h1>
         </div>
-        <div>
-        <img src={logo} alt="#"></img>
-        </div>
+
         <div className="handleLoginBox">
           <label>Credential</label>
           <input
+          className='buttonStyle'
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
@@ -77,6 +69,7 @@ function LoginFormPage() {
         <div className="handleLoginBox">
           <label>Password</label>
           <input
+          className='buttonStyle'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -84,7 +77,7 @@ function LoginFormPage() {
           />
         </div>
         <div className="handleLoginBox">
-          <button type="submit" className="modalButton">
+          <button type="submit" className="specificButton">
             Log In
           </button>
         </div>
@@ -99,8 +92,8 @@ function LoginFormPage() {
               {error}
             </li>
           ))}
-        {errorObject &&
-          errorObject.map((error, idx) => (
+        {validationErrors &&
+          validationErrors.map((error, idx) => (
             <li key={idx}>
               <span style={{ color: "red", padding: "5px" }}>
                 <i className="fas fa-exclamation-circle"></i>

@@ -12,6 +12,7 @@ import Loader from './components/Loader';
 import AllBrew from './components/AllBrewery';
 import SpecificBrewery from './components/SpecificBreweryPage';
 import RedirectLogin from './components/LoginRedirect'
+import SignupFormPage from './components/SignupFormPage';
 import {
  faUserCircle, 
  faChevronUp, 
@@ -55,6 +56,7 @@ library.add(fas,
       <Route path="/breweries/:breweryId" element={<SpecificBrewery></SpecificBrewery>}/>
       <Route path="/breweries" element={<AllBrew></AllBrew>}/>
       <Route path="redirect-login" element={<RedirectLogin></RedirectLogin>}/>
+      <Route path="/signup" element={<SignupFormPage></SignupFormPage>}/>
       
     </Routes>}
     </>
