@@ -1,1 +1,55 @@
 /* TODO Add site wide styles */
+#root{
+    margin-left:-1%;
+    margin-right: -1%;
+    background-color: rgba(253, 253, 253, 0.25);
+}
+body{
+    background-color: rgb(0, 0, 0);
+    overflow-x:hidden ;
+}
+
+
+@font-face {
+    font-family: Rye;
+    src: local('Rye'),
+    url('./fonts/Rye/Rye-Regular.ttf');
+}
+@font-face{
+    font-family: sevillina;
+    src: local('Sevillina'),
+    url('./fonts/Sevillana/Sevillana-Regular.ttf');
+}
+.buttonStyle{
+    background: none;
+    border: 2px solid;
+    font: inherit;
+    line-height: 1;
+    font-weight: 400;
+    background-color: rgba(253, 253, 253, 0.25);
+    color:black;
+   
+}
+.buttonStyle:hover, 
+.buttonStyle:focus {
+  background-color: rgba(253, 253, 253, 0.56);
+  box-shadow: 0 0 0 2em transparent;
+  cursor:pointer;
+}
+.specificButton{
+    height:50px;
+    width:130px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    margin:2%;
+    background-color: black;
+    color:rgba(253, 253, 253, 0.25);
+}
+.specificButton:hover{
+    background-color:rgba(253, 253, 253, 0.25);
+    color:black;
+}
+.specificButton p {
+    color: rgba(253, 253, 253, 0.25);
+}

@@ -1,0 +1,50 @@
+.homeRoot{
+    position: absolute;
+    top:0%;
+    z-index:0;
+}
+.homeImgTop {
+    width:100%;
+    margin-top:-50%;
+}
+.insetHome{
+    position: absolute;
+    z-index:1;
+    top:17%;
+    left:10%;
+    width:80%;
+}
+.irishRedAles{
+    width:fit-content;
+    margin:auto;
+    font-family: sevillina;
+    color:rgb(247, 247, 247);
+    font-size: 50px;
+}
+.brewsAndReviews{
+    display:flex;
+    justify-content: space-around;
+    
+}
+.brewsAndReviews h1{
+    width:fit-content;
+    font-size: 150px;
+    font-family: Rye;
+    margin:auto;
+}
+.brewsAndReviewsGreen{
+    color:#04873C;
+
+}
+.brewsAndReviewsWhite{
+    color:rgb(247, 247, 247);
+}
+.brewsAndReviewsOrange{
+    color:#F49924;
+}
+.homeCards{
+    margin-top:25%;
+    display:flex;
+    justify-content:space-evenly;
+    flex-flow: wrap;
+}

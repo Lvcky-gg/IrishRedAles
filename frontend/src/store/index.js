@@ -2,6 +2,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import { loadingMiddleware } from './loader';
 import loadingReducer from './loader';
 import sessionReducer from './session';
+import breweryReducer from './breweries';
+import reviewReducer from './reviews'
+import breweryLikeReducer from './breweryLikes'
 const middleware = [loadingMiddleware];
 
 if (process.env.NODE_ENV === 'development') {
@@ -13,6 +16,9 @@ const store = configureStore({
     reducer: {
         loading: loadingReducer,
         session: sessionReducer,
+        breweries:breweryReducer,
+        reviews:reviewReducer,
+        breweryLikes:breweryLikeReducer,
 
     },
     middleware: (getDefaultMiddleware) =>

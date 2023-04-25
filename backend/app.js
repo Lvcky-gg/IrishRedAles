@@ -29,6 +29,9 @@ if (!isProduction) {
   );
   
   // Set the _csrf token and create req.csrfToken method
+  /***************************use this later************************
+   * **************************************************************
+   * **************************************************************/
   app.use(
     csurf({
       cookie: {
@@ -38,6 +41,9 @@ if (!isProduction) {
       }
     })
   );
+    /***************************use this later************************
+   * **************************************************************
+   * **************************************************************/
 
 const routes = require('./routes');
 app.use(routes); // Connect all the routes
@@ -70,6 +76,7 @@ app.use((err, _req, res, _next) => {
       errors: err.errors,
       stack: isProduction ? null : err.stack
     });
+    
   });
 
 

@@ -1,0 +1,85 @@
+.nav {
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    background-color: rgba(253, 253, 253, 0);
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+    height:100px;
+    margin-top:-1%;
+
+}
+.navDrop{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top:1%;
+    
+    
+}
+
+.navHomeLink{
+    padding-right:10%;
+}
+.navHomeLink a{
+    text-decoration: none;
+    color:#B4C4BC;
+    font-size:30px;
+}
+.navDrop li {
+    list-style: none;
+    display:flex;
+    align-items: flex-end;
+    
+}
+.hidden {
+    visibility: hidden;
+}
+.navLogo{
+    width:25%;
+    padding-left: 10%;
+    margin-top:5%;
+
+}
+.profile-dropdown {
+    position:relative;
+    right:100%;
+    top:270%;
+   background-color:rgba(253, 253, 253, 0.26);
+   backdrop-filter: blur(5px);
+   border-radius:5%;
+   height:170px;
+   width:170px;
+   /* padding:10%; */
+   
+}
+.profile-dropdown li {
+    width:fit-content;
+    margin:auto;
+    margin-left:-10%;
+    padding-top:9%;
+}
+.profile-dropdown li a, p, button {
+    text-decoration:none;
+    color:black;
+}
+.profileButton{
+    height:60%;
+    width:25%;
+    background-color: rgba(253, 253, 253, 0.26);;
+    border-radius: 15%;
+}
+.profileButton:hover{
+    cursor: pointer;
+}
+.dropComp {
+   
+        width:fit-content;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        word-break: break-word;   
+        margin-left:6%;
+        padding:2%;
+    
+}

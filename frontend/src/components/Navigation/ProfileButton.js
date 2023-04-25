@@ -7,16 +7,20 @@ import SignupFormModal from '../SignupFormModal';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { login } from '../../store/session';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 function ProfileButton({ user }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
+    const [up, setUp] = useState(false)
     const ulRef = useRef();
 
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
+        setUp(false)
     };
 
     useEffect(() => {
@@ -25,6 +29,7 @@ function ProfileButton({ user }) {
         const closeMenu = (e) => {
             if (!ulRef.current.contains(e.target)) {
                 setShowMenu(false);
+                setUp(true)
             }
         };
 
@@ -55,22 +60,20 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button onClick={openMenu} className="modalButton">
-                <i className="fas fa-user-circle" />
+            <button onClick={openMenu} className="profileButton buttonStyle">
+               {/* <FontAwesomeIcon icon="fa-solid fa-circle-user" /> */}
+               {up ?(<FontAwesomeIcon icon="fa-solid fa-chevron-up" />):
+               (<FontAwesomeIcon icon="fa-solid fa-chevron-down" />)
+               }
             </button>
             <ul className={ulClassName} ref={ulRef}>
                 {user ? (
                     <>
-                        <li>{user.username}</li>
-                        <li>{user.email}</li>
-                        <li>
-                            <NavLink onClick={closeMenu} to="/user/profile">
-                                Profile
-                            </NavLink>
-                        </li>
+                        <li className="dropComp">{user.username}</li>
+                        <li className="dropComp">{user.email}</li>
                         <li className="button-container">
                             <button
-                                className="modalButton"
+                                className="modalButton buttonStyle"
                                 onClick={handleLogout}
                             >
                                 Log Out
@@ -99,7 +102,7 @@ function ProfileButton({ user }) {
 
                         <li className="button-container">
                             <button
-                                className="modalButton"
+                                className="modalButton buttonStyle"
                                 onClick={demoUserLogin}
                             >
                                 DemoUser
