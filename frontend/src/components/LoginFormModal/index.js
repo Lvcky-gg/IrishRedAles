@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, clearErrors } from "../../store/session";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
+import logo from '../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png'
 
 import validateInput from "../../utils/validateInput";
 
@@ -46,8 +47,10 @@ function LoginFormModal() {
 
   return (
     <div className="modalLogin">
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit} className="login-form">
+      <form onSubmit={handleSubmit} className="loginForm">
+        <div>
+        <img src={logo} alt="#"></img>
+        </div>
         <div>
           <label>Credential</label>
           <input
@@ -87,7 +90,7 @@ function LoginFormModal() {
             ))}
         </ul>
         <div>
-          <button type="submit" className="modalButton">
+          <button type="submit" id="specificButtonSize" className="specificButton">
             Log In
           </button>
         </div>

@@ -1,0 +1,30 @@
+.loginForm{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loginForm div{
+    display:flex;
+    flex-direction: column;
+    margin-top:1%;
+}
+.loginForm div img {
+    width:50%;
+    margin:auto;
+    padding-top:15%;
+}
+.loginForm div label{
+    width:fit-content;
+    margin:auto;
+    padding:2%;
+}
+.loginForm div input{
+    max-width:80%;
+    margin:auto;
+}
+#specificButtonSize{
+    width:100%;
+    height:50%;
+    padding-top:1%;
+    
+}

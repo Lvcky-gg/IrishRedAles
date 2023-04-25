@@ -6,6 +6,8 @@ import "./LoginForm.css";
 import validateInput from "../../utils/validateInput";
 import { clearErrors } from "../../store/session";
 import { useEffect } from "react";
+import logo from '../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png'
+
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -56,8 +58,13 @@ function LoginFormPage() {
 
   return (
     <div className="loginPage">
-      <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
+        <div>
+        <h1>Log In</h1>
+        </div>
+        <div>
+        <img src={logo} alt="#"></img>
+        </div>
         <div className="handleLoginBox">
           <label>Credential</label>
           <input

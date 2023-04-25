@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { signUp } from '../../store/session';
 import { clearErrors } from "../../store/session";
+import logo from '../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png'
 
 import './signup.css'
 
@@ -55,6 +56,9 @@ useEffect(()=>{
 
   return (
     <form className='signupForm' onSubmit={handleSubmit}>
+      <div>
+        <img src={logo} alt="#"></img>
+      </div>
 
       <div>
       <label>
@@ -123,7 +127,7 @@ useEffect(()=>{
         />
       </div>
       <div>
-      <button type="submit">Sign Up</button>
+      <button type="submit" id="specificButtonSize"className="specificButton">Sign Up</button>
       </div>
       <div>
       <ul>
