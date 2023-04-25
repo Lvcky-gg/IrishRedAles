@@ -13,6 +13,7 @@ import AllBrew from './components/AllBrewery';
 import SpecificBrewery from './components/SpecificBreweryPage';
 import RedirectLogin from './components/LoginRedirect'
 import SignupFormPage from './components/SignupFormPage';
+import Footer from './components/Footer';
 import {
  faUserCircle, 
  faChevronUp, 
@@ -26,6 +27,13 @@ import {
  faHouse,
 
 } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebook,
+  faInstagram,
+  faLinkedinIn,
+  faSquareGithub,
+  faTwitter,
+} from '@fortawesome/free-brands-svg-icons';
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +52,11 @@ library.add(fas,
   faPenToSquare,
   faThumbsDown,
   faHouse,
+  faFacebook,
+  faInstagram,
+  faLinkedinIn,
+  faSquareGithub,
+  faTwitter,
   )
 
   return (
@@ -59,6 +72,7 @@ library.add(fas,
       <Route path="/signup" element={<SignupFormPage></SignupFormPage>}/>
       
     </Routes>}
+    <Footer></Footer>
     </>
   );
 }
