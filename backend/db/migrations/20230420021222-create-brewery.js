@@ -22,10 +22,10 @@ module.exports = {
         unique:true
       },
       addressLineOne:{
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       city:{
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       description: {
         type: Sequelize.STRING
