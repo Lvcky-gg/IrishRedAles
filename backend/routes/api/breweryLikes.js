@@ -6,7 +6,7 @@ const { requireAuth } = require("../../utils/auth.js");
 router.delete("/:breweryId/:likeId", requireAuth, async (req, res) => {
   const userId = req.user.id;
   const { breweryId, likeId } = req.params;
-  const brewery = await Brewery.findOne({ where: { Id: +breweryId } });
+  const brewery = await Brewery.findOne({ where: { id: +breweryId } });
   const like = await BreweryLike.findOne({ where: { id: +likeId } });
   if (brewery) {
     if (like) {
