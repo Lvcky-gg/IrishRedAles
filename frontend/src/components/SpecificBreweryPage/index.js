@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAllBreweries } from "../../store/breweries";
+import { deleteBrewery, getAllBreweries } from "../../store/breweries";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RatingDisplay from "../RatingDisplay";
 import Redirect from "../Redirect";
@@ -52,6 +52,13 @@ export const SpecificBrewery = () => {
     }
     
   };
+  const onDeleteBrewery = (e) => {
+    e.preventDefault();
+    if(+sessionUser.id === brewery.ownerId){
+      dispatch(deleteBrewery(+breweryId))
+      navigate('/')
+    }
+  }
   const onAddLike = (e) => {
     e.preventDefault();
     if(sessionUser){
@@ -89,6 +96,14 @@ export const SpecificBrewery = () => {
                   <button className="specificButton">
                     <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
                     <p>Edit Brewery</p>
+                  </button>
+                )}
+                {sessionUser && +sessionUser.id === brewery.ownerId && (
+                  <button 
+                  onClick={onDeleteBrewery}
+                  className="specificButton">
+                    <FontAwesomeIcon icon="fa-solid fa-trash-can" />
+                    <p>Delete Brewery</p>
                   </button>
                 )}
 

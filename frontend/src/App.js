@@ -25,6 +25,7 @@ import {
  faPenToSquare,
  faThumbsDown,
  faHouse,
+ faTrashCan,
 
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -57,6 +58,7 @@ library.add(fas,
   faLinkedinIn,
   faSquareGithub,
   faTwitter,
+  faTrashCan,
   )
 
   return (
