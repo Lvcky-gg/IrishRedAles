@@ -61,6 +61,7 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Breweries');
+    options.tableName='Breweries'
+    await queryInterface.dropTable(options);
   }
 };
