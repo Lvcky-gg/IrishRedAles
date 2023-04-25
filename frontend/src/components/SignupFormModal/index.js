@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { signUp } from '../../store/session';
+import { clearErrors } from "../../store/session";
 
 import './signup.css'
 
 function SignupFormModal() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const validationErrors = useSelector((state)=>state.session.validationErrors)
   const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -18,21 +20,29 @@ function SignupFormModal() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [submit, setSubmit] = useState(false)
-  const { closeModal } = useModal();
+  const { closeModal, setOnModalClose } = useModal();
+  const [inputValidate, setInputValidate] = useState([]);
 
 
+useEffect(()=>{
+  if(sessionUser){
+    closeModal();
+  }
+  const cleanErrorMessage = () => {
+    dispatch(clearErrors())
+  }
+  setOnModalClose(cleanErrorMessage)
 
+},[sessionUser, closeModal, setOnModalClose, dispatch])
 
-  if (sessionUser) return navigate('/');
+  // if (sessionUser) return navigate('/');
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmit(!submit)
     if (password === confirmPassword) {
-      setErrors([]);
-      return dispatch(signUp({ email, username, firstName, lastName, password }))
-        .then(closeModal)
+      dispatch(signUp({ email, username, firstName, lastName, password, confirmPassword }))
         .catch(async (res) => {
           setErrors([])
           const data = await res.json();
@@ -40,7 +50,7 @@ function SignupFormModal() {
         });
     }
     setErrors([])
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    return setErrors(["Password must match confirm password"]);
   };
 
   return (
@@ -117,7 +127,8 @@ function SignupFormModal() {
       </div>
       <div>
       <ul>
-        {submit && errors.map((error, idx) => <li className="validation" key={idx}>{error}</li>)}
+        {validationErrors && validationErrors.map((error, idx) => <li className="validation" key={idx}>{error}</li>)}
+        {errors && errors.map((error, idx) => <li className="validation" key={idx}>{error}</li>)}
       </ul>
       </div>
     </form>
