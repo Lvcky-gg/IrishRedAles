@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import axios from 'axios'
+// import axios from 'axios'
 
 export async function csrfFetch(url, options = {}) {
   // set options.method to 'GET' if there is no method
