@@ -44,7 +44,7 @@ router.get("/:breweryId", async (req, res) => {
 router.post("/:breweryId", requireAuth, async (req, res) => {
   const userId = req.user.id;
   const { breweryId } = req.params;
-  const brewery = await Brewery.findOne({ where: { Id: +breweryId } });
+  const brewery = await Brewery.findOne({ where: { id: +breweryId } });
   if (brewery) {
     const newLike = await BreweryLike.create({
       breweryId: +breweryId,
