@@ -57,7 +57,7 @@ export const sessionSlice = createSlice({
         state.validationErrors = null;
       })
       .addCase(signUp.rejected, (state, action) => {
-        state.error = action.payload.message;
+        state.error = action.payload.errors;
         state.validationErrors = action.payload.errors;
         state.user = null;
       });
@@ -131,29 +131,29 @@ export const signUp = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-        const response = await axios
-          .post(
-            "/api/users",
-            JSON.stringify({
+      const response = await axios
+        .post(
+          "/api/users",
+          JSON.stringify({
             firstName,
             lastName,
             username,
             email,
             password,
-            }),
-            {
-              headers: {
-                "Content-Type": "application/json",
-                "XSRF-Token": Cookies.get("XSRF-TOKEN"),
-              },
-            }
-          )
-          .then((res) => res);
-  
-        if (response.data.user) return response.data.user;
-      } catch (error) {
-        return rejectWithValue({ errors: error.response.data.errors });
-      }
+          }),
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "XSRF-Token": Cookies.get("XSRF-TOKEN"),
+            },
+          }
+        )
+        .then((res) => res);
+
+      if (response.data.user) return response.data.user;
+    } catch (error) {
+      return rejectWithValue({ errors: error.response.data.errors });
+    }
   }
 );
 
