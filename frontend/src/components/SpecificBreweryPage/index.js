@@ -22,7 +22,11 @@ export const SpecificBrewery = () => {
   const reviews = useSelector((state) => state.reviews.allReviews);
   const brewLikes = useSelector((state) => state.breweryLikes.breweryLikes);
   const sessionUser = useSelector((state) => state.session.user);
-  const brewery = breweries[+breweryId - 1];
+  let brewery;
+  for(let i = 0; i < breweries.length; i++){
+    if(breweries[i].id === +breweryId)brewery = breweries[i]
+  }
+  console.log(brewery)
 
 
   useEffect(() => {
