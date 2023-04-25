@@ -6,6 +6,8 @@ import "./LoginForm.css";
 import validateInput from "../../utils/validateInput";
 import { clearErrors } from "../../store/session";
 import { useEffect } from "react";
+import logo from '../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png'
+
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -42,25 +44,22 @@ function LoginFormPage() {
   }, [sessionUser, dispatch]);
 
   if (sessionUser) return <Navigate to="/" />;
-  let errorObject = [];
-  if (validationErrors) {
-    
-    errorObject = Object.values(
-      validationErrors.reduce((acc, error) => {
-        const [key, value] = error.split(":");
-        acc[key] = value;
-        return acc;
-      }, {})
-    );
-  }
+
 
   return (
     <div className="loginPage">
-      <h1>Log In</h1>
+        <div>
+        <img src={logo} alt="#"></img>
+        </div>
       <form onSubmit={handleSubmit}>
+        <div>
+        <h1>Log In</h1>
+        </div>
+
         <div className="handleLoginBox">
           <label>Credential</label>
           <input
+          className='buttonStyle'
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
@@ -70,6 +69,7 @@ function LoginFormPage() {
         <div className="handleLoginBox">
           <label>Password</label>
           <input
+          className='buttonStyle'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -77,7 +77,7 @@ function LoginFormPage() {
           />
         </div>
         <div className="handleLoginBox">
-          <button type="submit" className="modalButton">
+          <button type="submit" className="specificButton">
             Log In
           </button>
         </div>
@@ -92,8 +92,8 @@ function LoginFormPage() {
               {error}
             </li>
           ))}
-        {errorObject &&
-          errorObject.map((error, idx) => (
+        {validationErrors &&
+          validationErrors.map((error, idx) => (
             <li key={idx}>
               <span style={{ color: "red", padding: "5px" }}>
                 <i className="fas fa-exclamation-circle"></i>

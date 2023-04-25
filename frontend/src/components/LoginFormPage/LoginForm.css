@@ -1,0 +1,46 @@
+.loginPage{
+    width:80%;
+    height:1200px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+.loginPage img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    animation: none !important;
+
+}
+.loginPage form{
+position:relative;
+top:40%;
+
+}
+.loginPage form div{
+    display:flex;
+    flex-direction:column;
+}
+.loginPage form div h1{
+    font-family:Rye;
+}
+.loginPage form div label{
+    color:#B4C4BC;
+    padding-bottom:2%;
+}
+.loginPage form div h1, label{
+    width:fit-content;
+    margin:auto;
+    padding-top:6%;
+}
+.loginPage form div button{
+    margin:auto;
+    margin-top:14%;
+    
+}

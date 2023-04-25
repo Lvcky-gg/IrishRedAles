@@ -72,7 +72,7 @@ const { isLoaded } = useJsApiLoader({
               options={{styles:mapStyle}}
               >
                          
-            {breweries && breweries.map(({id, breweryName, lat, lng})=>(
+            {breweries && breweries.filter((brewery,idx)=>idx<6).map(({id, breweryName, lat, lng})=>(
                 <Marker 
               key={id} 
               position={{lat:lat, lng:lng}}

@@ -11,13 +11,29 @@ import Map from './components/Map'
 import Loader from './components/Loader';
 import AllBrew from './components/AllBrewery';
 import SpecificBrewery from './components/SpecificBreweryPage';
+import RedirectLogin from './components/LoginRedirect'
+import SignupFormPage from './components/SignupFormPage';
+import Footer from './components/Footer';
 import {
- faUserCircle, faChevronUp, faChevronDown, faLocationPin, faStar, faBeerMugEmpty,
+ faUserCircle, 
+ faChevronUp, 
+ faChevronDown, 
+ faLocationPin, 
+ faStar, 
+ faBeerMugEmpty,
  faThumbsUp,
  faPenToSquare,
  faThumbsDown,
+ faHouse,
 
 } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebook,
+  faInstagram,
+  faLinkedinIn,
+  faSquareGithub,
+  faTwitter,
+} from '@fortawesome/free-brands-svg-icons';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +51,12 @@ library.add(fas,
   faThumbsUp,
   faPenToSquare,
   faThumbsDown,
+  faHouse,
+  faFacebook,
+  faInstagram,
+  faLinkedinIn,
+  faSquareGithub,
+  faTwitter,
   )
 
   return (
@@ -46,8 +68,11 @@ library.add(fas,
       <Route path="/" element={<Home></Home>}/>
       <Route path="/breweries/:breweryId" element={<SpecificBrewery></SpecificBrewery>}/>
       <Route path="/breweries" element={<AllBrew></AllBrew>}/>
+      <Route path="redirect-login" element={<RedirectLogin></RedirectLogin>}/>
+      <Route path="/signup" element={<SignupFormPage></SignupFormPage>}/>
       
     </Routes>}
+    <Footer></Footer>
     </>
   );
 }

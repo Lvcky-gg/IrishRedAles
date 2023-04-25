@@ -45,7 +45,12 @@ export const SpecificBrewery = () => {
 
   const onAddReview = (e) => {
     e.preventDefault();
-    navigate("/add-review");
+    if(sessionUser){
+      navigate("/add-review");
+    }else{
+      navigate("/redirect-Login");
+    }
+    
   };
   const onAddLike = (e) => {
     e.preventDefault();
@@ -55,7 +60,7 @@ export const SpecificBrewery = () => {
     );
     setIsLiked(true);
     }else{
-        navigate('/redirectLogin')
+        navigate('/redirect-login')
     }
   };
   const onDeleteLike = (e) => {
