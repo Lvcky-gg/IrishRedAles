@@ -21,6 +21,11 @@
 .loginPage form{
 position:relative;
 top:40%;
+padding:10%;
+border-top: 3px outset rgba(0,0,0.2);
+border-left: 3px outset rgba(0,0,0.3);
+border-right: 3px outset rgba(0,0,0.5);
+border-bottom: 3px outset rgba(0,0,0.5);
 
 }
 .loginPage form div{

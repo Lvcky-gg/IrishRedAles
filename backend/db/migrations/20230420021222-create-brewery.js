@@ -15,17 +15,21 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       ownerId: {
+        allowNull:false,
         type: Sequelize.INTEGER
       },
       breweryName: {
+        allowNull:false,
         type: Sequelize.STRING,
         unique:true
       },
       addressLineOne:{
+        allowNull:false,
         type: Sequelize.STRING
       },
       city:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
       },
       description: {
         type: Sequelize.STRING
@@ -43,9 +47,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       lat: {
+        allowNull:false,
         type: Sequelize.DECIMAL
       },
       lng: {
+        allowNull:false,
         type: Sequelize.DECIMAL
       },
       createdAt: {

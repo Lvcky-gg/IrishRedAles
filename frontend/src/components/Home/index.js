@@ -37,7 +37,7 @@ const HomePage = () => {
                     <h1 className="brewsAndReviewsOrange">Reviews</h1>
                 </div>
                 <div className="homeCards">
-                    {breweries.map(({id, breweryName, city, state})=>(
+                    {breweries.filter((brewery,idx)=>idx<10).map(({id, breweryName, city, state})=>(
                         <BreweryCard 
                         id={id} 
                         key={id} 

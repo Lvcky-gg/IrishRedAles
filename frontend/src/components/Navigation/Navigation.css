@@ -54,6 +54,9 @@
    /* padding:10%; */
    
 }
+.navdropcomp:hover{
+color:#B4C4BC
+}
 .profile-dropdown li {
     width:fit-content;
     margin:auto;

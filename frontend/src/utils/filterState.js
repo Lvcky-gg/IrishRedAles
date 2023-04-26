@@ -49,7 +49,7 @@ export const filterState = (state) => {
     const WestVirginia = ['West Virginia',"wv","West Virgina", "West Virignia", "West Verginia", "West Virgiana", "Wet Virginia", "West Vriginia", "West Viginia", "West Virginiaa", "West Vergina", "West Virginnia"]
     const Wisconsin = ['Wisconsin',"wi","Wisconson", "Wiscosin", "Wisconin", "Wiscoson", "Wiscsonsin", "Wisconsen", "Wisocnsin", "Wisconnsin", "Wisconsiin", "Wisconsinn"]
     const Wyoming = ['Wyoming',"wy","Wymoing", "Wymoing", "Wyoing", "Wyomingg", "Wyoimng", "Wyoing", "Wyominng", "Wyomin", "Wymoming", "Wyoing"]
-console.log(state.toLowerCase().startsWith('mn'))
+
     if(typeof state === 'string'){
     if (state.toLowerCase().startsWith('alab')) return 'Alabama'
     if (state.toLowerCase().startsWith('alas')) return 'Alaska'

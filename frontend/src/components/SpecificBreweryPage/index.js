@@ -10,7 +10,7 @@ import { getReviewsByBrewery } from "../../store/reviews";
 import { deleteBreweryLike, getBreweryLikes } from "../../store/breweryLikes";
 import { createBreweryLike } from "../../store/breweryLikes";
 import { useState } from "react";
-import MapPageA from "../Map";
+import parse from 'html-react-parser'
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -135,7 +135,7 @@ export const SpecificBrewery = () => {
               <RatingDisplay rating={brewery.rating}></RatingDisplay>
               
               <h2 className="specificHeader">About</h2>
-              <div className="specificDesc"><p>{brewery.description}</p></div>
+              <div className="specificDesc"><div>{parse(brewery.description)}</div></div>
               <h2 className="specificHeader">Location</h2>
               <div className="locationHolder">
                 <div>

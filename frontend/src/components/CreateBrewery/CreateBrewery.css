@@ -1,0 +1,34 @@
+
+.makeBrewContainer{
+    width:40%;
+    margin:auto;
+    margin-top:5%;
+    border-top: 3px outset rgba(0,0,0.2);
+	border-left: 3px outset rgba(0,0,0.3);
+	border-right: 3px outset rgba(0,0,0.5);
+	border-bottom: 3px outset rgba(0,0,0.5);
+    padding:10%;
+    padding-bottom:2%;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+.makeBrewContainer>div{
+    width:fit-content;
+    display:flex;
+    flex-direction: column;
+
+}
+.makeBrewContainer>div label {
+    color:#B4C4BC;
+}
+.h1create{
+    font-family:Rye;
+    position:relative;
+    margin:auto;
+    margin-top:2%;
+    padding-bottom:5%;
+}

@@ -27,10 +27,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     addressLineOne:{
       type:DataTypes.STRING,
+      allowNull:false
 
     },
     city:{
       type:DataTypes.STRING,
+      allowNull:false
     },
     description: DataTypes.STRING,
     zip: {
@@ -65,6 +67,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     lat:{
       type:DataTypes.DECIMAL,
+      allowNull:false,
       validate:{
         latIsVal(val){
           if(typeof val != "number")throw new Error("Latitude is not valid")
@@ -73,6 +76,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     lng:{
       type:DataTypes.DECIMAL,
+      allowNull:false,
       validate:{
         latIsVal(val){
           if(typeof val != "number")throw new Error("Longitude is not valid")
