@@ -79,6 +79,10 @@ export const SpecificBrewery = () => {
     dispatch(deleteBreweryLike({ breweryId: +breweryId, likeId: likeIdState }));
     setIsLiked(false);
   };
+  const onEditBrew = (e) => {
+    e.preventDefault()
+    navigate(`/breweries/${breweryId}/edit-brewery`)
+  }
 
   return (
     <div>
@@ -97,7 +101,10 @@ export const SpecificBrewery = () => {
                 </button>
 
                 {sessionUser && +sessionUser.id === brewery.ownerId && (
-                  <button className="specificButton">
+                  <button 
+                  onClick={onEditBrew}
+                  className="specificButton">
+                    
                     <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
                     <p>Edit Brewery</p>
                   </button>
