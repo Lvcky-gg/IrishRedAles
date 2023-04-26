@@ -29,7 +29,7 @@ const [currentPosition, setCurrentPosition] = useState({lat:1,lng:1})
 // This is the equivalent to a script tag
 useEffect(()=>{
     if(breweries[0]){
-        setCurrentPosition({lat:breweries[0].lat,lng:breweries[0].lng})
+        setCurrentPosition({lat:+breweries[0].lat,lng:+breweries[0].lng})
     }
 },[breweries])
 useEffect(()=>{
