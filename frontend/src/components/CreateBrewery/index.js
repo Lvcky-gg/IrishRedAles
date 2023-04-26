@@ -80,8 +80,8 @@ const CreateBreweryComponent = () => {
           city: city,
           state: filterState(state.trim()),
           country,
-          lat: latitude,
-          lng: longitude,
+          lat: +latitude,
+          lng: +longitude,
           zip: zip,
         })
       );
