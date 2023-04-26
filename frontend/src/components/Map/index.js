@@ -75,7 +75,7 @@ const { isLoaded } = useJsApiLoader({
             {breweries && breweries.filter((brewery,idx)=>idx<6).map(({id, breweryName, lat, lng})=>(
                 <Marker 
               key={id} 
-              position={{lat:lat, lng:lng}}
+              position={{lat:+lat, lng:+lng}}
               title={breweryName}
               id={id}
               onClick={()=>console.log('hello world')}
