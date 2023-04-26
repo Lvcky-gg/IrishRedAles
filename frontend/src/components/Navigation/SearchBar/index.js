@@ -23,7 +23,11 @@ const Search = () => {
         else if(stateInput != ''){
             console.log("hello")
             setSearchUrl(`?state=${stateVal}`)}
+            else {
+                dispatch(getAllBreweries())
+            }
             navigate('/breweries')
+
 
     }
 

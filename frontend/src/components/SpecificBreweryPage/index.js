@@ -117,22 +117,6 @@ export const SpecificBrewery = () => {
                     <p>Delete Brewery</p>
                   </button>
                 )}
-
-                {isLiked === false ? (
-                  <button className="specificButton" onClick={onAddLike}>
-                    <FontAwesomeIcon icon="fa-solid fa-thumbs-up" />
-                    <p>Like</p>
-                  </button>
-                ) : (
-                  <button className="specificButton" onClick={onDeleteLike}>
-                    <FontAwesomeIcon icon="fa-solid fa-thumbs-down" />
-                    <p>Unlike</p>
-                  </button>
-                )}
-                    {/* <button className="specificButton">
-                    <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
-                    <p>Images</p>
-                  </button> */}
               </div>
 
             
@@ -142,7 +126,7 @@ export const SpecificBrewery = () => {
               <RatingDisplay rating={brewery.rating}></RatingDisplay>
               
               <h2 className="specificHeader">About</h2>
-              <div className="specificDesc"><div>{parse(brewery.description)}</div></div>
+              <div className="specificDesc"><div className="details">{parse(brewery.description)}</div></div>
               <h2 className="specificHeader">Location</h2>
               <div className="locationHolder">
                 <div>
@@ -153,7 +137,19 @@ export const SpecificBrewery = () => {
  
                 </div>
              </div>
-              <h2 className="specificHeader">Likes:{brewLikes.length}</h2>
+              <h2 className="specificHeaderLike">
+              {isLiked === false ? (
+                    <FontAwesomeIcon 
+                    className="specificHeart"
+                    onClick={onAddLike} icon="fa-regular fa-heart" />
+               
+                ) : (
+              
+                    <FontAwesomeIcon 
+                    className="specificHeart"
+                    onClick={onDeleteLike} icon="fa-solid fa-heart" />
+                   
+                )}{brewLikes.length}</h2>
 
               
               
