@@ -1,17 +1,24 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Geocode from 'react-geocode'
 import './CreateBrewery.css'
 import logo from '../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png'
 import RichEditor from "../RichEditor";
 import { filterState } from "../../utils/filterState";
+import { createBrewery, getAllBreweries } from "../../store/breweries";
+import { clearBrewErrors } from "../../store/breweries";
 
 const CreateBreweryComponent = () => {
     Geocode.setApiKey(process.env.REACT_APP_MAPS_KEY)
     Geocode.setLanguage("en");
     Geocode.setLocationType("ROOFTOP");
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
     const sessionUser = useSelector((state)=>state.session.user);
+    const allBreweries = useSelector((state)=>state.breweries.allBreweries);
+    const validationErrors = useSelector((state)=>state.breweries.validationErrors)
     const ownerId = sessionUser.id;
     const [name, setName] = useState('')
     const [errors, setErrors] = useState([])
@@ -23,7 +30,10 @@ const CreateBreweryComponent = () => {
     const [latitude, setLatitude] = useState('')
     const [longitude, setLongitude] = useState('')
     let address;
-    
+    useEffect(()=>{
+        dispatch(getAllBreweries())
+    },[dispatch])
+
     useEffect(()=>{
         address = addressLineOne + ", " +
          city + ", " + filterState(state) + " " + zip + " " + country
@@ -46,24 +56,46 @@ const CreateBreweryComponent = () => {
         }
     },[addressLineOne, city, state, zip, country, latitude, longitude])
 
-    const  handleEditorSubmit = (e, {details}) => {
+
+    const  handleEditorSubmit = async(e, {details}) => {
         e.preventDefault();
-        //brings data back to us
+        
         if(latitude === '' || longitude === ''){
-            setErrors(["Invalid address"])
+            setErrors([..."Invalid address"])
         }else{
             setErrors([])
+            dispatch(clearBrewErrors())
+            const newBrew = await dispatch(createBrewery({
+                breweryName:name,
+                description:details,
+                addressLineOne:addressLineOne,
+                city:city,
+                state:filterState(state.trim()),
+                country,
+                lat:latitude,
+                lng:longitude,
+                zip:zip
+            }))
+
+            if(createBrewery.rejected.match(newBrew)){
+
+            }else{
+                setName('')
+                setAddressLineOne('')
+                setCity('')
+                setState('')
+                setZip('')
+                setCountry('')
+                setLatitude('')
+                setLongitude('')
+                navigate(`/breweries/${newBrew.payload.id}`)
+            }
+            
         }
-  console.log(latitude)      
-console.log(details)
 
     }
     return (
         <>
-        
-        {/* <img 
-        className='createBrewImg'
-        src={logo} alt="#"></img> */}
         <div className="makeBrewContainer">
         <h1 className="h1create">Create a Brewery</h1>
             <div className="breweryMakeform">
@@ -115,6 +147,7 @@ console.log(details)
             ></RichEditor>
             <ul className="listSignUp">
             {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            {validationErrors && validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
         </div>
         </>

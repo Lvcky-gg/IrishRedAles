@@ -1,12 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { csrfFetch } from "./csrf";
+import axios from 'axios';
+import Cookies from "js-cookie";
 
 export const brewerySlice = createSlice({
     name:'breweries',
     initialState:{
         allBreweries: [],
         error:null,
-        displayedBreweries:[]
+        displayedBreweries:[],
+        validationErrors:null
     },
     reducers: {
         sortBreweriesByNewest(state){
@@ -25,7 +28,11 @@ export const brewerySlice = createSlice({
                 (brewery) => brewery.id === updatedBreweries.id
             );
             state.allBreweries[idx] = updatedBreweries
-        }
+        },
+        clearBrewErrors: (state) => {
+            state.error = null;
+            state.validationErrors = null;
+          }
     },
     extraReducers: (builder) => {
         builder
@@ -36,9 +43,15 @@ export const brewerySlice = createSlice({
         })
         .addCase(getAllBreweries.rejected, (state, action) => {})
         .addCase(createBrewery.fulfilled, (state, action) => {
+            console.log(action)
             state.allBreweries.push(action.payload);
             state.displayedBreweries.push(action.payload);
+            state.validationErrors = null;
             state.error = null;
+        })
+        .addCase(createBrewery.rejected, (state, action) => {
+            state.validationErrors = action.payload.errors
+            state.error = action.payload.errors;
         })
         .addCase(deleteBrewery.fulfilled, (state, action) => {
             state.allBreweries = state.allBreweries.filter(
@@ -104,23 +117,23 @@ export const getABrewery = createAsyncThunk(
 )
 export const createBrewery =  createAsyncThunk(
     'breweries/createBreweries',
-    async({breweryName, description, addressLineOne, zip, state, country, lat, lng, ownerId}, 
+    async({breweryName, description, addressLineOne, zip,city, state, country, lat, lng}, 
         {rejectWithValue}) => {
-            const response = await csrfFetch('/api/breweries', {
-                method: 'POST',
+            try{
+            const response = await axios.post('/api/breweries',
+            JSON.stringify({breweryName, description,city, addressLineOne, zip, state, country, lat, lng}),
+            {
                 headers: {
                     'Content-Type': 'application/json',
+                    "XSRF-Token": Cookies.get("XSRF-TOKEN"),
                 },
-                body: JSON.stringify({breweryName, description, addressLineOne, zip, state, country, lat, lng, ownerId}),
+               
             });
-    
-            const data = await response.json();
-    
-            if (!response.ok) {
-                return rejectWithValue(data);
-            }
-    
-            return data;
+
+            if(response.data) return response.data;
+        }catch (error){
+            return rejectWithValue({ errors: error.response.data.errors})
+        }
         }  
 )
 
@@ -180,7 +193,8 @@ export const updateBreweries = createAsyncThunk(
 export const {
     sortBreweriesByNewest,
     sortBreweriesByRating,
-    updateBreweriesAfterVote
+    updateBreweriesAfterVote,
+    clearBrewErrors
 } = brewerySlice.actions;
 
 export default brewerySlice.reducer;
