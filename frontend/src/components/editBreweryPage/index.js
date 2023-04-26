@@ -6,7 +6,7 @@ import Geocode from "react-geocode";
 import logo from "../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png";
 import RichEditor from "../RichEditor";
 import { filterState } from "../../utils/filterState";
-import breweries, { createBrewery, getAllBreweries } from "../../store/breweries";
+import breweries, { updateBreweries, getAllBreweries } from "../../store/breweries";
 import { clearBrewErrors } from "../../store/breweries";
 import { useParams } from "react-router-dom";
 
@@ -19,10 +19,10 @@ const EditBrewery = () => {
   const navigate = useNavigate();
   const sessionUser = useSelector((state) => state.session.user);
   const allBreweries = useSelector((state) => state.breweries.allBreweries);
-//   let brewery;
-//   for(let i = 0; i < allBreweries.length; i++){
-//     if(allBreweries[i].id === +breweryId)brewery = allBreweries[i]
-//   }
+  let brewery;
+  for(let i = 0; i < allBreweries.length; i++){
+    if(allBreweries[i].id === +breweryId)brewery = allBreweries[i]
+  }
   const validationErrors = useSelector(
     (state) => state.breweries.validationErrors
   );
@@ -36,17 +36,24 @@ const EditBrewery = () => {
   const [country, setCountry] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
+  const [details, setDetails] = useState("")
   let address;
   
   useEffect(() => {
     dispatch(getAllBreweries());
   }, [dispatch]);
-// console.log(name)
-//   useEffect(()=>{
-//     if(brewery){
-//         setName(brewery.breweryName)
-//     }
-//   },[allBreweries, brewery])
+
+  useEffect(()=>{
+    if(brewery){
+        setName(brewery.breweryName)
+        setAddressLineOne(brewery.addressLineOne)
+        setCity(brewery.city)
+        setState(brewery.state)
+        setZip(brewery.zip)
+        setCountry(brewery.country)
+        setDetails(brewery.description)
+    }
+  },[allBreweries, brewery])
 
   useEffect(() => {
     address =
@@ -85,7 +92,7 @@ const EditBrewery = () => {
       setErrors([]);
       dispatch(clearBrewErrors());
       const newBrew = await dispatch(
-        createBrewery({
+        updateBreweries({
           breweryName: name,
           description: details,
           addressLineOne: addressLineOne,
@@ -95,10 +102,11 @@ const EditBrewery = () => {
           lat: latitude,
           lng: longitude,
           zip: zip,
+          breweryId:+breweryId
         })
       );
-
-      if (createBrewery.rejected.match(newBrew)) {
+        console.log(newBrew)
+      if (updateBreweries.rejected.match(newBrew)) {
       } else {
         setName("");
         setAddressLineOne("");
@@ -108,7 +116,7 @@ const EditBrewery = () => {
         setCountry("");
         setLatitude("");
         setLongitude("");
-        navigate(`/breweries/${newBrew.payload.id}`);
+        navigate(`/breweries/${breweryId}`);
       }
     }
   };
@@ -119,6 +127,7 @@ const EditBrewery = () => {
         <div className="breweryMakeform">
           <label>Brewery Name</label>
           <input
+          value={name}
             type="text"
             onChange={(e) => setName(e.target.value)}
             className="buttonStyle"
@@ -127,6 +136,7 @@ const EditBrewery = () => {
         <div>
           <label>Address Line One</label>
           <input
+            value={addressLineOne}
             type="text"
             onChange={(e) => setAddressLineOne(e.target.value)}
             className="buttonStyle"
@@ -135,6 +145,7 @@ const EditBrewery = () => {
         <div>
           <label>City</label>
           <input
+          value={city}
             type="text"
             onChange={(e) => setCity(e.target.value)}
             className="buttonStyle"
@@ -143,6 +154,7 @@ const EditBrewery = () => {
         <div>
           <label>State</label>
           <input
+          value={state}
             type="text"
             onChange={(e) => setState(e.target.value)}
             className="buttonStyle"
@@ -152,6 +164,7 @@ const EditBrewery = () => {
         <div>
           <label>Zip</label>
           <input
+            value={zip}
             type="text"
             onChange={(e) => setZip(e.target.value)}
             className="buttonStyle"
@@ -160,13 +173,17 @@ const EditBrewery = () => {
         <div>
           <label>Country</label>
           <input
+            value={country}
             type="text"
             onChange={(e) => setCountry(e.target.value)}
             className="buttonStyle"
           ></input>
         </div>
         <h2 className="h1create">About</h2>
-        <RichEditor handleEditorSubmit={handleEditorSubmit}></RichEditor>
+        <RichEditor 
+        details={details}
+        breweryId={+breweryId}
+        handleEditorSubmit={handleEditorSubmit}></RichEditor>
         <ul className="listSignUp">
           {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
           {validationErrors &&

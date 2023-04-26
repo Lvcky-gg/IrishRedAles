@@ -71,11 +71,18 @@ export const brewerySlice = createSlice({
         state.allBreweries = [];
       })
       .addCase(updateBreweries.fulfilled, (state, action) => {
+        
         const updateBrewery = action.payload;
         const idx = state.allBreweries.findIndex(
-          (brewery) => brewery.id === updateBrewery.breweryId
+          (brewery) => brewery.id === updateBrewery.id
         );
         state.allBreweries[idx] = updateBrewery;
+        state.error = null;
+        state.validationErrors = null
+      })
+      .addCase(updateBreweries.rejected, (state, action) => {
+        state.validationErrors = action.payload.errors;
+        state.error = action.payload.errors;
       });
   },
 });
@@ -204,17 +211,15 @@ export const updateBreweries = createAsyncThunk(
       country,
       lat,
       lng,
-      ownerId,
+      city,
+      breweryId,
     },
-    breweryId,
+    
     { rejectWithValue }
   ) => {
-    const response = await csrfFetch(`/api/breweries/${breweryId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    try{
+    const response = await axios.put(`/api/breweries/${breweryId}`, 
+    JSON.stringify({
         breweryName,
         description,
         addressLineOne,
@@ -223,16 +228,21 @@ export const updateBreweries = createAsyncThunk(
         country,
         lat,
         lng,
-        ownerId,
+        city
       }),
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "XSRF-Token": Cookies.get("XSRF-TOKEN"),
+      },
     });
-    if (!response.ok) {
-      rejectWithValue(await response.json());
-    }
+  
 
-    const data = await response.json();
+    if (response.data) return response.data;
+} catch (error) {
+  return rejectWithValue({ errors: error.response.data.errors });
+}
 
-    return data;
   }
 );
 

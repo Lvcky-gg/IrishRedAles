@@ -21,6 +21,7 @@ const RichEditor = ({
     const [editorState, setEditorState] = useState(() =>
         EditorState.createEmpty()
     );
+
     useEffect(() => {
         if (details) {
             const blocksFromHtml = htmlToDraft(details);
@@ -33,7 +34,7 @@ const RichEditor = ({
         } else {
             setEditorState(EditorState.createEmpty());
         }
-    }, []);
+    }, [details]);
 
     const hashConfig = {
         trigger: '#',
