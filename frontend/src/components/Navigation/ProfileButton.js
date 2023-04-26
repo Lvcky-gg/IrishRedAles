@@ -37,6 +37,10 @@ function ProfileButton({ user }) {
 
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
+    const handleClickForCreate = (e) => {
+        e.preventDefault()
+        navigate('/create-brewery')
+    }
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -71,6 +75,15 @@ function ProfileButton({ user }) {
                     <>
                         <li className="dropComp">{user.username}</li>
                         <li className="dropComp">{user.email}</li>
+                        <li className="button-container">
+                        <button 
+                        onClick={handleClickForCreate}
+                        className="modalButton buttonStyle">
+
+                        Create Brewery
+                        </button>
+                        </li>
+
                         <li className="button-container">
                             <button
                                 className="modalButton buttonStyle"

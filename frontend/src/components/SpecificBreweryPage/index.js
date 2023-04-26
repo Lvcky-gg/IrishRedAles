@@ -10,7 +10,7 @@ import { getReviewsByBrewery } from "../../store/reviews";
 import { deleteBreweryLike, getBreweryLikes } from "../../store/breweryLikes";
 import { createBreweryLike } from "../../store/breweryLikes";
 import { useState } from "react";
-import MapPageA from "../Map";
+import parse from 'html-react-parser'
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -22,7 +22,11 @@ export const SpecificBrewery = () => {
   const reviews = useSelector((state) => state.reviews.allReviews);
   const brewLikes = useSelector((state) => state.breweryLikes.breweryLikes);
   const sessionUser = useSelector((state) => state.session.user);
-  const brewery = breweries[+breweryId - 1];
+  let brewery;
+  for(let i = 0; i < breweries.length; i++){
+    if(breweries[i].id === +breweryId)brewery = breweries[i]
+  }
+  console.log(brewery)
 
 
   useEffect(() => {
@@ -75,6 +79,10 @@ export const SpecificBrewery = () => {
     dispatch(deleteBreweryLike({ breweryId: +breweryId, likeId: likeIdState }));
     setIsLiked(false);
   };
+  const onEditBrew = (e) => {
+    e.preventDefault()
+    navigate(`/breweries/${breweryId}/edit-brewery`)
+  }
 
   return (
     <div>
@@ -93,7 +101,10 @@ export const SpecificBrewery = () => {
                 </button>
 
                 {sessionUser && +sessionUser.id === brewery.ownerId && (
-                  <button className="specificButton">
+                  <button 
+                  onClick={onEditBrew}
+                  className="specificButton">
+                    
                     <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
                     <p>Edit Brewery</p>
                   </button>
@@ -131,7 +142,7 @@ export const SpecificBrewery = () => {
               <RatingDisplay rating={brewery.rating}></RatingDisplay>
               
               <h2 className="specificHeader">About</h2>
-              <div className="specificDesc"><p>{brewery.description}</p></div>
+              <div className="specificDesc"><div>{parse(brewery.description)}</div></div>
               <h2 className="specificHeader">Location</h2>
               <div className="locationHolder">
                 <div>

@@ -6,7 +6,7 @@ const { requireAuth } = require("../../utils/auth.js");
 router.delete("/:reviewId/:likeId", requireAuth, async (req, res) => {
   const userId = req.user.id;
   const { reviewId, likeId } = req.params;
-  const review = await Review.findOne({ where: { Id: +reviewId } });
+  const review = await Review.findOne({ where: { id: +reviewId } });
   const like = await ReviewLike.findOne({ where: { id: +likeId } });
   if (review) {
     if (like) {
@@ -43,7 +43,7 @@ router.get("/:reviewId", async (req, res) => {
 router.post("/:reviewId", requireAuth, async (req, res) => {
   const userId = req.user.id;
   const { reviewId } = req.params;
-  const review = await Review.findOne({ where: { Id: +reviewId } });
+  const review = await Review.findOne({ where: { id: +reviewId } });
   if (review) {
     const newLike = await ReviewLike.create({
       reviewId: +reviewId,

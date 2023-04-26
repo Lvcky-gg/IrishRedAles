@@ -1,5 +1,5 @@
 const path = require('path');
-
+//sequelize config
 module.exports = {
   config: path.resolve('config', 'database.js'),
   'models-path': path.resolve('db', 'models'),

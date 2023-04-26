@@ -14,6 +14,8 @@ import SpecificBrewery from './components/SpecificBreweryPage';
 import RedirectLogin from './components/LoginRedirect'
 import SignupFormPage from './components/SignupFormPage';
 import Footer from './components/Footer';
+import CreateBreweryComponent  from './components/CreateBrewery'
+import EditBrewery from './components/editBreweryPage';
 import {
  faUserCircle, 
  faChevronUp, 
@@ -72,6 +74,8 @@ library.add(fas,
       <Route path="/breweries" element={<AllBrew></AllBrew>}/>
       <Route path="redirect-login" element={<RedirectLogin></RedirectLogin>}/>
       <Route path="/signup" element={<SignupFormPage></SignupFormPage>}/>
+      <Route path="/create-brewery" element={<CreateBreweryComponent></CreateBreweryComponent>}/>
+      <Route path="/breweries/:breweryId/edit-brewery" element={<EditBrewery/>}/>
       
     </Routes>}
     <Footer></Footer>
