@@ -42,3 +42,40 @@
     top: 0;
     z-index: 100;
 }
+.wrapper-class .rdw-editor-wrapper{
+    background-color: black;
+}
+
+.editor {
+    border-top: 3px outset rgba(0,0,0.2);
+	border-left: 3px outset rgba(0,0,0.3);
+	border-right: 3px outset rgba(0,0,0.5);
+	border-bottom: 3px outset rgba(0,0,0.5);
+    background-color: rgba(253, 253, 253, 0);
+}
+.rdw-editor-toolbar{
+    background-color: rgba(253, 253, 253, 0);
+    border-top: 3px outset rgba(0,0,0.2);
+	border-left: 3px outset rgba(0,0,0.3);
+	border-right: 3px outset rgba(0,0,0.5);
+	border-bottom: 3px outset rgba(0,0,0.5);
+}
+.rdw-option-wrapper{
+    background-color: rgba(253, 253, 253, 0);
+    border-top: 3px outset rgba(0,0,0.2);
+	border-left: 3px outset rgba(0,0,0.3);
+	border-right: 3px outset rgba(0,0,0.5);
+	border-bottom: 3px outset rgba(0,0,0.5);
+
+}
+.rdw-dropdown-wrapper{
+    background-color: rgba(253, 253, 253, 0);
+    border-top: 3px outset rgba(0,0,0.2);
+	border-left: 3px outset rgba(0,0,0.3);
+	border-right: 3px outset rgba(0,0,0.5);
+	border-bottom: 3px outset rgba(0,0,0.5);
+}
+.rdw-dropdown-selectedtext{
+    background-color: rgba(253, 253, 253, 0);
+
+}

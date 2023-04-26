@@ -92,7 +92,7 @@ const RichEditor = ({
                 toolbarClassName="toolbar-class"
             />
             <button
-                className="modalButton"
+                className="buttonStyle"
                 type="submit"
                 onClick={(e) => submitMe(e, htmlString, breweryId, reviewId)}
             >
