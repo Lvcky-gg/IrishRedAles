@@ -16,7 +16,8 @@ const ReveiwCard = ({id, User, rating, description}) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector((state)=>state.session.user)
     const reviewLikes = useSelector((state) => state.reviewLikes.reviewLikes);
-    const userId = sessionUser.id
+    let userId;
+    if(sessionUser)userId = sessionUser.id
     let count = 0;
     const userString = `${User.firstName} ${User.lastName[0].toUpperCase()}. Says...`
     const [isLiked, setIsLiked] = useState(true)

@@ -1,5 +1,5 @@
 .reviewCard{
-    width:40%;
+    width:60%;
     height:150px;
     padding:3%;
     border-top: 3px outset rgba(0,0,0.2);
@@ -27,7 +27,7 @@
     padding:5%;
     color:#B4C4BC;
     display:flex;
-    
+
 }
 .reviewRate{
     width:30%;
