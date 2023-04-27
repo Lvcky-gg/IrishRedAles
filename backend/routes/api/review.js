@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:reviewId", async (req, res) => {
   const { reviewId } = req.params;
-  const review = await Review.findOne({ where: { id: +reviewId } });
+  const review = await Review.findOne({include: [{ model: User }], where: { id: +reviewId } });
   if (review) {
     res.status(200);
     return res.json(review);
