@@ -78,6 +78,7 @@
 .locationHolderSpecific p {
     margin:auto;
     margin-top:3%;
+    padding:3%;
 }
 .specificDesc{
     width:fit-content;

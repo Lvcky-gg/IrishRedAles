@@ -59,6 +59,7 @@ export const SpecificBrewery = () => {
     e.preventDefault();
     if (+sessionUser.id === brewery.ownerId) {
       dispatch(deleteBrewery(+breweryId));
+      dispatch(getAllBreweries())
       navigate("/");
     }
   };
