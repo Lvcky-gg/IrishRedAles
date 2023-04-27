@@ -8,18 +8,23 @@ export const reviewLikeSlice = createSlice({
     name:'reviewLikes',
     initialState,
     reducers: {
-        clearReviewLikes: () => {
+        clearReviewLikes: (state) => {
             state.reviewLikes = []
         },
     },
     extraReducers:(builder) => {
         builder
-        .addCase(getReviewLikes.fulfilled, (state, action) => {
+        // .addCase(getReviewLikes.fulfilled, (state, action) => {
+        //     state.reviewLikes = action.payload;
+        // })
+        // .addCase(getReviewLikes.rejected, (state, action) => {
 
+        // })
+        .addCase(getAllReviewLikes.fulfilled, (state, action) => {
             state.reviewLikes = action.payload;
         })
-        .addCase(getReviewLikes.rejected, (state, action) => {
-
+        .addCase(getAllReviewLikes.rejected, (state, action) => {
+            state.reviewLikes = [];
         })
 
         .addCase(createReviewLike.fulfilled, (state, action) => {
@@ -51,13 +56,30 @@ export const getReviewLikes = createAsyncThunk(
             return rejectWithValue(errData);
         }
         const data = await response.json();
-        return data.reviewLikes;
+        return data;
+        }
+);
+export const getAllReviewLikes = createAsyncThunk(
+    'reviewLikes/getReviewLikes',
+    async(_, {rejectWithValue}) => {
+        const response = await csrfFetch(`/api/review-likes`,{
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            const errData = await response.json();
+            return rejectWithValue(errData);
+        }
+        const data = await response.json();
+        return data;
         }
 );
 export const deleteReviewLike = createAsyncThunk(
     'reviewLikes/deleteReviewLike',
     async({reviewId, likeId}, {rejectWithValue}) => {
         const response = await csrfFetch(`/api/review-likes/${reviewId}/${likeId}`,{
+            method:'DELETE',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -71,8 +93,8 @@ export const deleteReviewLike = createAsyncThunk(
 )
 export const createReviewLike = createAsyncThunk(
     'reviewLikes/createReviewLike',
-    async ({ userId,reviewLikeId, reviewId }, { rejectWithValue }) => {
-        const response = await csrfFetch(`/api/review-likes/${reviewLikeId}`, {
+    async ({ userId, reviewId }, { rejectWithValue }) => {
+        const response = await csrfFetch(`/api/review-likes/${reviewId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

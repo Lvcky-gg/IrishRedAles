@@ -10,6 +10,7 @@ import { getReviewsByBrewery } from "../../store/reviews";
 import { deleteBreweryLike, getBreweryLikes } from "../../store/breweryLikes";
 import { createBreweryLike } from "../../store/breweryLikes";
 import { useState } from "react";
+import ReveiwCard from "./ReviewCard";
 import parse from 'html-react-parser'
 
 export const SpecificBrewery = () => {
@@ -26,7 +27,7 @@ export const SpecificBrewery = () => {
   for(let i = 0; i < breweries.length; i++){
     if(breweries[i].id === +breweryId)brewery = breweries[i]
   }
-  console.log(brewery)
+ 
 
 
   useEffect(() => {
@@ -122,7 +123,7 @@ export const SpecificBrewery = () => {
             
             </div>
             <div className="specificBreweryContainerinfo">
-              <h1>{brewery.breweryName}</h1>
+              <h1 className="specificFont">{brewery.breweryName}</h1>
               <RatingDisplay rating={brewery.rating}></RatingDisplay>
               
               <h2 className="specificHeader">About</h2>
@@ -157,8 +158,24 @@ export const SpecificBrewery = () => {
             </div>
           </div>
           {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}
+          
           {reviews.length ? (
-            <div>hello</div>
+            <div className="reviewcardContainer">
+            {reviews.map(({id, User, rating, description, ownerId, createdAt, updatedAt})=>(
+              <ReveiwCard
+              id={id}
+              breweryId={+breweryId}
+              key={id}
+              User={User}
+              rating={rating}
+              description={description}
+              ownerId={ownerId}
+              createdAt={createdAt}
+              updatedAt={updatedAt}
+              >
+              </ReveiwCard>
+            ))}
+            </div>
           ) : (
             <div className="specificHolder">
               <h2>There are no reviews</h2>

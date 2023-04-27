@@ -86,3 +86,10 @@
     display: flex;
     flex-direction: column;
 }
+.specificFont{
+    font-family: Rye;
+}
+.reviewcardContainer{
+    width:70%;
+    margin:auto;
+}

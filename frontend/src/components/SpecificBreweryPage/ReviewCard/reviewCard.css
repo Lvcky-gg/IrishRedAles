@@ -1,0 +1,39 @@
+.reviewCard{
+    width:40%;
+    height:150px;
+    padding:3%;
+    border-top: 3px outset rgba(0,0,0.2);
+    border-left: 3px outset rgba(0,0,0.3);
+    border-right: 3px outset rgba(0,0,0.5);
+    border-bottom: 3px outset rgba(0,0,0.5);
+    margin:auto;
+    margin-top:2%;
+    margin-bottom:2%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reviewCard p{
+    color:#B4C4BC;
+}
+.buttonGroupCardReview {
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    width:40%;
+}
+.spaceItemsCard{
+    padding:5%;
+    color:#B4C4BC;
+    display:flex;
+    
+}
+.reviewRate{
+    width:30%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+
+}
