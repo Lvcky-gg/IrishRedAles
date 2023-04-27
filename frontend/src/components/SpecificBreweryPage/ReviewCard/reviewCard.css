@@ -20,7 +20,7 @@
 }
 .buttonGroupCardReview {
     display:flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
     width:40%;
 }
@@ -28,6 +28,7 @@
     padding:5%;
     color:#B4C4BC;
     display:flex;
+    margin-bottom:1%;
 
 }
 .reviewRate{
