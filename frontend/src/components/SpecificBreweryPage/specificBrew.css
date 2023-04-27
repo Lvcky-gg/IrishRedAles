@@ -52,6 +52,9 @@
 .specificHeader{
     color:#B4C4BC;
 }
+.specificHeaderLike{
+    color:#B4C4BC;
+}
 .specificBreweryContainerinfo p {
     width:fit-content;
     word-wrap: break-word;
@@ -72,6 +75,10 @@
     display:flex;
     margin-top:2%;
 }
+.locationHolderSpecific p {
+    margin:auto;
+    margin-top:3%;
+}
 .specificDesc{
     width:fit-content;
 }
@@ -81,6 +88,7 @@
 }
 .specificHeart{
     padding-right:3%;
+    color:#B4C4BC;
 }
 .specificHeart:hover{
     cursor:pointer;

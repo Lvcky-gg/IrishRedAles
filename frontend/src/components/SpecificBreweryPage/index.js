@@ -12,6 +12,7 @@ import { createBreweryLike } from "../../store/breweryLikes";
 import { useState } from "react";
 import ReveiwCard from "./ReviewCard";
 import parse from "html-react-parser";
+import MapPageB from "./specifiedMap";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -118,16 +119,9 @@ export const SpecificBrewery = () => {
 
               <h2 className="specificHeader">About</h2>
               <div className="specificDesc">
-                <div className="details">{parse(brewery.description)}</div>
+                <div >{parse(brewery.description)}</div>
               </div>
-              {/* <h2 className="specificHeader">Location</h2>
-              <div className="locationHolder">
-                <div>
-                    <p>{brewery.addressLineOne}, {brewery.city}</p>
-                     <p>{brewery.state}, {brewery.zip} </p>
-                </div>
- 
-             </div> */}
+
               <h2 className="specificHeaderLike">
                 {isLiked === false ? (
                   <FontAwesomeIcon
@@ -158,6 +152,11 @@ export const SpecificBrewery = () => {
               <p>
                 {brewery.state}, {brewery.zip}{" "}
               </p>
+              <MapPageB
+              brewery={brewery}
+              >
+
+              </MapPageB>
             {/* </div> */}
           </div>
           </div>
