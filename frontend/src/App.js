@@ -3,7 +3,7 @@ import { authenticate } from './store/session';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+import {  fas } from '@fortawesome/free-solid-svg-icons';
 import LoginFormPage from './components/LoginFormPage';
 import Navigation from './components/Navigation';
 import Home from './components/Home'
@@ -28,6 +28,8 @@ import {
  faThumbsDown,
  faHouse,
  faTrashCan,
+faHeart,
+
 
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -37,6 +39,10 @@ import {
   faSquareGithub,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
+import {
+  far
+
+} from '@fortawesome/free-regular-svg-icons'
 
 function App() {
   const dispatch = useDispatch();
@@ -61,6 +67,9 @@ library.add(fas,
   faSquareGithub,
   faTwitter,
   faTrashCan,
+  faHeart,
+  far
+ 
   )
 
   return (

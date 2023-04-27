@@ -5,6 +5,7 @@ import sessionReducer from './session';
 import breweryReducer from './breweries';
 import reviewReducer from './reviews'
 import breweryLikeReducer from './breweryLikes'
+import reviewLikeReducer from './reviewLikes'
 const middleware = [loadingMiddleware];
 
 if (process.env.NODE_ENV === 'development') {
@@ -19,6 +20,7 @@ const store = configureStore({
         breweries:breweryReducer,
         reviews:reviewReducer,
         breweryLikes:breweryLikeReducer,
+        reviewLikes:reviewLikeReducer,
 
     },
     middleware: (getDefaultMiddleware) =>

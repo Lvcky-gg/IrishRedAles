@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const { requireAuth } = require("../../utils/auth.js");
-const { Brewery, Review } = require("../../db/models");
+const { Brewery, Review, User } = require("../../db/models");
 
 router.get("/:breweryId/reviews", async (req, res) => {
   const { breweryId } = req.params;
-  const reviews = await Review.findAll({ where: { breweryId: +breweryId } });
+  const reviews = await Review.findAll({include: [{ model: User }], where: { breweryId: +breweryId } });
   if (reviews.length) {
     return res.json({ reviews: reviews });
   } else {

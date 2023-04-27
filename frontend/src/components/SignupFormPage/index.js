@@ -133,7 +133,7 @@ function SignupFormPage() {
         Confirm Password
       </label>
       <input
-className='buttonStyle' 
+          className='buttonStyle' 
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}

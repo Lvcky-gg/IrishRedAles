@@ -40,6 +40,18 @@ router.get("/:reviewId", async (req, res) => {
     return res.json({ Message: "There are no likes for this review" });
   }
 });
+router.get("/", async (req, res) => {
+
+  const reviewLikes = await ReviewLike.findAll({
+  });
+  if (reviewLikes.length) {
+    res.status(200);
+    return res.json(reviewLikes);
+  } else {
+    res.status(404);
+    return res.json({ Message: "There are no likes for this review" });
+  }
+});
 router.post("/:reviewId", requireAuth, async (req, res) => {
   const userId = req.user.id;
   const { reviewId } = req.params;

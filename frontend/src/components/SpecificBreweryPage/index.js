@@ -10,7 +10,8 @@ import { getReviewsByBrewery } from "../../store/reviews";
 import { deleteBreweryLike, getBreweryLikes } from "../../store/breweryLikes";
 import { createBreweryLike } from "../../store/breweryLikes";
 import { useState } from "react";
-import parse from 'html-react-parser'
+import ReveiwCard from "./ReviewCard";
+import parse from "html-react-parser";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -23,21 +24,19 @@ export const SpecificBrewery = () => {
   const brewLikes = useSelector((state) => state.breweryLikes.breweryLikes);
   const sessionUser = useSelector((state) => state.session.user);
   let brewery;
-  for(let i = 0; i < breweries.length; i++){
-    if(breweries[i].id === +breweryId)brewery = breweries[i]
+  for (let i = 0; i < breweries.length; i++) {
+    if (breweries[i].id === +breweryId) brewery = breweries[i];
   }
-  console.log(brewery)
-
 
   useEffect(() => {
-    if(sessionUser){
-        if(brewLikes.length === 0)setIsLiked(false)
-    for (let i = 0; i < brewLikes.length; i++) {
-      if (brewLikes[i].userId === +sessionUser.id) {
-        setLikeIdState(brewLikes[i].id);
-        setIsLiked(true);
-      } else setIsLiked(false)
-    }
+    if (sessionUser) {
+      if (brewLikes.length === 0) setIsLiked(false);
+      for (let i = 0; i < brewLikes.length; i++) {
+        if (brewLikes[i].userId === +sessionUser.id) {
+          setLikeIdState(brewLikes[i].id);
+          setIsLiked(true);
+        } else setIsLiked(false);
+      }
     }
   }, [brewLikes, sessionUser, isLiked]);
 
@@ -49,29 +48,28 @@ export const SpecificBrewery = () => {
 
   const onAddReview = (e) => {
     e.preventDefault();
-    if(sessionUser){
+    if (sessionUser) {
       navigate("/add-review");
-    }else{
+    } else {
       navigate("/redirect-Login");
     }
-    
   };
   const onDeleteBrewery = (e) => {
     e.preventDefault();
-    if(+sessionUser.id === brewery.ownerId){
-      dispatch(deleteBrewery(+breweryId))
-      navigate('/')
+    if (+sessionUser.id === brewery.ownerId) {
+      dispatch(deleteBrewery(+breweryId));
+      navigate("/");
     }
-  }
+  };
   const onAddLike = (e) => {
     e.preventDefault();
-    if(sessionUser){
-    dispatch(
-      createBreweryLike({ userId: +sessionUser.id, breweryId: +breweryId })
-    );
-    setIsLiked(true);
-    }else{
-        navigate('/redirect-login')
+    if (sessionUser) {
+      dispatch(
+        createBreweryLike({ userId: +sessionUser.id, breweryId: +breweryId })
+      );
+      setIsLiked(true);
+    } else {
+      navigate("/redirect-login");
     }
   };
   const onDeleteLike = (e) => {
@@ -80,9 +78,9 @@ export const SpecificBrewery = () => {
     setIsLiked(false);
   };
   const onEditBrew = (e) => {
-    e.preventDefault()
-    navigate(`/breweries/${breweryId}/edit-brewery`)
-  }
+    e.preventDefault();
+    navigate(`/breweries/${breweryId}/edit-brewery`);
+  };
 
   return (
     <div>
@@ -90,84 +88,114 @@ export const SpecificBrewery = () => {
         <div>
           <div className="specificBreweryContainer">
             <div className="specificLeft">
-            <img
-              className="specificBreweryContainerIMG"
-              src="https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp"
-            />
-                          <div className="specificBreweryContainerBtn">
+              <img
+                className="specificBreweryContainerIMG"
+                src="https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp"
+              />
+              <div className="specificBreweryContainerBtn">
                 <button className="specificButton" onClick={onAddReview}>
                   <FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" />
                   <p>Add review</p>
                 </button>
 
                 {sessionUser && +sessionUser.id === brewery.ownerId && (
-                  <button 
-                  onClick={onEditBrew}
-                  className="specificButton">
-                    
+                  <button onClick={onEditBrew} className="specificButton">
                     <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
                     <p>Edit Brewery</p>
                   </button>
                 )}
                 {sessionUser && +sessionUser.id === brewery.ownerId && (
-                  <button 
-                  onClick={onDeleteBrewery}
-                  className="specificButton">
+                  <button onClick={onDeleteBrewery} className="specificButton">
                     <FontAwesomeIcon icon="fa-solid fa-trash-can" />
                     <p>Delete Brewery</p>
                   </button>
                 )}
-
-                {isLiked === false ? (
-                  <button className="specificButton" onClick={onAddLike}>
-                    <FontAwesomeIcon icon="fa-solid fa-thumbs-up" />
-                    <p>Like</p>
-                  </button>
-                ) : (
-                  <button className="specificButton" onClick={onDeleteLike}>
-                    <FontAwesomeIcon icon="fa-solid fa-thumbs-down" />
-                    <p>Unlike</p>
-                  </button>
-                )}
-                    {/* <button className="specificButton">
-                    <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
-                    <p>Images</p>
-                  </button> */}
               </div>
-
-            
             </div>
             <div className="specificBreweryContainerinfo">
-              <h1>{brewery.breweryName}</h1>
+              <h1 className="specificFont">{brewery.breweryName}</h1>
               <RatingDisplay rating={brewery.rating}></RatingDisplay>
-              
+
               <h2 className="specificHeader">About</h2>
-              <div className="specificDesc"><div>{parse(brewery.description)}</div></div>
-              <h2 className="specificHeader">Location</h2>
+              <div className="specificDesc">
+                <div className="details">{parse(brewery.description)}</div>
+              </div>
+              {/* <h2 className="specificHeader">Location</h2>
               <div className="locationHolder">
                 <div>
                     <p>{brewery.addressLineOne}, {brewery.city}</p>
                      <p>{brewery.state}, {brewery.zip} </p>
                 </div>
-                <div>
  
-                </div>
-             </div>
-              <h2 className="specificHeader">Likes:{brewLikes.length}</h2>
-
-              
-              
-
+             </div> */}
+              <h2 className="specificHeaderLike">
+                {isLiked === false ? (
+                  <FontAwesomeIcon
+                    className="specificHeart"
+                    onClick={onAddLike}
+                    icon="fa-regular fa-heart"
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    className="specificHeart"
+                    onClick={onDeleteLike}
+                    icon="fa-solid fa-heart"
+                  />
+                )}
+                {brewLikes.length}
+              </h2>
             </div>
           </div>
           {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}
+        <div className="bottomSpecified">
+          <div className="locationHolder">
+          <h2 className="specificHeader">Location</h2>
+          <div className="locationHolderSpecific">
+            {/* <div> */}
+              <p>
+                {brewery.addressLineOne}, {brewery.city}
+              </p>
+              <p>
+                {brewery.state}, {brewery.zip}{" "}
+              </p>
+            {/* </div> */}
+          </div>
+          </div>
           {reviews.length ? (
-            <div>hello</div>
+            <div className="reviewcardContainer">
+              {reviews.map(
+                (
+                  {
+                    id,
+                    User,
+                    rating,
+                    description,
+                    ownerId,
+                    createdAt,
+                    updatedAt,
+                  },
+                  idx
+                ) => (
+                  <ReveiwCard
+                    id={id}
+                    key={idx}
+                    breweryId={+breweryId}
+                    User={User}
+                    rating={rating}
+                    description={description}
+                    ownerId={ownerId}
+                    createdAt={createdAt}
+                    updatedAt={updatedAt}
+                  ></ReveiwCard>
+                )
+              )}
+            </div>
           ) : (
             <div className="specificHolder">
               <h2>There are no reviews</h2>
             </div>
           )}
+          </div>
         </div>
       ) : (
         <div>
