@@ -1,17 +1,18 @@
 .reviewCard{
-    width:60%;
+    width:90%;
     height:150px;
     padding:3%;
     border-top: 3px outset rgba(0,0,0.2);
     border-left: 3px outset rgba(0,0,0.3);
     border-right: 3px outset rgba(0,0,0.5);
     border-bottom: 3px outset rgba(0,0,0.5);
-    margin:auto;
+    margin-left: 3.3%;
     margin-top:2%;
     margin-bottom:2%;
     display:flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 2%;
 }
 
 .reviewCard p{
