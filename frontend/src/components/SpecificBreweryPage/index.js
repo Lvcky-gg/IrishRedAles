@@ -161,11 +161,11 @@ export const SpecificBrewery = () => {
           
           {reviews.length ? (
             <div className="reviewcardContainer">
-            {reviews.map(({id, User, rating, description, ownerId, createdAt, updatedAt})=>(
+            {reviews.map(({id, User, rating, description, ownerId, createdAt, updatedAt},idx)=>(
               <ReveiwCard
               id={id}
+              key={idx}
               breweryId={+breweryId}
-              key={id}
               User={User}
               rating={rating}
               description={description}

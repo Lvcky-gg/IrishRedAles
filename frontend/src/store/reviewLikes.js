@@ -15,7 +15,7 @@ export const reviewLikeSlice = createSlice({
     extraReducers:(builder) => {
         builder
         // .addCase(getReviewLikes.fulfilled, (state, action) => {
-        //     state.reviewLikes = action.payload;
+        //     state.reviewLikes = [...state.reviewLikes, ...action.payload].sort((a,b) =>a.id-b.id);
         // })
         // .addCase(getReviewLikes.rejected, (state, action) => {
 
@@ -28,6 +28,7 @@ export const reviewLikeSlice = createSlice({
         })
 
         .addCase(createReviewLike.fulfilled, (state, action) => {
+            
             state.reviewLikes.push(action.payload);
         })
         .addCase(createReviewLike.rejected, (state, action) => {
