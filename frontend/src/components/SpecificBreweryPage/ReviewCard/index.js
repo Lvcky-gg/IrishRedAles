@@ -26,10 +26,6 @@ const ReveiwCard = ({id, User, rating, description}) => {
     const [isLiked, setIsLiked] = useState(true)
     const [likeIdState, setLikeIdState] = useState();
 
-    useEffect(()=>{
-        dispatch(getAllReviewLikes({reviewId:+id}))
-    },[dispatch])
-
     for(let i = 0; i < reviewLikes.length; i++){
         if(reviewLikes[i].reviewId === id) {
             
