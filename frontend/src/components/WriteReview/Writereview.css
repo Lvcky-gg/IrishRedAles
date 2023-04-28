@@ -5,7 +5,8 @@
 }
 .writeReview{
     margin:auto;
-    margin-top:35%;
+    margin-top:28%;
+    padding:5%;
     width:30%;
     height:400px;
     display:flex;
@@ -70,4 +71,8 @@ border-radius:3%;
     transform: translate(-50%, -50%);
     animation: none !important;
 
+}
+.listSignUpOne{
+    width: fit-content;
+    margin:auto;
 }

@@ -17,6 +17,9 @@ export const reviewSlice = createSlice({
             );
             state.allReviews[idx] = updatedReview;
         },
+        clearreviewErrors(state) {
+            state.validationErrors = null;    
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -33,6 +36,7 @@ export const reviewSlice = createSlice({
                 const createdReview = action.payload;
 
                 state.allReviews.push(createdReview);
+                state.validationErrors = null; 
             })
             .addCase(createReveiwByBrewery.rejected, (state, action) => {
                 state.validationErrors = action.payload.errors;
@@ -150,5 +154,8 @@ export const deleteReview = createAsyncThunk(
         return data.reviews;
     }
 );
-export const { updateReviewAfterVote } = reviewSlice.actions;
+export const { 
+    updateReviewAfterVote,
+    clearreviewErrors
+ } = reviewSlice.actions;
 export default reviewSlice.reducer;
