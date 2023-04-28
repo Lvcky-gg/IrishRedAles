@@ -1,10 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from "axios";
+import Cookies from "js-cookie";
 import { csrfFetch } from './csrf';
 
 export const reviewSlice = createSlice({
     name: 'reviews',
     initialState: {
         allReviews: [],
+        validationErrors:[]
     },
     reducers: {
         updateReviewAfterVote(state, action) {
@@ -30,6 +33,9 @@ export const reviewSlice = createSlice({
                 const createdReview = action.payload;
 
                 state.allReviews.push(createdReview);
+            })
+            .addCase(createReveiwByBrewery.rejected, (state, action) => {
+                state.validationErrors = action.payload.errors;
             })
             .addCase(updateReview.fulfilled, (state, action) => {
                 const updatedReview = action.payload;
@@ -87,23 +93,23 @@ export const getReviewsByBrewery = createAsyncThunk(
 
 export const createReveiwByBrewery = createAsyncThunk(
     'reviews/createReveiwByBrewery',
-    async ({ details, breweryId }, { rejectWithValue }) => {
-        const response = await csrfFetch(`/api/breweries/${breweryId}/reviews`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(details),
-        });
-
-        if (!response.ok) {
-            rejectWithValue(await response.json());
-        }
-
-        const data = await response.json();
-
-        return data;
+    async ({ description, breweryId, rating }, { rejectWithValue }) => {
+   try{
+        const response = await axios.post(
+            `/api/breweries/${breweryId}/reviews`,
+            JSON.stringify({description, rating}),
+            {
+                headers: {
+                  "Content-Type": "application/json",
+                  "XSRF-Token": Cookies.get("XSRF-TOKEN"),
+                }
+            }
+        )
+        if(response.data)return response.data
+    }catch (error){
+        return rejectWithValue({errors:error.response.data.errors})
     }
+}
 );
 
 export const updateReview = createAsyncThunk(

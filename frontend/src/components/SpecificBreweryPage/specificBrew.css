@@ -78,6 +78,7 @@
 .locationHolderSpecific p {
     margin:auto;
     margin-top:3%;
+    padding:3%;
 }
 .specificDesc{
     width:fit-content;
@@ -102,6 +103,7 @@
 }
 .reviewcardContainer{
     width:60%;
+    max-height:700px;
     margin:auto;
     margin-right:0%;
     overflow-y: scroll;

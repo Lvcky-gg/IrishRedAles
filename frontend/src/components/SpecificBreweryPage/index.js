@@ -13,6 +13,7 @@ import { useState } from "react";
 import ReveiwCard from "./ReviewCard";
 import parse from "html-react-parser";
 import MapPageB from "./specifiedMap";
+import { getReviewLikes } from "../../store/reviewLikes";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -50,7 +51,7 @@ export const SpecificBrewery = () => {
   const onAddReview = (e) => {
     e.preventDefault();
     if (sessionUser) {
-      navigate("/add-review");
+      navigate(`/breweries/${breweryId}/reviews`);
     } else {
       navigate("/redirect-Login");
     }
@@ -59,6 +60,8 @@ export const SpecificBrewery = () => {
     e.preventDefault();
     if (+sessionUser.id === brewery.ownerId) {
       dispatch(deleteBrewery(+breweryId));
+      dispatch(getAllBreweries())
+      // dispatch(getReviewLikes())
       navigate("/");
     }
   };

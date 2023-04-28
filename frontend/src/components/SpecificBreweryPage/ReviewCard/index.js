@@ -6,20 +6,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import { useState } from "react";
 import { createReviewLike, deleteReviewLike, getAllReviewLikes, getReviewLikes } from "../../../store/reviewLikes";
-
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { getReviewsByBrewery } from "../../../store/reviews";
 
 
 
 const ReveiwCard = ({id, User, rating, description}) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { breweryId } = useParams()
     const sessionUser = useSelector((state)=>state.session.user)
     const reviewLikes = useSelector((state) => state.reviewLikes.reviewLikes);
     let userId;
     if(sessionUser)userId = sessionUser.id
     let count = 0;
-    const userString = `${User.firstName} ${User.lastName[0].toUpperCase()}. Says...`
+    let userString;
+    if(User) userString = `${User.firstName} ${User.lastName[0].toUpperCase()}. Says...`
     const [isLiked, setIsLiked] = useState(true)
     const [likeIdState, setLikeIdState] = useState();
 
@@ -33,10 +36,7 @@ const ReveiwCard = ({id, User, rating, description}) => {
             count+=1
         }
     }
-    // for(let i = 0; i < reviewLikes.length; i++){
-    //     if(reviewLikes[i].userId !== userId)setIsLiked(false) 
 
-    // }  
   
     useEffect(() => {
         if(sessionUser){
@@ -107,11 +107,11 @@ const ReveiwCard = ({id, User, rating, description}) => {
      
                     {count}
                   </h3>
-                  {userId === User.id &&
+                  {User && (userId === User.id) &&
                   <FontAwesomeIcon 
                   className="spaceItemsCard specificHeart"
                   icon="fa-solid fa-pen-to-square" />}
-                  {userId === User.id &&
+                  {User &&  (userId === User.id) &&
                     <FontAwesomeIcon 
                     className="spaceItemsCard specificHeart"
                     icon="fa-solid fa-trash-can" />}

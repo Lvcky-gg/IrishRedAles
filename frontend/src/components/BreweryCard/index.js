@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getReviewLikes } from "../../store/reviewLikes";
 import { getReviewsByBrewery } from "../../store/reviews";
 import './breweryCard.css'
 
@@ -13,7 +14,7 @@ const BreweryCard = ({id, breweryName, city, state}) => {
             <div 
             onClick={(e)=>{
                 e.preventDefault()
-                // dispatch(getReviewsByBrewery(+id))
+                dispatch(getReviewLikes())
                 navigate(`/breweries/${id}`)
             }}
             className="breweryCard" loading="lazy">

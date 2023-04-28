@@ -4,6 +4,7 @@ import RatingDisplay from "../../RatingDisplay";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getReviewsByBrewery } from "../../../store/reviews";
+import { getReviewLikes } from "../../../store/reviewLikes";
 
 const BreweryCardHome = ({breweryName, rating, description, id, city, state}) => {
     const navigate = useNavigate();
@@ -19,6 +20,7 @@ const BreweryCardHome = ({breweryName, rating, description, id, city, state}) =>
                     onClick={(e)=>{
                     e.preventDefault();
                     dispatch(getReviewsByBrewery(+id))
+                    dispatch(getReviewLikes())
                     navigate(`/breweries/${id}`)
                 }}
                 >{breweryName}</h2>
