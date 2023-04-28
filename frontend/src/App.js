@@ -43,6 +43,7 @@ import {
   far
 
 } from '@fortawesome/free-regular-svg-icons'
+import WriteReview from './components/WriteReview';
 
 function App() {
   const dispatch = useDispatch();
@@ -85,6 +86,7 @@ library.add(fas,
       <Route path="/signup" element={<SignupFormPage></SignupFormPage>}/>
       <Route path="/create-brewery" element={<CreateBreweryComponent></CreateBreweryComponent>}/>
       <Route path="/breweries/:breweryId/edit-brewery" element={<EditBrewery/>}/>
+      <Route path="/breweries/:breweryId/reviews" element={<WriteReview/>}/>
       
     </Routes>}
     <Footer></Footer>

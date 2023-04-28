@@ -103,6 +103,7 @@
 }
 .reviewcardContainer{
     width:60%;
+    max-height:700px;
     margin:auto;
     margin-right:0%;
     overflow-y: scroll;

@@ -34,7 +34,6 @@
     cursor: pointer;
 }
 .breweryCardcontainerInner h2, p{
-    padding-left:10%;
     width:fit-content;
 }
 .breweryCardImg {
