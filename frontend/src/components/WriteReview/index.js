@@ -6,8 +6,9 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { createReveiwByBrewery, getAllReviews, getReviewsByBrewery } from "../../store/reviews";
+import { clearreviewErrors, createReveiwByBrewery, getAllReviews, getReviewsByBrewery } from "../../store/reviews";
 import { getReviewLikes } from "../../store/reviewLikes";
+import { useSelector } from "react-redux";
 
 
 const colors = {
@@ -22,6 +23,9 @@ const WriteReview = () => {
     const [details, setDetails] = useState('')
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const validationErrors = useSelector(
+        (state) => state.reviews.validationErrors
+      );
 
     const handleClick = (val) => {
         setCurrValue(val)
@@ -29,15 +33,19 @@ const WriteReview = () => {
     const handleMouseOver = (val)=> {
         setHoverVal(val)
     }
-    const onSubmission = (e) => {
+    const onSubmission = async(e) => {
         e.preventDefault()
-        dispatch(createReveiwByBrewery({
+        dispatch(clearreviewErrors())
+       const newReview = await dispatch(createReveiwByBrewery({
             description:details,
             breweryId:+breweryId,
             rating:hoverVal-1
         }))
-        // dispatch(getReviewsByBrewery(breweryId))
-        navigate(`/breweries/${breweryId}`)
+        
+        if(newReview.error){
+        }
+        
+        else navigate(`/breweries/${breweryId}`)
     }
     useEffect(()=>{
         dispatch(getReviewsByBrewery(breweryId))
@@ -97,6 +105,10 @@ const WriteReview = () => {
                 className="buttonStyle buttonStyleSize"
                 >Submit</button>
             </form>
+            <ul className="listSignUpOne">
+          {validationErrors &&
+            validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
         </div>
         
         </div>
