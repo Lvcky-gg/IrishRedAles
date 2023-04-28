@@ -54,12 +54,10 @@ export const reviewSlice = createSlice({
 
             })
             .addCase(deleteReview.fulfilled, (state, action) => {
-                const updateReview = action.payload;
-                const idx = state.allReviews.findIndex(
-                  (review) => review.id === updateReview.id
-                );
-                
-                state.allReviews[idx] = updateReview;
+                state.allReviews = state.allReviews.filter(
+                    (review) => review.id !== action.payload
+                  );
+                  state.validationErrors = null;
             })
             .addCase(deleteReview.rejected, (state, action) => {
  
