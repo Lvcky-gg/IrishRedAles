@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Brewery.belongsTo(models.User, {foreignKey:'ownerId'})
-      Brewery.hasMany(models.Review, {foreignKey:'breweryId'})
-      Brewery.hasMany(models.BreweryLike, {foreignKey:'breweryId'})
+      Brewery.hasMany(models.Review, {foreignKey:'breweryId',onDelete:'CASCADE'})
+      Brewery.hasMany(models.BreweryLike, {foreignKey:'breweryId',onDelete:'CASCADE'})
     }
   }
   Brewery.init({
