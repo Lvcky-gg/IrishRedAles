@@ -26,10 +26,6 @@ const ReveiwCard = ({id, User, rating, description}) => {
     const [isLiked, setIsLiked] = useState(true)
     const [likeIdState, setLikeIdState] = useState();
 
-    useEffect(()=>{
-        dispatch(getAllReviewLikes({reviewId:+id}))
-    },[dispatch])
-
     for(let i = 0; i < reviewLikes.length; i++){
         if(reviewLikes[i].reviewId === id) {
             
@@ -73,6 +69,10 @@ const ReveiwCard = ({id, User, rating, description}) => {
         }
         setIsLiked(false)
     }
+    const onEdit = (e) => {
+        e.preventDefault()
+        navigate(`/breweries/${breweryId}/reviews/${id}/edit`)
+    }
     return (
         <div className='reviewCard'>
             <div>
@@ -109,6 +109,7 @@ const ReveiwCard = ({id, User, rating, description}) => {
                   </h3>
                   {User && (userId === User.id) &&
                   <FontAwesomeIcon 
+                  onClick={onEdit}
                   className="spaceItemsCard specificHeart"
                   icon="fa-solid fa-pen-to-square" />}
                   {User &&  (userId === User.id) &&

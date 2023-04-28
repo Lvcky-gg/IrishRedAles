@@ -13,7 +13,7 @@ import { useState } from "react";
 import ReveiwCard from "./ReviewCard";
 import parse from "html-react-parser";
 import MapPageB from "./specifiedMap";
-import { getReviewLikes } from "../../store/reviewLikes";
+import { getAllReviewLikes, getReviewLikes } from "../../store/reviewLikes";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -46,6 +46,7 @@ export const SpecificBrewery = () => {
     dispatch(getAllBreweries());
     dispatch(getReviewsByBrewery(+breweryId));
     dispatch(getBreweryLikes(+breweryId));
+    dispatch(getAllReviewLikes())
   }, [dispatch, breweryId]);
 
   const onAddReview = (e) => {
@@ -61,6 +62,7 @@ export const SpecificBrewery = () => {
     if (+sessionUser.id === brewery.ownerId) {
       dispatch(deleteBrewery(+breweryId));
       dispatch(getAllBreweries())
+     
       // dispatch(getReviewLikes())
       navigate("/");
     }

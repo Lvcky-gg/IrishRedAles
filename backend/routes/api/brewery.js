@@ -24,13 +24,13 @@ router.post("/:breweryId/reviews", requireAuth, async (req, res) => {
       rating,
       description,
     });
-    console.log(newReview);
     return res.json(newReview);
   } else {
     res.status(404);
     return res.json({ Message: "This Brewery does not exist" });
   }
 });
+
 router.get("/:breweryId", async (req, res) => {
   const { breweryId } = req.params;
   let sum = 0;
