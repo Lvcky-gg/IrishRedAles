@@ -18,7 +18,9 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       breweryId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{model:'Breweries'},
+        onDelete:'CASCADE'
       },
       rating: {
         type: Sequelize.INTEGER
