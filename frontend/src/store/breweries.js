@@ -70,7 +70,6 @@ export const brewerySlice = createSlice({
         state.allBreweries = [];
       })
       .addCase(updateBreweries.fulfilled, (state, action) => {
-        
         const updateBrewery = action.payload;
         const idx = state.allBreweries.findIndex(
           (brewery) => brewery.id === updateBrewery.id

@@ -15,6 +15,7 @@ const BreweryCard = ({id, breweryName, city, state}) => {
             onClick={(e)=>{
                 e.preventDefault()
                 dispatch(getReviewLikes())
+               
                 navigate(`/breweries/${id}`)
             }}
             className="breweryCard" loading="lazy">

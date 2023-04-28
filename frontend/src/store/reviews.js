@@ -54,9 +54,15 @@ export const reviewSlice = createSlice({
 
             })
             .addCase(deleteReview.fulfilled, (state, action) => {
-                state.allReviews = state.allReviews.filter(
-                    (review) => review.id === action.payload
+                const updateReview = action.payload;
+                const idx = state.allReviews.findIndex(
+                  (review) => review.id === updateReview.id
                 );
+                
+                state.allReviews[idx] = updateReview;
+            })
+            .addCase(deleteReview.rejected, (state, action) => {
+ 
             });
     },
 });
@@ -152,9 +158,8 @@ export const deleteReview = createAsyncThunk(
             rejectWithValue(await response.json());
         }
 
-        const data = await response.json();
 
-        return data.reviews;
+        return reviewId;
     }
 );
 export const { 

@@ -8,7 +8,7 @@ import { useState } from "react";
 import { createReviewLike, deleteReviewLike, getAllReviewLikes, getReviewLikes } from "../../../store/reviewLikes";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { getReviewsByBrewery } from "../../../store/reviews";
+import { deleteReview, getReviewsByBrewery } from "../../../store/reviews";
 
 
 
@@ -69,6 +69,14 @@ const ReveiwCard = ({id, User, rating, description}) => {
         }
         setIsLiked(false)
     }
+
+    const onDeleteReview = (e) => {
+        e.preventDefault()
+        if(window.confirm('Are you wure you want to delete this review?')){
+            dispatch(deleteReview(+id))
+            
+        }
+    }
     const onEdit = (e) => {
         e.preventDefault()
         navigate(`/breweries/${breweryId}/reviews/${id}/edit`)
@@ -114,6 +122,7 @@ const ReveiwCard = ({id, User, rating, description}) => {
                   icon="fa-solid fa-pen-to-square" />}
                   {User &&  (userId === User.id) &&
                     <FontAwesomeIcon 
+                    onClick={onDeleteReview}
                     className="spaceItemsCard specificHeart"
                     icon="fa-solid fa-trash-can" />}
 

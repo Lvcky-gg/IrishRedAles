@@ -60,11 +60,12 @@ export const SpecificBrewery = () => {
   const onDeleteBrewery = (e) => {
     e.preventDefault();
     if (+sessionUser.id === brewery.ownerId) {
+      if(window.confirm('Are you sure you want to delete this brewery?')){
       dispatch(deleteBrewery(+breweryId));
-      dispatch(getAllBreweries())
-     
-      // dispatch(getReviewLikes())
       navigate("/");
+      }
+      // dispatch(getReviewLikes())
+      
     }
   };
   const onAddLike = (e) => {
@@ -80,8 +81,10 @@ export const SpecificBrewery = () => {
   };
   const onDeleteLike = (e) => {
     e.preventDefault();
+    
     dispatch(deleteBreweryLike({ breweryId: +breweryId, likeId: likeIdState }));
-    setIsLiked(false);
+    setIsLiked(false)
+  
   };
   const onEditBrew = (e) => {
     e.preventDefault();
