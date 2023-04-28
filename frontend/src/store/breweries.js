@@ -43,7 +43,6 @@ export const brewerySlice = createSlice({
       })
       .addCase(getAllBreweries.rejected, (state, action) => {})
       .addCase(createBrewery.fulfilled, (state, action) => {
-        console.log(action);
         state.allBreweries.push(action.payload);
         state.displayedBreweries.push(action.payload);
         state.validationErrors = null;

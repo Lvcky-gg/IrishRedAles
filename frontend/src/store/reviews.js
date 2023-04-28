@@ -47,6 +47,11 @@ export const reviewSlice = createSlice({
                     (review) => review.id === updatedReview.id
                 );
                 state.allReviews[idx] = updatedReview;
+                state.validationErrors = null
+            })
+            .addCase(updateReview.rejected, (state, action) => {
+                state.validationErrors = action.payload.errors;
+
             })
             .addCase(deleteReview.fulfilled, (state, action) => {
                 state.allReviews = state.allReviews.filter(
@@ -118,21 +123,19 @@ export const createReveiwByBrewery = createAsyncThunk(
 
 export const updateReview = createAsyncThunk(
     'breweries/updateReview',
-    async ({ details, reviewId }, { rejectWithValue }) => {
-        const response = await csrfFetch(`/api/reviews/${reviewId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(details),
-        });
-        if (!response.ok) {
-            rejectWithValue(await response.json());
-        }
+    async ({ description,rating, reviewId }, { rejectWithValue }) => {
+        try{
+        const response = await axios.put(
+            `/api/reviews/${reviewId}`, 
+                JSON.stringify({description, rating}),
+        {headers: {
+            'Content-Type': 'application/json',
+        }});
 
-        const data = await response.json();
-
-        return data;
+        if (response.data) return response.data;
+    }catch(error){
+        return rejectWithValue({ errors: error.response.data.errors});
+    }
     }
 );
 export const deleteReview = createAsyncThunk(

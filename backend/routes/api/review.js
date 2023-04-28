@@ -49,15 +49,15 @@ router.delete("/:reviewId", requireAuth, async (req, res) => {
 router.put("/:reviewId", requireAuth, async (req, res) => {
   const { reviewId } = req.params;
   const { description, rating } = req.body;
-  const review = await Review.findOne({ where: { id: +reviewId } });
-  console.log(reviewId)
+ 
+  const review = await Review.findOne({ where:{id: +reviewId } });
+ 
   if (review) {
-    const newReview = await Review.update({
-      breweryId: +breweryId,
+    const newReview = await review.update({
       rating,
       description,
     });
-    console.log(newReview)
+   
     return res.json(newReview);
   } else {
     res.status(404);
