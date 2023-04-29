@@ -50,7 +50,9 @@ const EditReview = () => {
         if(newReview.error){
         }
         
-        else navigate(`/breweries/${breweryId}`)
+        else{ 
+            dispatch(clearreviewErrors())
+            navigate(`/breweries/${breweryId}`)}
     }
     useEffect(()=>{
         if(review){

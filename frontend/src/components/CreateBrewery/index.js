@@ -87,6 +87,8 @@ const CreateBreweryComponent = () => {
 
       if (createBrewery.rejected.match(newBrew)) {
       } else {
+        setErrors([]);
+        dispatch(clearBrewErrors());
         setName("");
         setAddressLineOne("");
         setCity("");

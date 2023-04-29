@@ -110,6 +110,8 @@ const EditBrewery = () => {
 
       if (updateBreweries.rejected.match(newBrew)) {
       } else {
+        setErrors([]);
+        dispatch(clearBrewErrors());
         setName("");
         setAddressLineOne("");
         setCity("");
