@@ -76,7 +76,7 @@ export const deleteBreweryLike = createAsyncThunk(
 export const createBreweryLike = createAsyncThunk(
     'breweryLikes/createBreweryLike',
     async ({ userId, breweryId }, { rejectWithValue }) => {
-        console.log(breweryId)
+        
         const response = await csrfFetch(`/api/brewery-likes/${breweryId}`, {
             method: 'POST',
             headers: {

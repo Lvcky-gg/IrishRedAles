@@ -4,6 +4,7 @@ import { filterBreweries, getAllBreweries } from "../../../store/breweries";
 import './search.css'
 import { filterState } from "../../../utils/filterState";
 import { useDispatch } from "react-redux";
+import { upperCaseCity } from "../../../utils/uppercaseCity";
 
 const Search = () => {
     const dispatch = useDispatch()
@@ -16,12 +17,11 @@ const Search = () => {
         e.preventDefault();  
         let stateVal = filterState(stateInput)
         if((stateInput != '') &&(cityInput != '')){
-            setSearchUrl(`?city=${cityInput}&state=${stateVal}`)
+            setSearchUrl(`?city=${cityInput.toLowerCase()}&state=${stateVal}`)
         }
         else if(cityInput != ''){
-            setSearchUrl(`?city=${cityInput}`)}
+            setSearchUrl(`?city=${upperCaseCity(cityInput)}`)}
         else if(stateInput != ''){
-            console.log("hello")
             setSearchUrl(`?state=${stateVal}`)}
             else {
                 dispatch(getAllBreweries())

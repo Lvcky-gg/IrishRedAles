@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { mapStyle } from './mapStyle';
 import './specificMap.css'
+import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -14,6 +16,7 @@ const MapPageB= ({brewery}) => {
 
 
 const [currentPosition, setCurrentPosition] = useState({lat:1,lng:1})
+const navigate = useNavigate()
 
 useEffect(()=>{
     if(brewery){
@@ -59,7 +62,7 @@ const { isLoaded } = useJsApiLoader({
               key={brewery.id} 
               position={{lat:+brewery.lat, lng:+brewery.lng}}
               id={brewery.id}
-              onClick={()=>console.log('hello world')}
+            //   onClick={()=>navigate(`/breweries/${brewery.id}`)}
               streetView={false} /> 
 
             </GoogleMap>}   

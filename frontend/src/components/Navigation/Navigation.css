@@ -57,8 +57,11 @@
 .navdropcomp:hover{
 color:#B4C4BC
 }
+.modalButton{
+    width:100%;
+}
 .profile-dropdown li {
-    width:fit-content;
+    width:80%;
     margin:auto;
     margin-left:-10%;
     padding-top:9%;

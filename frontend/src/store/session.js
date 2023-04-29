@@ -39,7 +39,6 @@ export const sessionSlice = createSlice({
         state.validationErrors = null;
       })
       .addCase(login.rejected, (state, action) => {
-        console.log(action);
         state.error = action.payload.errors;
         state.validationErrors = action.payload.errors;
         state.user = null;

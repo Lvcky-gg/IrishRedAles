@@ -139,7 +139,7 @@ router.get("/", async (req, res) => {
   if (city)
     breweries = await Brewery.findAll({
       include: [{ model: Review }],
-      where: { city },
+      where: { city:city },
     });
   if (city && state)
     breweries = await Brewery.findAll({

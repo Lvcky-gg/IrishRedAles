@@ -9,6 +9,7 @@ import { filterState } from "../../utils/filterState";
 import breweries, { updateBreweries, getAllBreweries } from "../../store/breweries";
 import { clearBrewErrors } from "../../store/breweries";
 import { useParams } from "react-router-dom";
+import { upperCaseCity } from "../../utils/uppercaseCity";
 
 const EditBrewery = () => {
     const {breweryId} = useParams()
@@ -74,7 +75,7 @@ const EditBrewery = () => {
           setLongitude(lng);
         },
         (error) => {
-          console.error(error);
+          
         }
       );
     } else {
@@ -96,7 +97,7 @@ const EditBrewery = () => {
           breweryName: name,
           description: details,
           addressLineOne: addressLineOne,
-          city: city,
+          city: upperCaseCity(city),
           state: filterState(state.trim()),
           country,
           lat: +latitude,
@@ -105,7 +106,7 @@ const EditBrewery = () => {
           breweryId:+breweryId
         })
       );
-        console.log(newBrew)
+        
       if (updateBreweries.rejected.match(newBrew)) {
       } else {
         setName("");

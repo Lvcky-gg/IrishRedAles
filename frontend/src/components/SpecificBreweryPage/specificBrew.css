@@ -9,7 +9,7 @@
     border-left: 3px outset rgba(0,0,0.3);
     border-right: 3px outset rgba(0,0,0.5);
     border-bottom: 3px outset rgba(0,0,0.5);
-    border-radius:1%;
+    border-radius:2%;
     padding:5%;
 }
 .specificBreweryContainerIMG{
@@ -43,14 +43,14 @@
     
 }
 .specificBreweryContainerinfo{
-    margin:auto;
+    
     width:60%;
-    padding-top:3%;
+    
     margin-left:10%;
 
 }
 .specificHeader{
-    color:#B4C4BC;
+    font-family: Rye;
 }
 .specificHeaderLike{
     color:#B4C4BC;
@@ -74,11 +74,16 @@
 .locationHolder{
     display:flex;
     margin-top:2%;
+   
 }
+/* .locationHolderSpecific{
+    padding:5%;
+} */
 .locationHolderSpecific p {
     margin:auto;
     margin-top:3%;
     padding:3%;
+    color:#B4C4BC;
 }
 .specificDesc{
     width:fit-content;

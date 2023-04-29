@@ -9,6 +9,7 @@ import RichEditor from "../RichEditor";
 import { filterState } from "../../utils/filterState";
 import { createBrewery, getAllBreweries } from "../../store/breweries";
 import { clearBrewErrors } from "../../store/breweries";
+import { upperCaseCity } from "../../utils/uppercaseCity";
 
 const CreateBreweryComponent = () => {
   Geocode.setApiKey(process.env.REACT_APP_MAPS_KEY);
@@ -55,7 +56,7 @@ const CreateBreweryComponent = () => {
           setLongitude(lng);
         },
         (error) => {
-          console.error(error);
+          
         }
       );
     } else {
@@ -77,7 +78,7 @@ const CreateBreweryComponent = () => {
           breweryName: name,
           description: details,
           addressLineOne: addressLineOne,
-          city: city,
+          city: upperCaseCity(city),
           state: filterState(state.trim()),
           country,
           lat: +latitude,

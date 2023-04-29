@@ -66,8 +66,8 @@ export const brewerySlice = createSlice({
         state.error = null;
       })
       .addCase(filterBreweries.rejected, (state, action) => {
-        state.error = action.payload.error;
-        state.allBreweries = [];
+        // state.error = action.payload.error;
+        // state.allBreweries = [];
       })
       .addCase(updateBreweries.fulfilled, (state, action) => {
         const updateBrewery = action.payload;
