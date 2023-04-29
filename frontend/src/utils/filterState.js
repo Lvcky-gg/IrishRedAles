@@ -692,7 +692,7 @@ export const filterState = (state) => {
     "Wyoing",
   ];
 
-  if (typeof state === "string") {
+  if (state && typeof state === "string") {
     if (state.toLowerCase().startsWith("alab")) return "Alabama";
     if (state.toLowerCase().startsWith("alas")) return "Alaska";
     if (state.toLowerCase().startsWith("ari")) return "Arizona";
@@ -743,6 +743,7 @@ export const filterState = (state) => {
     if (state.toLowerCase().startsWith("wisc")) return "Wisconsin";
     if (state.toLowerCase().startsWith("wyo")) return "Wyoming";
   }
+  if(state){
   for (let i = 0; i < 18; i++) {
     if (Alabama[i] && state.toLowerCase() === Alabama[i].toLowerCase())
       return "Alabama";
@@ -861,4 +862,5 @@ export const filterState = (state) => {
       return "Wyoming";
   }
   return state;
+}
 };
