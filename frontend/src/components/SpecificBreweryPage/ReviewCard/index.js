@@ -61,7 +61,6 @@ const ReveiwCard = ({id, User, rating, description}) => {
       }
       const onDeleteLike = (e) => {
         e.preventDefault()
-        console.log(reviewLikes[reviewLikes.length -1])
         for(let i = 0; i < reviewLikes.length; i++){
             if(reviewLikes[i].userId === userId && reviewLikes[i].reviewId === id){
                 dispatch(deleteReviewLike({reviewId:+id,likeId:reviewLikes[i].id}))
@@ -72,7 +71,7 @@ const ReveiwCard = ({id, User, rating, description}) => {
 
     const onDeleteReview = (e) => {
         e.preventDefault()
-        if(window.confirm('Are you wure you want to delete this review?')){
+        if(window.confirm('Are you sure you want to delete this review?')){
             dispatch(deleteReview(+id))
             
         }

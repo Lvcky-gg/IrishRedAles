@@ -6,6 +6,7 @@ import { getAllBreweries } from '../../store/breweries';
 import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { mapStyle } from './mapStyle';
+import { useNavigate } from 'react-router-dom';
 import './map.css'
 
 
@@ -21,9 +22,10 @@ const MapPageA= () => {
 const breweries = useSelector((state) => state.breweries.allBreweries)
 
 const dispatch = useDispatch()
-console.log(breweries)
+
 
 const [currentPosition, setCurrentPosition] = useState({lat:1,lng:1})
+const navigate = useNavigate()
 
 
 // This is the equivalent to a script tag
@@ -78,7 +80,7 @@ const { isLoaded } = useJsApiLoader({
               position={{lat:+lat, lng:+lng}}
               title={breweryName}
               id={id}
-              onClick={()=>console.log('hello world')}
+              onClick={()=>navigate(`/breweries/${id}`)}
               streetView={false} /> 
             ))
             }
