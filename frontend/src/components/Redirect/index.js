@@ -28,7 +28,10 @@ const Redirect = () => {
         };
     },[]);
 
-
+    const sendToCreate = (e) => {
+        e.preventDefault()
+        navigate('/create-brewery')
+    }
     return (
         <div className='redirect'>
 
@@ -36,6 +39,13 @@ const Redirect = () => {
             <img src={logo} className="inner-countRedirect"/>
             </div>
             <h1>{message} in {redirectTimer}.</h1>
+            <div className="loginRedirectBtn">
+            <button 
+            className="specificButton"
+            onClick={sendToCreate}
+            >Create Brewery</button>
+        
+        </div>
         </div>
     )
 }

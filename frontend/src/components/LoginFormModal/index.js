@@ -52,7 +52,7 @@ function LoginFormModal() {
         <img src={logo} alt="#"></img>
         </div>
         <div>
-          <label>Credential</label>
+          <label>Username or Password</label>
           <input
             type="text"
             value={credential}

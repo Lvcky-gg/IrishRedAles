@@ -57,7 +57,7 @@ function LoginFormPage() {
         </div>
 
         <div className="handleLoginBox">
-          <label>Credential</label>
+          <label>Username or Password</label>
           <input
           className='buttonStyle'
             type="text"

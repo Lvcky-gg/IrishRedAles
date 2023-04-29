@@ -4,17 +4,21 @@
     width:100%;
     background-color: rgba(253, 253, 253, 0);
     justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 3%;
     position: relative;
     z-index: 10;
     height:100px;
     margin-top:-1%;
 
 }
+
 .navDrop{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top:1%;
+    margin-bottom:0%;
     
     
 }
@@ -40,12 +44,13 @@
     width:25%;
     padding-left: 10%;
     margin-top:5%;
+    
 
 }
 .profile-dropdown {
     position:relative;
     right:100%;
-    top:270%;
+    top:110%;
    background-color:rgba(253, 253, 253, 0.26);
    backdrop-filter: blur(5px);
    border-radius:5%;
@@ -71,8 +76,8 @@ color:#B4C4BC
     color:black;
 }
 .profileButton{
-    height:60%;
-    width:25%;
+    height:25%;
+    width:20%;
     background-color: rgba(253, 253, 253, 0.26);;
     border-radius: 15%;
 }

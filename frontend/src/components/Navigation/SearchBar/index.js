@@ -17,7 +17,7 @@ const Search = () => {
         e.preventDefault();  
         let stateVal = filterState(stateInput)
         if((stateInput != '') &&(cityInput != '')){
-            setSearchUrl(`?city=${cityInput.toLowerCase()}&state=${stateVal}`)
+            setSearchUrl(`?city=${upperCaseCity(cityInput)}&state=${stateVal}`)
         }
         else if(cityInput != ''){
             setSearchUrl(`?city=${upperCaseCity(cityInput)}`)}
