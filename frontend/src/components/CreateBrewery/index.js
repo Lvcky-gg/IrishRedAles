@@ -153,7 +153,6 @@ const CreateBreweryComponent = () => {
           ></input>
         </div>
         <h2 className="h1create">About</h2>
-        <RichEditor handleEditorSubmit={handleEditorSubmit}></RichEditor>
         <ul className="listSignUp">
           {errors &&
             errors.map((error, idx) => (
@@ -174,6 +173,8 @@ const CreateBreweryComponent = () => {
               </li>
             ))}
         </ul>
+        <RichEditor handleEditorSubmit={handleEditorSubmit}></RichEditor>
+
       </div>
     </>
   );

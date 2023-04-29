@@ -22,7 +22,17 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
-        len:[5, 50]
+        // len:[5, 50],
+        isGreaterThanFive(str) {
+          if(str.length < 3){
+            throw new Error("Name must be longer than three characters.")
+          }
+        },
+        isLessThanFifty(str){
+          if(str.length > 50){
+            throw new Error("Name can not be longer than fifty characters.")
+          }
+        }
       }
     },
     addressLineOne:{
@@ -39,7 +49,11 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
-        len:[4,8]
+        isFive(zip){
+          if(zip.length !== 5){
+            throw new Error('Zip code must be five characters.')
+          }
+        }
       }
     },
     state: {

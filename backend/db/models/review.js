@@ -21,13 +21,24 @@ module.exports = (sequelize, DataTypes) => {
     breweryId: DataTypes.INTEGER,
     rating: {
       type:DataTypes.INTEGER,
-      allowNull:false
+      allowNull:false,
+      validate:{
+        isValid(val){
+          if(val < 2){
+            throw new Error("rating is required.")
+          }
+        }
+      },
     },
     description: {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
-        len:[3,255]
+        isGreaerThanThre(str){
+          if(str.length < 3){
+            throw new Error("Review must be three or more characters")
+          }
+        }
       }
     }
   }, {

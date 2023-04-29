@@ -182,11 +182,6 @@ const EditBrewery = () => {
           ></input>
         </div>
         <h2 className="h1create">About</h2>
-        <RichEditor
-          details={details}
-          breweryId={+breweryId}
-          handleEditorSubmit={handleEditorSubmit}
-        ></RichEditor>
         <ul className="listSignUp">
           {errors &&
             errors.map((error, idx) => (
@@ -207,6 +202,12 @@ const EditBrewery = () => {
               </li>
             ))}
         </ul>
+        <RichEditor
+          details={details}
+          breweryId={+breweryId}
+          handleEditorSubmit={handleEditorSubmit}
+        ></RichEditor>
+   
       </div>
     </>
   );
