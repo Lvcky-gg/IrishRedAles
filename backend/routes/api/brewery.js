@@ -5,7 +5,10 @@ const { Brewery, Review, User } = require("../../db/models");
 
 router.get("/:breweryId/reviews", async (req, res) => {
   const { breweryId } = req.params;
-  const reviews = await Review.findAll({include: [{ model: User }], where: { breweryId: +breweryId } });
+  const reviews = await Review.findAll({
+    include: [{ model: User }],
+    where: { breweryId: +breweryId },
+  });
   if (reviews.length) {
     return res.json({ reviews: reviews });
   } else {
@@ -139,7 +142,7 @@ router.get("/", async (req, res) => {
   if (city)
     breweries = await Brewery.findAll({
       include: [{ model: Review }],
-      where: { city:city },
+      where: { city: city },
     });
   if (city && state)
     breweries = await Brewery.findAll({
@@ -153,7 +156,7 @@ router.get("/", async (req, res) => {
       sum += breweries[i].Reviews[j].rating;
     }
     let id = breweries[i].id;
-    let breweryName =breweries[i].breweryName
+    let breweryName = breweries[i].breweryName;
     let ownerId = breweries[i].ownerId;
     let addressLineOne = breweries[i].addressLineOne;
     let city = breweries[i].city;

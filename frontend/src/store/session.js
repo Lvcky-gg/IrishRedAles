@@ -113,7 +113,7 @@ export const login = createAsyncThunk(
 
 export const logout = createAsyncThunk("session/logout", async () => {
   const response = await csrfFetch("/api/session", {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },

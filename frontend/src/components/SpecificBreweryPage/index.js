@@ -13,7 +13,7 @@ import { useState } from "react";
 import ReveiwCard from "./ReviewCard";
 import parse from "html-react-parser";
 import MapPageB from "./specifiedMap";
-import { getAllReviewLikes, getReviewLikes } from "../../store/reviewLikes";
+import { getAllReviewLikes } from "../../store/reviewLikes";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -46,7 +46,7 @@ export const SpecificBrewery = () => {
     dispatch(getAllBreweries());
     dispatch(getReviewsByBrewery(+breweryId));
     dispatch(getBreweryLikes(+breweryId));
-    dispatch(getAllReviewLikes())
+    dispatch(getAllReviewLikes());
   }, [dispatch, breweryId]);
 
   const onAddReview = (e) => {
@@ -60,12 +60,10 @@ export const SpecificBrewery = () => {
   const onDeleteBrewery = (e) => {
     e.preventDefault();
     if (+sessionUser.id === brewery.ownerId) {
-      if(window.confirm('Are you sure you want to delete this brewery?')){
-      dispatch(deleteBrewery(+breweryId));
-      navigate("/");
+      if (window.confirm("Are you sure you want to delete this brewery?")) {
+        dispatch(deleteBrewery(+breweryId));
+        navigate("/");
       }
-      // dispatch(getReviewLikes())
-      
     }
   };
   const onAddLike = (e) => {
@@ -81,10 +79,9 @@ export const SpecificBrewery = () => {
   };
   const onDeleteLike = (e) => {
     e.preventDefault();
-    
+
     dispatch(deleteBreweryLike({ breweryId: +breweryId, likeId: likeIdState }));
-    setIsLiked(false)
-  
+    setIsLiked(false);
   };
   const onEditBrew = (e) => {
     e.preventDefault();
@@ -127,7 +124,7 @@ export const SpecificBrewery = () => {
 
               <h2 className="specificHeader">About</h2>
               <div className="specificDesc">
-                <div >{parse(brewery.description)}</div>
+                <div>{parse(brewery.description)}</div>
               </div>
 
               <h2 className="specificHeaderLike">
@@ -149,59 +146,51 @@ export const SpecificBrewery = () => {
             </div>
           </div>
           {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}
-        <div className="bottomSpecified">
-          <div className="locationHolder">
-          <h2 className="specificHeader">Location</h2>
-          <div className="locationHolderSpecific">
-            {/* <div> */}
-              <p>
-                {brewery.addressLineOne}
-              </p>
-              <p>
-              {brewery.city}, {brewery.state}, {brewery.zip}{" "}
-              </p>
-              <MapPageB
-              brewery={brewery}
-              >
-
-              </MapPageB>
-            {/* </div> */}
-          </div>
-          </div>
-          {reviews.length ? (
-            <div className="reviewcardContainer">
-              {reviews.map(
-                (
-                  {
-                    id,
-                    User,
-                    rating,
-                    description,
-                    ownerId,
-                    createdAt,
-                    updatedAt,
-                  },
-                  idx
-                ) => (
-                  <ReveiwCard
-                    id={id}
-                    key={idx}
-                    breweryId={+breweryId}
-                    User={User}
-                    rating={rating}
-                    description={description}
-                    ownerId={ownerId}
-                    createdAt={createdAt}
-                    updatedAt={updatedAt}
-                  ></ReveiwCard>
-                )
-              )}
+          <div className="bottomSpecified">
+            <div className="locationHolder">
+              <h2 className="specificHeader">Location</h2>
+              <div className="locationHolderSpecific">
+                <p>{brewery.addressLineOne}</p>
+                <p>
+                  {brewery.city}, {brewery.state}, {brewery.zip}{" "}
+                </p>
+                <MapPageB brewery={brewery}></MapPageB>
+              </div>
             </div>
-          ) : (
-            <div className="specificHolder">
-              <h2>There are no reviews</h2>
-            </div>
-          )}
+            {reviews.length ? (
+              <div className="reviewcardContainer">
+                {reviews.map(
+                  (
+                    {
+                      id,
+                      User,
+                      rating,
+                      description,
+                      ownerId,
+                      createdAt,
+                      updatedAt,
+                    },
+                    idx
+                  ) => (
+                    <ReveiwCard
+                      id={id}
+                      key={idx}
+                      breweryId={+breweryId}
+                      User={User}
+                      rating={rating}
+                      description={description}
+                      ownerId={ownerId}
+                      createdAt={createdAt}
+                      updatedAt={updatedAt}
+                    ></ReveiwCard>
+                  )
+                )}
+              </div>
+            ) : (
+              <div className="specificHolder">
+                <h2>There are no reviews</h2>
+              </div>
+            )}
           </div>
         </div>
       ) : (

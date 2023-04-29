@@ -3,10 +3,9 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Geocode from "react-geocode";
-import logo from "../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png";
 import RichEditor from "../RichEditor";
 import { filterState } from "../../utils/filterState";
-import breweries, {
+import {
   updateBreweries,
   getAllBreweries,
 } from "../../store/breweries";
@@ -21,7 +20,6 @@ const EditBrewery = () => {
   Geocode.setLocationType("ROOFTOP");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const sessionUser = useSelector((state) => state.session.user);
   const allBreweries = useSelector((state) => state.breweries.allBreweries);
   let brewery;
   for (let i = 0; i < allBreweries.length; i++) {
@@ -30,7 +28,6 @@ const EditBrewery = () => {
   const validationErrors = useSelector(
     (state) => state.breweries.validationErrors
   );
-  const ownerId = sessionUser.id;
   const [name, setName] = useState("");
   const [errors, setErrors] = useState([]);
   const [addressLineOne, setAddressLineOne] = useState("");
@@ -209,7 +206,6 @@ const EditBrewery = () => {
           breweryId={+breweryId}
           handleEditorSubmit={handleEditorSubmit}
         ></RichEditor>
-   
       </div>
     </>
   );

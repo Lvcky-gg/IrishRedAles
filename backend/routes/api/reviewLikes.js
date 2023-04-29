@@ -41,9 +41,7 @@ router.get("/:reviewId", async (req, res) => {
   }
 });
 router.get("/", async (req, res) => {
-
-  const reviewLikes = await ReviewLike.findAll({
-  });
+  const reviewLikes = await ReviewLike.findAll({});
   if (reviewLikes.length) {
     res.status(200);
     return res.json(reviewLikes);

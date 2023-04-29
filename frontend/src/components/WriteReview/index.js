@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import {
   clearreviewErrors,
   createReveiwByBrewery,
-  getAllReviews,
   getReviewsByBrewery,
 } from "../../store/reviews";
 import { getReviewLikes } from "../../store/reviewLikes";
@@ -50,8 +49,9 @@ const WriteReview = () => {
 
     if (newReview.error) {
     } else {
-        dispatch(clearreviewErrors())
-        navigate(`/breweries/${breweryId}`);}
+      dispatch(clearreviewErrors());
+      navigate(`/breweries/${breweryId}`);
+    }
   };
   useEffect(() => {
     dispatch(getReviewsByBrewery(breweryId));

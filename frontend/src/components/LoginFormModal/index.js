@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, clearErrors } from "../../store/session";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
-import logo from '../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png'
+import logo from "../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png";
 
 import validateInput from "../../utils/validateInput";
 
@@ -43,13 +43,11 @@ function LoginFormModal() {
     setOnModalClose(clearErrorMessages);
   }, [user, closeModal, setOnModalClose, dispatch]);
 
- 
-
   return (
     <div className="modalLogin">
       <form onSubmit={handleSubmit} className="loginForm">
         <div>
-        <img src={logo} alt="#"></img>
+          <img src={logo} alt="#"></img>
         </div>
         <div>
           <label>Username or Password</label>
@@ -70,35 +68,35 @@ function LoginFormModal() {
           />
         </div>
         <div>
-          <button type="submit" id="specificButtonSize" className="specificButton">
+          <button
+            type="submit"
+            id="specificButtonSize"
+            className="specificButton"
+          >
             Log In
           </button>
         </div>
       </form>
       <ul className="modal-form-list-err">
-          {inputValidate &&
-            inputValidate.map((error, idx) => (
-              <li key={idx}>
-                <span style={{ color: "red", padding: "5px" }}>
-                  <i className="fas fa-exclamation-circle"></i>
-                </span>
-                {error}
-              </li>
-            ))}
-          {validationErrors &&
-            validationErrors.map((error, idx) => (
-              <li 
-              className="centerLogin"
-              key={idx}>
-                <span 
-                
-                style={{ color: "red", padding: "5px" }}>
-                  <i className="fas fa-exclamation-circle"></i>
-                </span>
-                {error}
-              </li>
-            ))}
-        </ul>
+        {inputValidate &&
+          inputValidate.map((error, idx) => (
+            <li key={idx}>
+              <span style={{ color: "red", padding: "5px" }}>
+                <i className="fas fa-exclamation-circle"></i>
+              </span>
+              {error}
+            </li>
+          ))}
+        {validationErrors &&
+          validationErrors.map((error, idx) => (
+            <li className="centerLogin" key={idx}>
+              <span style={{ color: "red", padding: "5px" }}>
+                <i className="fas fa-exclamation-circle"></i>
+              </span>
+              {error}
+            </li>
+          ))}
+      </ul>
     </div>
   );
 }

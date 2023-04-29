@@ -76,7 +76,7 @@ export const brewerySlice = createSlice({
         );
         state.allBreweries[idx] = updateBrewery;
         state.error = null;
-        state.validationErrors = null
+        state.validationErrors = null;
       })
       .addCase(updateBreweries.rejected, (state, action) => {
         state.validationErrors = action.payload.errors;
@@ -212,35 +212,35 @@ export const updateBreweries = createAsyncThunk(
       city,
       breweryId,
     },
-    
+
     { rejectWithValue }
   ) => {
-    try{
-    const response = await axios.put(`/api/breweries/${breweryId}`, 
-    JSON.stringify({
-        breweryName,
-        description,
-        addressLineOne,
-        zip,
-        state,
-        country,
-        lat,
-        lng,
-        city
-      }),
-    {
-      headers: {
-        "Content-Type": "application/json",
-        "XSRF-Token": Cookies.get("XSRF-TOKEN"),
-      },
-    });
-  
+    try {
+      const response = await axios.put(
+        `/api/breweries/${breweryId}`,
+        JSON.stringify({
+          breweryName,
+          description,
+          addressLineOne,
+          zip,
+          state,
+          country,
+          lat,
+          lng,
+          city,
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "XSRF-Token": Cookies.get("XSRF-TOKEN"),
+          },
+        }
+      );
 
-    if (response.data) return response.data;
-} catch (error) {
-  return rejectWithValue({ errors: error.response.data.errors });
-}
-
+      if (response.data) return response.data;
+    } catch (error) {
+      return rejectWithValue({ errors: error.response.data.errors });
+    }
   }
 );
 

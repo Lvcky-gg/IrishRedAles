@@ -6,8 +6,7 @@ import "./LoginForm.css";
 import validateInput from "../../utils/validateInput";
 import { clearErrors } from "../../store/session";
 import { useEffect } from "react";
-import logo from '../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png'
-
+import logo from "../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -45,21 +44,20 @@ function LoginFormPage() {
 
   if (sessionUser) return <Navigate to="/" />;
 
-
   return (
     <div className="loginPage">
-        <div>
+      <div>
         <img src={logo} alt="#"></img>
-        </div>
+      </div>
       <form onSubmit={handleSubmit}>
         <div>
-        <h1>Log In</h1>
+          <h1>Log In</h1>
         </div>
 
         <div className="handleLoginBox">
           <label>Username or Password</label>
           <input
-          className='buttonStyle'
+            className="buttonStyle"
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
@@ -69,7 +67,7 @@ function LoginFormPage() {
         <div className="handleLoginBox">
           <label>Password</label>
           <input
-          className='buttonStyle'
+            className="buttonStyle"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

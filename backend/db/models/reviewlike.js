@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model, ForeignKeyConstraintError
-} = require('sequelize');
+"use strict";
+const { Model, ForeignKeyConstraintError } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class ReviewLike extends Model {
     /**
@@ -11,16 +9,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      ReviewLike.belongsTo(models.User, {foreignKey:'userId'})
-      ReviewLike.belongsTo(models.Review, {foreignKey:'reviewId'})
+      ReviewLike.belongsTo(models.User, { foreignKey: "userId" });
+      ReviewLike.belongsTo(models.Review, { foreignKey: "reviewId" });
     }
   }
-  ReviewLike.init({
-    userId: DataTypes.INTEGER,
-    reviewId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'ReviewLike',
-  });
+  ReviewLike.init(
+    {
+      userId: DataTypes.INTEGER,
+      reviewId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: "ReviewLike",
+    }
+  );
   return ReviewLike;
 };

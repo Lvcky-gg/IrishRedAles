@@ -1,43 +1,43 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 let options = {};
-if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
+if (process.env.NODE_ENV === "production") {
+  options.schema = process.env.SCHEMA; // define your schema in options object
 }
 module.exports = {
   async up(queryInterface, Sequelize) {
-    options.tableName = 'BreweryLikes'
+    options.tableName = "BreweryLikes";
     await queryInterface.createTable(options, {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       userId: {
         type: Sequelize.INTEGER,
-        references:{model:'Users'},
-        onDelete: 'CASCADE'
+        references: { model: "Users" },
+        onDelete: "CASCADE",
       },
       breweryId: {
         type: Sequelize.INTEGER,
-        references: {model:"Breweries"},
-        onDelete:"CASCADE"
+        references: { model: "Breweries" },
+        onDelete: "CASCADE",
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
-      }
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = 'BreweryLikes'
+    options.tableName = "BreweryLikes";
     await queryInterface.dropTable(options);
-  }
+  },
 };

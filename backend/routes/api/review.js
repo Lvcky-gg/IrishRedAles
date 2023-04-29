@@ -3,10 +3,8 @@ const router = express.Router();
 const { Review, User } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth.js");
 
-
 router.get("/", async (req, res) => {
-  
-  const reviews = await Review.findAll({include: [{ model: User }],});
+  const reviews = await Review.findAll({ include: [{ model: User }] });
   if (reviews.length) {
     return res.json({ reviews: reviews });
   } else {
@@ -17,7 +15,10 @@ router.get("/", async (req, res) => {
 
 router.get("/:reviewId", async (req, res) => {
   const { reviewId } = req.params;
-  const review = await Review.findOne({include: [{ model: User }], where: { id: +reviewId } });
+  const review = await Review.findOne({
+    include: [{ model: User }],
+    where: { id: +reviewId },
+  });
   if (review) {
     res.status(200);
     return res.json(review);
@@ -49,15 +50,15 @@ router.delete("/:reviewId", requireAuth, async (req, res) => {
 router.put("/:reviewId", requireAuth, async (req, res) => {
   const { reviewId } = req.params;
   const { description, rating } = req.body;
- 
-  const review = await Review.findOne({ where:{id: +reviewId } });
- 
+
+  const review = await Review.findOne({ where: { id: +reviewId } });
+
   if (review) {
     const newReview = await review.update({
       rating,
       description,
     });
-   
+
     return res.json(newReview);
   } else {
     res.status(404);
