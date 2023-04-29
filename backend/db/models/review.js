@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false,
       validate:{
         isValid(val){
-          if(val < 2){
+          if(val < 1){
             throw new Error("rating is required.")
           }
         }
