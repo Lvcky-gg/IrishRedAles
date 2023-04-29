@@ -1,4 +1,5 @@
 export const upperCaseCity = (city) => {
+if(city){
   const arr = city.split(" ");
   let val = " ";
   for (let i = 0; i < arr.length; i++) {
@@ -8,4 +9,5 @@ export const upperCaseCity = (city) => {
       " ";
   }
   return val.trim();
+}
 };
