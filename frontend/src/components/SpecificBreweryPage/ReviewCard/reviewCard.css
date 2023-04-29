@@ -26,11 +26,18 @@
 }
 .spaceItemsCard{
     padding:5%;
+    padding-bottom: 0%;
     color:#B4C4BC;
     display:flex;
-    margin-bottom:1%;
-
+    margin-bottom:0%;
 }
+.fa-pen-to-square{
+    padding-bottom: 5%;
+}
+.fa-trash-can{
+    padding-bottom: 5%;
+}
+
 .reviewRate{
     width:30%;
     display:flex;

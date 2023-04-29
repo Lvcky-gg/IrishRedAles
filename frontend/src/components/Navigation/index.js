@@ -12,11 +12,17 @@ import logo  from  '../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_im
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector((state) => state.session.user);
     const navigate = useNavigate();
+    const onClickbtn = (e) => {
+        e.preventDefault()
+        navigate('/')
+    }
 
     return (
         <div className="nav">
-            <div>
-                <img src={logo} alt="#" className='navLogo'></img>
+            <div className='imgHollderNav'>
+                <img 
+                onClick={onClickbtn}
+                src={logo} alt="#" className='navLogo'></img>
             </div>
             <Search></Search>
           

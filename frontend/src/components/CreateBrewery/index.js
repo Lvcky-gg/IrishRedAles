@@ -55,9 +55,7 @@ const CreateBreweryComponent = () => {
           setLatitude(lat);
           setLongitude(lng);
         },
-        (error) => {
-          
-        }
+        (error) => {}
       );
     } else {
       setLatitude("");
@@ -157,9 +155,24 @@ const CreateBreweryComponent = () => {
         <h2 className="h1create">About</h2>
         <RichEditor handleEditorSubmit={handleEditorSubmit}></RichEditor>
         <ul className="listSignUp">
-          {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {errors &&
+            errors.map((error, idx) => (
+              <li key={idx}>
+                <span style={{ color: "red", padding: "5px" }}>
+                  <i className="fas fa-exclamation-circle"></i>
+                </span>
+                {error}
+              </li>
+            ))}
           {validationErrors &&
-            validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+            validationErrors.map((error, idx) => (
+              <li key={idx}>
+                <span style={{ color: "red", padding: "5px" }}>
+                  <i className="fas fa-exclamation-circle"></i>
+                </span>
+                {error}
+              </li>
+            ))}
         </ul>
       </div>
     </>

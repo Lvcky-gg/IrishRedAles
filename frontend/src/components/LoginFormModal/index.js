@@ -69,7 +69,13 @@ function LoginFormModal() {
             // required
           />
         </div>
-        <ul className="modal-form-list-err">
+        <div>
+          <button type="submit" id="specificButtonSize" className="specificButton">
+            Log In
+          </button>
+        </div>
+      </form>
+      <ul className="modal-form-list-err">
           {inputValidate &&
             inputValidate.map((error, idx) => (
               <li key={idx}>
@@ -81,20 +87,18 @@ function LoginFormModal() {
             ))}
           {validationErrors &&
             validationErrors.map((error, idx) => (
-              <li key={idx}>
-                <span style={{ color: "red", padding: "5px" }}>
+              <li 
+              className="centerLogin"
+              key={idx}>
+                <span 
+                
+                style={{ color: "red", padding: "5px" }}>
                   <i className="fas fa-exclamation-circle"></i>
                 </span>
                 {error}
               </li>
             ))}
         </ul>
-        <div>
-          <button type="submit" id="specificButtonSize" className="specificButton">
-            Log In
-          </button>
-        </div>
-      </form>
     </div>
   );
 }

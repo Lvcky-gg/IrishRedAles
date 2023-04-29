@@ -6,13 +6,16 @@ import Geocode from "react-geocode";
 import logo from "../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png";
 import RichEditor from "../RichEditor";
 import { filterState } from "../../utils/filterState";
-import breweries, { updateBreweries, getAllBreweries } from "../../store/breweries";
+import breweries, {
+  updateBreweries,
+  getAllBreweries,
+} from "../../store/breweries";
 import { clearBrewErrors } from "../../store/breweries";
 import { useParams } from "react-router-dom";
 import { upperCaseCity } from "../../utils/uppercaseCity";
 
 const EditBrewery = () => {
-    const {breweryId} = useParams()
+  const { breweryId } = useParams();
   Geocode.setApiKey(process.env.REACT_APP_MAPS_KEY);
   Geocode.setLanguage("en");
   Geocode.setLocationType("ROOFTOP");
@@ -21,8 +24,8 @@ const EditBrewery = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const allBreweries = useSelector((state) => state.breweries.allBreweries);
   let brewery;
-  for(let i = 0; i < allBreweries.length; i++){
-    if(allBreweries[i].id === +breweryId)brewery = allBreweries[i]
+  for (let i = 0; i < allBreweries.length; i++) {
+    if (allBreweries[i].id === +breweryId) brewery = allBreweries[i];
   }
   const validationErrors = useSelector(
     (state) => state.breweries.validationErrors
@@ -37,24 +40,24 @@ const EditBrewery = () => {
   const [country, setCountry] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
-  const [details, setDetails] = useState("")
+  const [details, setDetails] = useState("");
   let address;
-  
+
   useEffect(() => {
     dispatch(getAllBreweries());
   }, [dispatch]);
 
-  useEffect(()=>{
-    if(brewery){
-        setName(brewery.breweryName)
-        setAddressLineOne(brewery.addressLineOne)
-        setCity(brewery.city)
-        setState(brewery.state)
-        setZip(brewery.zip)
-        setCountry(brewery.country)
-        setDetails(brewery.description)
+  useEffect(() => {
+    if (brewery) {
+      setName(brewery.breweryName);
+      setAddressLineOne(brewery.addressLineOne);
+      setCity(brewery.city);
+      setState(brewery.state);
+      setZip(brewery.zip);
+      setCountry(brewery.country);
+      setDetails(brewery.description);
     }
-  },[allBreweries, brewery])
+  }, [allBreweries, brewery]);
 
   useEffect(() => {
     address =
@@ -74,9 +77,7 @@ const EditBrewery = () => {
           setLatitude(lat);
           setLongitude(lng);
         },
-        (error) => {
-          
-        }
+        (error) => {}
       );
     } else {
       setLatitude("");
@@ -103,10 +104,10 @@ const EditBrewery = () => {
           lat: +latitude,
           lng: +longitude,
           zip: zip,
-          breweryId:+breweryId
+          breweryId: +breweryId,
         })
       );
-        
+
       if (updateBreweries.rejected.match(newBrew)) {
       } else {
         setName("");
@@ -128,7 +129,7 @@ const EditBrewery = () => {
         <div className="breweryMakeform">
           <label>Brewery Name</label>
           <input
-          value={name}
+            value={name}
             type="text"
             onChange={(e) => setName(e.target.value)}
             className="buttonStyle"
@@ -146,7 +147,7 @@ const EditBrewery = () => {
         <div>
           <label>City</label>
           <input
-          value={city}
+            value={city}
             type="text"
             onChange={(e) => setCity(e.target.value)}
             className="buttonStyle"
@@ -155,7 +156,7 @@ const EditBrewery = () => {
         <div>
           <label>State</label>
           <input
-          value={state}
+            value={state}
             type="text"
             onChange={(e) => setState(e.target.value)}
             className="buttonStyle"
@@ -181,14 +182,30 @@ const EditBrewery = () => {
           ></input>
         </div>
         <h2 className="h1create">About</h2>
-        <RichEditor 
-        details={details}
-        breweryId={+breweryId}
-        handleEditorSubmit={handleEditorSubmit}></RichEditor>
+        <RichEditor
+          details={details}
+          breweryId={+breweryId}
+          handleEditorSubmit={handleEditorSubmit}
+        ></RichEditor>
         <ul className="listSignUp">
-          {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {errors &&
+            errors.map((error, idx) => (
+              <li key={idx}>
+                <span style={{ color: "red", padding: "5px" }}>
+                  <i className="fas fa-exclamation-circle"></i>
+                </span>
+                {error}
+              </li>
+            ))}
           {validationErrors &&
-            validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+            validationErrors.map((error, idx) => (
+              <li key={idx}>
+                <span style={{ color: "red", padding: "5px" }}>
+                  <i className="fas fa-exclamation-circle"></i>
+                </span>
+                {error}
+              </li>
+            ))}
         </ul>
       </div>
     </>

@@ -60,7 +60,7 @@ const Search = () => {
             className="buttonStyle search"
 
             ></input>
-            <button className="buttonStyle"
+            <button className="buttonStyle searchbtn"
             >Locate Brewery</button>
 
         </form>

@@ -155,10 +155,10 @@ export const SpecificBrewery = () => {
           <div className="locationHolderSpecific">
             {/* <div> */}
               <p>
-                {brewery.addressLineOne}, {brewery.city}
+                {brewery.addressLineOne}
               </p>
               <p>
-                {brewery.state}, {brewery.zip}{" "}
+              {brewery.city}, {brewery.state}, {brewery.zip}{" "}
               </p>
               <MapPageB
               brewery={brewery}

@@ -4,6 +4,6 @@
     display:flex;
     justify-content: center;
     padding:10%;
-    /* position:absolute; */
-    /* top:0px; */
+    position:relative; 
+    right:10%;
 }

@@ -9,6 +9,9 @@ body{
     overflow-x:hidden ;
     cursor: url("./images/cursor.png"), auto;
 }
+li{
+    list-style: none;
+}
 
 
 @font-face {

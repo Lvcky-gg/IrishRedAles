@@ -122,7 +122,12 @@ const EditReview = () => {
             </form>
             <ul className="listSignUpOne">
           {validationErrors &&
-            validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+            validationErrors.map((error, idx) =>               <li key={idx}>
+            <span style={{ color: "red", padding: "5px" }}>
+              <i className="fas fa-exclamation-circle"></i>
+            </span>
+            {error}
+          </li>)}
         </ul>
         </div>
         
