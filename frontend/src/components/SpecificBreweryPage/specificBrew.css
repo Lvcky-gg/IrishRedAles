@@ -17,6 +17,7 @@
     margin:auto;
     border-radius: 3% 3% 0% 0%;
     display:flex;
+    max-height:80%;
 }
 /* .specificLeft{
     display:flex;
