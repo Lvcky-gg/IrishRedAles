@@ -18,7 +18,18 @@ router.post(
             userId:+userId,
             URL:imgUpload
         })
+        res.status(200)
         res.json(img)
+    }
+)
+
+router.get(
+    "/:breweryId",
+    async(req, res)=> {
+        const {breweryId} = req.params;
+        const images = await Photo.findAll({where:{breweryId:+breweryId}})
+        res.status(200)
+        return res.json(images)
     }
 )
 

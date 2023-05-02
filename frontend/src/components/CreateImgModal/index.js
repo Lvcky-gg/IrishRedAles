@@ -22,6 +22,7 @@ const UploadImg = ({ breweryId }) => {
           image: file,
         })
       );
+      closeModal()
     } else {
       setError(["Invalid file type."]);
     }
