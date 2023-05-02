@@ -16,6 +16,7 @@ import MapPageB from "./specifiedMap";
 import { getAllReviewLikes } from "../../store/reviewLikes";
 import OpenImgModalButton from "../OpenImgModal";
 import UploadImg from "../CreateImgModal";
+import { getImg } from "../../store/images";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -25,6 +26,7 @@ export const SpecificBrewery = () => {
   const dispatch = useDispatch();
   const breweries = useSelector((state) => state.breweries.allBreweries);
   const reviews = useSelector((state) => state.reviews.allReviews);
+  const images = useSelector((state)=>state.images.allImages)
   const brewLikes = useSelector((state) => state.breweryLikes.breweryLikes);
   const sessionUser = useSelector((state) => state.session.user);
   let brewery;
@@ -49,6 +51,7 @@ export const SpecificBrewery = () => {
     dispatch(getReviewsByBrewery(+breweryId));
     dispatch(getBreweryLikes(+breweryId));
     dispatch(getAllReviewLikes());
+    dispatch(getImg({breweryId}))
   }, [dispatch, breweryId]);
 
   const onAddReview = (e) => {
@@ -89,7 +92,7 @@ export const SpecificBrewery = () => {
     e.preventDefault();
     navigate(`/breweries/${breweryId}/edit-brewery`);
   };
-
+console.log(images[0].URL)
   return (
     <div>
       {brewery ? (
@@ -102,6 +105,10 @@ export const SpecificBrewery = () => {
                 className="specificBreweryContainerIMG"
                 src="https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp"
               />
+               {/* <img
+                className="specificBreweryContainerIMG"
+                src={images[0].URL}
+              /> */}
               <div className="siideArrows">
               <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
               <FontAwesomeIcon icon="fa-solid fa-chevron-right" />

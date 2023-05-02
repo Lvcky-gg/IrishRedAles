@@ -15,14 +15,23 @@ export const imageSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+        .addCase(getImg.fulfilled, (state, action)=>{
+            state.allImages = action.payload
+            state.error=null
+        })
+        .addCase(getImg.rejected, (state, action)=>{
+            state.allImages = null
+            state.error=action.payload.errors;
+        })
         .addCase(createImg.fulfilled, (state, action) => {
-            console.log(action.payload)
+            
             state.allImages.push(action.payload);
             state.error = null
         })
         .addCase(createImg.rejected, (state, action) => {
             state.error = action.payload.errors;
         })
+
     }
 })
 
@@ -51,6 +60,23 @@ export const createImg = createAsyncThunk(
             return rejectWithValue({errors:error.response.data.errors})
         }
     }
+)
+export const getImg = createAsyncThunk(
+    "images/getImage",
+    async ({ breweryId }, { rejectWithValue }) => {
+        const response = await csrfFetch(`/api/photos/${+breweryId}`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        });
+        const data = await response.json();
+    
+        if (!response.ok) {
+          return rejectWithValue(await response.json());
+        }
+        return data;
+      }
 )
 
 export default imageSlice.reducer
