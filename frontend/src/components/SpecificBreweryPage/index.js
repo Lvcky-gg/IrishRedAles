@@ -125,8 +125,6 @@ export const SpecificBrewery = () => {
                 onClick={(e)=>{
                   e.preventDefault()
                   if(imgLen < images.length -1){
-                    console.log(images.length)
-                    console.log(imgLen)
                     setImgLen(imgLen + 1)
                   }
                   
