@@ -19,6 +19,8 @@ import {
   faUserCircle,
   faChevronUp,
   faChevronDown,
+  faChevronLeft,
+  faChevronRight,
   faLocationPin,
   faStar,
   faBeerMugEmpty,
@@ -28,6 +30,8 @@ import {
   faHouse,
   faTrashCan,
   faHeart,
+  faCameraRetro,
+  faCamera,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -35,6 +39,7 @@ import {
   faLinkedinIn,
   faSquareGithub,
   faTwitter,
+
 } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import WriteReview from "./components/WriteReview";
@@ -65,7 +70,11 @@ function App() {
     faTwitter,
     faTrashCan,
     faHeart,
-    far
+    far,
+    faChevronLeft,
+    faChevronRight,
+    faCameraRetro,
+    faCamera,
   );
 
   return (

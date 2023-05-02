@@ -14,15 +14,20 @@ import ReveiwCard from "./ReviewCard";
 import parse from "html-react-parser";
 import MapPageB from "./specifiedMap";
 import { getAllReviewLikes } from "../../store/reviewLikes";
+import OpenImgModalButton from "../OpenImgModal";
+import UploadImg from "../CreateImgModal";
+import { getImg } from "../../store/images";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
   const [isLiked, setIsLiked] = useState(false);
   const [likeIdState, setLikeIdState] = useState();
+  const [imgLen, setImgLen] = useState(0)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const breweries = useSelector((state) => state.breweries.allBreweries);
   const reviews = useSelector((state) => state.reviews.allReviews);
+  const images = useSelector((state)=>state.images.allImages)
   const brewLikes = useSelector((state) => state.breweryLikes.breweryLikes);
   const sessionUser = useSelector((state) => state.session.user);
   let brewery;
@@ -47,6 +52,7 @@ export const SpecificBrewery = () => {
     dispatch(getReviewsByBrewery(+breweryId));
     dispatch(getBreweryLikes(+breweryId));
     dispatch(getAllReviewLikes());
+    dispatch(getImg({breweryId}))
   }, [dispatch, breweryId]);
 
   const onAddReview = (e) => {
@@ -93,28 +99,71 @@ export const SpecificBrewery = () => {
       {brewery ? (
         <div>
           <div className="specificBreweryContainer">
+
+
             <div className="specificLeft">
-              <img
+              {images.length >= 1 ?(
+                <img
+                className="specificBreweryContainerIMG"
+                src={images[imgLen].URL}
+              />
+              ):(<img
                 className="specificBreweryContainerIMG"
                 src="https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp"
-              />
+              />)}
+          
+              {images.length > 1&& <div className="siideArrows">
+              <FontAwesomeIcon 
+              onClick={(e)=>{
+                e.preventDefault()
+                if(imgLen > 0){
+                  setImgLen(imgLen - 1)  
+                }else{
+                  setImgLen(images.length -1)
+                }
+              }}
+              icon="fa-solid fa-chevron-left" />
+              <FontAwesomeIcon 
+                onClick={(e)=>{
+                  e.preventDefault()
+                  if(imgLen < images.length -1){
+                    setImgLen(imgLen + 1)
+                  }else{
+                    setImgLen(0)
+                  }
+                  
+                }}
+              icon="fa-solid fa-chevron-right" />
+
+              </div>}
+
+
+
               <div className="specificBreweryContainerBtn">
                 <button className="specificButton" onClick={onAddReview}>
                   <FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" />
-                  <p>Add review</p>
+                  <p>Review</p>
                 </button>
+                <OpenImgModalButton 
+                modalComponent={<UploadImg
+                breweryId={+breweryId}
+                />}>
+
+                </OpenImgModalButton>
+                
 
                 {sessionUser && +sessionUser.id === brewery.ownerId && (
                   <button onClick={onEditBrew} className="specificButton">
                     <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
-                    <p>Edit Brewery</p>
+                    <p>Edit</p>
                   </button>
                 )}
                 {sessionUser && +sessionUser.id === brewery.ownerId && (
                   <button onClick={onDeleteBrewery} className="specificButton">
                     <FontAwesomeIcon icon="fa-solid fa-trash-can" />
-                    <p>Delete Brewery</p>
+                    <p>Delete</p>
                   </button>
+                  
                 )}
               </div>
             </div>
@@ -146,6 +195,9 @@ export const SpecificBrewery = () => {
             </div>
           </div>
           {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}
+          {/* <div className="sortButton">
+
+</div> */}
           <div className="bottomSpecified">
             <div className="locationHolder">
               <h2 className="specificHeader">Location</h2>
@@ -192,6 +244,7 @@ export const SpecificBrewery = () => {
               </div>
             )}
           </div>
+
         </div>
       ) : (
         <div>

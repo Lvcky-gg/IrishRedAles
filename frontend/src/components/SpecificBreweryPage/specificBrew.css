@@ -13,30 +13,58 @@
     padding:5%;
 }
 .specificBreweryContainerIMG{
-    width:95%;
+    width:100%;
     margin:auto;
-    border-radius: 5%;
+    border-radius: 3% 3% 0% 0%;
     display:flex;
+    max-height:80%;
+    height:350px;
 }
-/* .specificLeft{
-    display:flex;
-    flex-direction: column;
-    align-items: flex-end;
-} */
+
 .specificBreweryContainerBtn{
     display:flex;
     margin:auto;
-    margin-top:2%;
+    margin-top:0%;
     margin-bottom: 0%;
     width:100%;
     display:flex;
     justify-content: center;
     background-color: black;
-    border-top: 3px outset rgba(0,0,0.2);
-    border-left: 3px outset rgba(0,0,0.3);
-    border-right: 3px outset rgba(0,0,0.5);
-    border-bottom: 3px outset rgba(0,0,0.5);
-    border-radius:3%;
+    border-radius:0% 0% 3% 3%;
+    position:relative;
+    bottom:15%;
+}
+.siideArrows{
+    width: 90%;
+    position:relative;
+    z-index: 5;
+    bottom:40%;
+    display:flex;
+    justify-content: space-between;
+    margin:auto;
+}
+.fa-chevron-right{
+    color:#B4C4BC;
+    height:50px;
+}
+.fa-chevron-right:hover{
+    color:gray;
+    cursor: pointer;
+}
+.fa-chevron-left:hover{
+    color:gray;
+    cursor: pointer;
+}
+.fa-chevron-left{
+    color:#B4C4BC;
+    height:50px;
+}
+.specificBreweryContainerBtn button{
+    cursor: pointer;
+    color:whitesmoke;
+}
+.specificBreweryContainerBtn button p{
+    color:whitesmoke;
 }
 .specificBreweryContainerimgs {
     margin:auto;
@@ -47,6 +75,7 @@
     width:60%;
     
     margin-left:10%;
+
 
 }
 .specificHeader{
@@ -76,9 +105,7 @@
     margin-top:2%;
    
 }
-/* .locationHolderSpecific{
-    padding:5%;
-} */
+
 .locationHolderSpecific p {
     margin:auto;
     margin-top:3%;
@@ -91,6 +118,7 @@
 .specificLeft{
     display:flex;
     flex-direction: column;
+    width:30%;
 }
 .specificHeart{
     padding-right:3%;
@@ -105,6 +133,8 @@
 }
 .specificFont{
     font-family: Rye;
+    width:fit-content;
+    font-size:70px;
 }
 .reviewcardContainer{
     width:60%;
@@ -119,6 +149,7 @@
 .bottomSpecified{
     display:flex;
     margin-left:10%;
+    margin-bottom: 3%;
     margin-right:10%;
     width:72;
 
@@ -141,4 +172,16 @@
 
 .specificHolder{
     margin:auto;
+}
+.sortButton {
+    width:80%;
+    height:250px;
+    margin:auto;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    border-radius: 3%;
+    border-top: 3px outset rgba(0,0,0.2);
+    border-left: 3px outset rgba(0,0,0.3);
+    border-right: 3px outset rgba(0,0,0.5);
+    border-bottom: 3px outset rgba(0,0,0.5);
 }

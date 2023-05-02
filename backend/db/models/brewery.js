@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "breweryId",
         onDelete: "CASCADE",
       });
+      Brewery.hasMany(models.Photo,{
+        foreignKey: "breweryId",
+        onDelete: "CASCADE",
+      })
     }
   }
   Brewery.init(

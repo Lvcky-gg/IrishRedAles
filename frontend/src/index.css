@@ -12,6 +12,9 @@ body{
 li{
     list-style: none;
 }
+p{
+    color:#B4C4BC;
+}
 
 
 @font-face {
