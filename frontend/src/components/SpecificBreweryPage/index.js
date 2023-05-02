@@ -92,7 +92,7 @@ export const SpecificBrewery = () => {
     e.preventDefault();
     navigate(`/breweries/${breweryId}/edit-brewery`);
   };
-console.log(images[0])
+
   return (
     <div>
       {brewery ? (
@@ -101,19 +101,21 @@ console.log(images[0])
 
 
             <div className="specificLeft">
-              {/* <img
-                className="specificBreweryContainerIMG"
-                src="https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp"
-              /> */}
-               <img
+              {images.length ?(
+                <img
                 className="specificBreweryContainerIMG"
                 src={images[0].URL}
               />
-              <div className="siideArrows">
+              ):(<img
+                className="specificBreweryContainerIMG"
+                src="https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp"
+              />)}
+          
+              {images.length > 1&& <div className="siideArrows">
               <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
               <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
 
-              </div>
+              </div>}
 
 
 
