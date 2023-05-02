@@ -13,9 +13,9 @@
     padding:5%;
 }
 .specificBreweryContainerIMG{
-    width:95%;
+    width:100%;
     margin:auto;
-    border-radius: 5%;
+    border-radius: 3% 3% 0% 0%;
     display:flex;
 }
 /* .specificLeft{
@@ -26,17 +26,47 @@
 .specificBreweryContainerBtn{
     display:flex;
     margin:auto;
-    margin-top:2%;
+    margin-top:0%;
     margin-bottom: 0%;
     width:100%;
     display:flex;
     justify-content: center;
     background-color: black;
-    border-top: 3px outset rgba(0,0,0.2);
-    border-left: 3px outset rgba(0,0,0.3);
-    border-right: 3px outset rgba(0,0,0.5);
-    border-bottom: 3px outset rgba(0,0,0.5);
-    border-radius:3%;
+    border-radius:0% 0% 3% 3%;
+    position:relative;
+    bottom:15%;
+}
+.siideArrows{
+    width: 90%;
+    position:relative;
+    z-index: 5;
+    bottom:40%;
+    display:flex;
+    justify-content: space-between;
+    margin:auto;
+}
+.fa-chevron-right{
+    color:#B4C4BC;
+    height:50px;
+}
+.fa-chevron-right:hover{
+    color:gray;
+    cursor: pointer;
+}
+.fa-chevron-left:hover{
+    color:gray;
+    cursor: pointer;
+}
+.fa-chevron-left{
+    color:#B4C4BC;
+    height:50px;
+}
+.specificBreweryContainerBtn button{
+    cursor: pointer;
+    color:whitesmoke;
+}
+.specificBreweryContainerBtn button p{
+    color:whitesmoke;
 }
 .specificBreweryContainerimgs {
     margin:auto;
@@ -145,8 +175,10 @@
 }
 .sortButton {
     width:80%;
-    height:200px;
+    height:250px;
     margin:auto;
+    margin-bottom: 1%;
+    margin-top: 1%;
     border-radius: 3%;
     border-top: 3px outset rgba(0,0,0.2);
     border-left: 3px outset rgba(0,0,0.3);

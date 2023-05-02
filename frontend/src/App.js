@@ -19,6 +19,8 @@ import {
   faUserCircle,
   faChevronUp,
   faChevronDown,
+  faChevronLeft,
+  faChevronRight,
   faLocationPin,
   faStar,
   faBeerMugEmpty,
@@ -28,6 +30,7 @@ import {
   faHouse,
   faTrashCan,
   faHeart,
+  faCameraRetro,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -65,7 +68,10 @@ function App() {
     faTwitter,
     faTrashCan,
     faHeart,
-    far
+    far,
+    faChevronLeft,
+    faChevronRight,
+    faCameraRetro,
   );
 
   return (

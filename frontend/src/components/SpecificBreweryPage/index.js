@@ -14,6 +14,8 @@ import ReveiwCard from "./ReviewCard";
 import parse from "html-react-parser";
 import MapPageB from "./specifiedMap";
 import { getAllReviewLikes } from "../../store/reviewLikes";
+import OpenImgModalButton from "../OpenImgModal";
+import UploadImg from "../CreateImgModal";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -93,28 +95,46 @@ export const SpecificBrewery = () => {
       {brewery ? (
         <div>
           <div className="specificBreweryContainer">
+
+
             <div className="specificLeft">
               <img
                 className="specificBreweryContainerIMG"
                 src="https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp"
               />
+              <div className="siideArrows">
+              <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
+              <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
+
+              </div>
+
+
+
               <div className="specificBreweryContainerBtn">
                 <button className="specificButton" onClick={onAddReview}>
                   <FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" />
                   <p>Add review</p>
                 </button>
+                <OpenImgModalButton 
+                modalComponent={<UploadImg
+                breweryId={+breweryId}
+                />}>
+
+                </OpenImgModalButton>
+                
 
                 {sessionUser && +sessionUser.id === brewery.ownerId && (
                   <button onClick={onEditBrew} className="specificButton">
                     <FontAwesomeIcon icon="fa-solid fa-pen-to-square" />
-                    <p>Edit Brewery</p>
+                    <p>Edit</p>
                   </button>
                 )}
                 {sessionUser && +sessionUser.id === brewery.ownerId && (
                   <button onClick={onDeleteBrewery} className="specificButton">
                     <FontAwesomeIcon icon="fa-solid fa-trash-can" />
-                    <p>Delete Brewery</p>
+                    <p>Delete</p>
                   </button>
+                  
                 )}
               </div>
             </div>
@@ -146,6 +166,9 @@ export const SpecificBrewery = () => {
             </div>
           </div>
           {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}
+          {/* <div className="sortButton">
+
+</div> */}
           <div className="bottomSpecified">
             <div className="locationHolder">
               <h2 className="specificHeader">Location</h2>
@@ -192,9 +215,7 @@ export const SpecificBrewery = () => {
               </div>
             )}
           </div>
-          <div className="sortButton">
 
-          </div>
         </div>
       ) : (
         <div>
