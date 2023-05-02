@@ -113,8 +113,25 @@ export const SpecificBrewery = () => {
               />)}
           
               {images.length > 1&& <div className="siideArrows">
-              <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
-              <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
+              <FontAwesomeIcon 
+              onClick={(e)=>{
+                e.preventDefault()
+                if(imgLen > 0){
+                  setImgLen(imgLen - 1)
+                }
+              }}
+              icon="fa-solid fa-chevron-left" />
+              <FontAwesomeIcon 
+                onClick={(e)=>{
+                  e.preventDefault()
+                  if(imgLen < images.length -1){
+                    console.log(images.length)
+                    console.log(imgLen)
+                    setImgLen(imgLen + 1)
+                  }
+                  
+                }}
+              icon="fa-solid fa-chevron-right" />
 
               </div>}
 
