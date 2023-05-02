@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./imgUpload.css";
-import { createImg } from "../../store/images";
+import { createImg, getImg } from "../../store/images";
 
 import logo from "../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_image-300x300.png";
 
@@ -22,6 +22,9 @@ const UploadImg = ({ breweryId }) => {
           image: file,
         })
       );
+      //??????
+      dispatch(getImg({breweryId}))
+      //??????
       closeModal()
     } else {
       setError(["Invalid file type."]);

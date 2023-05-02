@@ -24,7 +24,6 @@ export const imageSlice = createSlice({
             state.error=action.payload.errors;
         })
         .addCase(createImg.fulfilled, (state, action) => {
-            
             state.allImages.push(action.payload);
             state.error = null
         })
@@ -47,7 +46,7 @@ export const createImg = createAsyncThunk(
         try {
             const formData = new FormData();
             if (image) formData.append("image", image);
-            const response = axios.post(
+            const response = await axios.post(
                 `/api/photos/${breweryId}`,
                 formData,{
                     headers:{
@@ -55,7 +54,9 @@ export const createImg = createAsyncThunk(
                     }
                 }
             )
+            console.log(response.data)
             if (response.data) return response.data;
+            // if (response) return response
         }catch(error){
             return rejectWithValue({errors:error.response.data.errors})
         }

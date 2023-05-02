@@ -102,7 +102,7 @@ export const SpecificBrewery = () => {
 
 
             <div className="specificLeft">
-              {images.length ?(
+              {images.length >= 1 ?(
                 <img
                 className="specificBreweryContainerIMG"
                 src={images[imgLen].URL}
@@ -118,6 +118,7 @@ export const SpecificBrewery = () => {
                 e.preventDefault()
                 if(imgLen > 0){
                   setImgLen(imgLen - 1)
+                 
                 }
               }}
               icon="fa-solid fa-chevron-left" />
