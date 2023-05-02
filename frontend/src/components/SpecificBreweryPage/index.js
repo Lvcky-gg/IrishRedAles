@@ -117,8 +117,9 @@ export const SpecificBrewery = () => {
               onClick={(e)=>{
                 e.preventDefault()
                 if(imgLen > 0){
-                  setImgLen(imgLen - 1)
-                 
+                  setImgLen(imgLen - 1)  
+                }else{
+                  setImgLen(images.length -1)
                 }
               }}
               icon="fa-solid fa-chevron-left" />
@@ -127,6 +128,8 @@ export const SpecificBrewery = () => {
                   e.preventDefault()
                   if(imgLen < images.length -1){
                     setImgLen(imgLen + 1)
+                  }else{
+                    setImgLen(0)
                   }
                   
                 }}
