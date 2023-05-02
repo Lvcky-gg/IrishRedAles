@@ -18,7 +18,7 @@ function OpenImgModalButton({
   return (
     <button onClick={onClick} className="specificButton">
         <FontAwesomeIcon icon="fa-solid fa-camera-retro" />
-        <p>Add  Image</p>
+        <p>Image</p>
     </button>
   );
 }

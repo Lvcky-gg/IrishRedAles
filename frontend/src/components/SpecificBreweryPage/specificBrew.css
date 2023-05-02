@@ -123,6 +123,7 @@
 .specificLeft{
     display:flex;
     flex-direction: column;
+    width:30%;
 }
 .specificHeart{
     padding-right:3%;
@@ -137,6 +138,8 @@
 }
 .specificFont{
     font-family: Rye;
+    width:fit-content;
+    font-size:70px;
 }
 .reviewcardContainer{
     width:60%;

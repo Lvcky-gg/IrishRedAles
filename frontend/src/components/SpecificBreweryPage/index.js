@@ -142,7 +142,7 @@ export const SpecificBrewery = () => {
               <div className="specificBreweryContainerBtn">
                 <button className="specificButton" onClick={onAddReview}>
                   <FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" />
-                  <p>Add review</p>
+                  <p>Review</p>
                 </button>
                 <OpenImgModalButton 
                 modalComponent={<UploadImg
