@@ -7,7 +7,8 @@ const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3.js")
 
 router.post(
     "/:breweryId",
-    singleMulterUpload("image"),
+    // singleMulterUpload("image"),
+    singlePublicFileUpload("image"),
     requireAuth,
     async(req, res)=>{
         const {breweryId} = req.params;
