@@ -1,0 +1,23 @@
+.submitImgFormOut{
+    display:flex;
+    flex-direction: column;
+    width:40%;
+    margin:auto;
+    padding: 15%;
+}
+.submitImgForm{
+    display:flex;
+    flex-direction: column;
+    width:70%;
+    margin:auto;
+    padding-top:5%;
+
+}
+.submitImgForm button {
+    width:30%;
+    margin:auto;
+    margin-top:5%;
+}
+.fa-camera{
+    size:200px;
+}
