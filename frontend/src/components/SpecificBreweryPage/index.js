@@ -22,6 +22,7 @@ export const SpecificBrewery = () => {
   const { breweryId } = useParams();
   const [isLiked, setIsLiked] = useState(false);
   const [likeIdState, setLikeIdState] = useState();
+  const [imgLen, setImgLen] = useState(0)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const breweries = useSelector((state) => state.breweries.allBreweries);
@@ -104,7 +105,7 @@ export const SpecificBrewery = () => {
               {images.length ?(
                 <img
                 className="specificBreweryContainerIMG"
-                src={images[0].URL}
+                src={images[imgLen].URL}
               />
               ):(<img
                 className="specificBreweryContainerIMG"
