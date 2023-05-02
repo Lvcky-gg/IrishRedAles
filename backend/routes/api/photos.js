@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const { requireAuth } = require("../../utils/auth.js");
 const { Photo } = require("../../db/models");
-const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3.js");
+const { singleMulterUpload, singlePublicFileUpload, retrievePrivateFile } = require("../../awsS3.js");
 
 
 router.post(
     "/:breweryId",
-    // singleMulterUpload("image"),
-    singlePublicFileUpload("image"),
+    singleMulterUpload("image"),
+    // singlePublicFileUpload("image"),
     requireAuth,
     async(req, res)=>{
         const {breweryId} = req.params;
