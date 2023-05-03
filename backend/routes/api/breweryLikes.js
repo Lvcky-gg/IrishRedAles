@@ -15,7 +15,6 @@ router.delete("/:breweryId/:likeId", requireAuth, async (req, res) => {
         res.status(200);
         return res.json({ Message: "successfully Deleted" });
       } else {
-        console.log(like.userId);
         res.status(403);
         res.json({ Message: "This like does not belong to you" });
       }

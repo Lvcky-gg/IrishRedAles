@@ -5,10 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Geocode from "react-geocode";
 import RichEditor from "../RichEditor";
 import { filterState } from "../../utils/filterState";
-import {
-  updateBreweries,
-  getAllBreweries,
-} from "../../store/breweries";
+import { updateBreweries, getAllBreweries } from "../../store/breweries";
 import { clearBrewErrors } from "../../store/breweries";
 import { useParams } from "react-router-dom";
 import { upperCaseCity } from "../../utils/uppercaseCity";

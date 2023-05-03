@@ -61,10 +61,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "userId",
         onDelete: "CASCADE",
       });
-     User.hasMany(models.Photo,{
+      User.hasMany(models.Photo, {
         foreignKey: "userId",
         onDelete: "CASCADE",
-      })
+      });
     }
   }
 

@@ -72,18 +72,14 @@ export const SpecificBrewery = () => {
       }
     }
   };
-  console.log(images[imgLen])
+
   const onDeletePhoto = (e) => {
     e.preventDefault();
     if (+sessionUser.id === +images[imgLen].userId) {
       if (window.confirm("Are you sure you want to delete this Image?")) {
-        dispatch(deleteImg(+images[imgLen].id))
-        //  if(imgLen === 1){
-            setImgLen(0)
-          // }else{
-          //   setImgLen(imgLen -1)
-          // }
-  
+        dispatch(deleteImg(+images[imgLen].id));
+
+        setImgLen(0);
       }
     }
   };
@@ -108,18 +104,15 @@ export const SpecificBrewery = () => {
     e.preventDefault();
     navigate(`/breweries/${breweryId}/edit-brewery`);
   };
-console.log(imgLen)
+
   return (
     <div>
       {brewery ? (
         <div>
           <div className="specificBreweryContainer">
             <div className="specificLeft">
-
-
-
               {sessionUser &&
-             images[imgLen]  &&
+              images[imgLen] &&
               images[imgLen].userId === sessionUser.id ? (
                 <div className="buttonCenterDelete">
                   <button onClick={onDeletePhoto} className="buttonStyle">
@@ -129,8 +122,7 @@ console.log(imgLen)
               ) : (
                 <p></p>
               )}
-              {images[imgLen]
-               ? (
+              {images[imgLen] ? (
                 <img
                   className="specificBreweryContainerIMG"
                   src={images[imgLen].URL}

@@ -12,34 +12,32 @@ const UploadImg = ({ breweryId }) => {
   const [file, setFile] = useState(null);
   const [error, setError] = useState([]);
   const dispatch = useDispatch();
-  // console.log(file)
+
   const submitImg = (e) => {
     e.preventDefault();
-    if(file){
-    if (validFile.find((type) =>type === file.type )) {
-      dispatch(
-        createImg({
-          breweryId,
-          image: file,
-        })
-      );
-      closeModal()
+    if (file) {
+      if (validFile.find((type) => type === file.type)) {
+        dispatch(
+          createImg({
+            breweryId,
+            image: file,
+          })
+        );
+        closeModal();
+      } else {
+        setError(["Invalid file type."]);
+      }
     } else {
-      setError(["Invalid file type."]);
+      setError(["File Required."]);
     }
-}else{
-    setError(["File Required."]);
-}
     return;
   };
 
   return (
     <div className="submitImgFormOut">
-        <img src={logo} alt="#"></img>
-        
-      <form 
-      className="submitImgForm"
-      onSubmit={submitImg}>
+      <img src={logo} alt="#"></img>
+
+      <form className="submitImgForm" onSubmit={submitImg}>
         <input
           className="buttonStyle"
           type="file"
@@ -48,7 +46,7 @@ const UploadImg = ({ breweryId }) => {
         <button className="buttonStyle">Submit</button>
       </form>
       {error[0] && (
-        <div className='uploadErr'>
+        <div className="uploadErr">
           <span style={{ color: "red", padding: "5px" }}>
             <i className="fas fa-exclamation-circle"></i>
           </span>

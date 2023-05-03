@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 let options = {};
 if (process.env.NODE_ENV === "production") {
@@ -6,13 +6,13 @@ if (process.env.NODE_ENV === "production") {
 }
 module.exports = {
   async up(queryInterface, Sequelize) {
-    options.tableName = 'Photos'
+    options.tableName = "Photos";
     await queryInterface.createTable(options, {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       breweryId: {
         type: Sequelize.INTEGER,
@@ -25,20 +25,20 @@ module.exports = {
         onDelete: "CASCADE",
       },
       URL: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = 'Photos'
+    options.tableName = "Photos";
     await queryInterface.dropTable(options);
-  }
+  },
 };
