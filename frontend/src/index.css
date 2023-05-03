@@ -63,4 +63,14 @@ p{
 p {
     height:16px;
 }
+::-webkit-scrollbar{
+    color:black;
+    border-radius: 10px;
+
+}
+::-webkit-scrollbar-thumb{
+    background:#B4C4BC;
+    border-radius: 10px;
+    height: 2em;
+}
 
