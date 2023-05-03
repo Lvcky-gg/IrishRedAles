@@ -15,7 +15,8 @@ const UploadImg = ({ breweryId }) => {
   // console.log(file)
   const submitImg = (e) => {
     e.preventDefault();
-    if (validFile.find((type) => type === file.type)) {
+    if(file){
+    if (validFile.find((type) =>type === file.type )) {
       dispatch(
         createImg({
           breweryId,
@@ -26,6 +27,9 @@ const UploadImg = ({ breweryId }) => {
     } else {
       setError(["Invalid file type."]);
     }
+}else{
+    setError(["File Required."]);
+}
     return;
   };
 
@@ -44,7 +48,7 @@ const UploadImg = ({ breweryId }) => {
         <button className="buttonStyle">Submit</button>
       </form>
       {error[0] && (
-        <div>
+        <div className='uploadErr'>
           <span style={{ color: "red", padding: "5px" }}>
             <i className="fas fa-exclamation-circle"></i>
           </span>

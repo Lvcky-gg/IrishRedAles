@@ -30,6 +30,15 @@ export const imageSlice = createSlice({
         .addCase(createImg.rejected, (state, action) => {
             state.error = action.payload.errors;
         })
+        .addCase(deleteImg.fulfilled,(state, action)=>{
+            state.allImages = state.allImages.filter(
+                (img) => img.id !== action.payload
+            )
+            state.error = null
+        })
+        .addCase(deleteImg.rejected,(state, action)=>{
+            state.error = action.payload.error
+        })
 
     }
 })
@@ -79,5 +88,23 @@ export const getImg = createAsyncThunk(
         return data;
       }
 )
+
+export const deleteImg = createAsyncThunk(
+    "images/deleteImages",
+    async(fileId, {rejectWithValue})=>{
+        const response = await csrfFetch(`/api/photos/${fileId}`,{
+            method:"DELETE",
+            headers: {
+                "Content-Type": "application/json",
+              },
+        })
+        if (!response.ok) {
+            const errData = await response.json();
+      
+            return rejectWithValue(errData);
+          }
+        return fileId;
+    })
+
 
 export default imageSlice.reducer
