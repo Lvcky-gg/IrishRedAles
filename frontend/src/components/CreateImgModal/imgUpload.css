@@ -21,3 +21,8 @@
 .fa-camera{
     size:200px;
 }
+.uploadErr{
+    width: fit-content;
+    margin:auto;
+    margin-top:4%;
+}

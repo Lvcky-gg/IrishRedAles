@@ -17,8 +17,14 @@
     margin:auto;
     border-radius: 3% 3% 0% 0%;
     display:flex;
-    max-height:80%;
+    max-height:70%;
     height:350px;
+}
+.buttonCenterDelete{
+    position: relative;
+    top:62%;
+    width: fit-content;
+    margin:auto;
 }
 
 .specificBreweryContainerBtn{

@@ -16,18 +16,18 @@ import MapPageB from "./specifiedMap";
 import { getAllReviewLikes } from "../../store/reviewLikes";
 import OpenImgModalButton from "../OpenImgModal";
 import UploadImg from "../CreateImgModal";
-import { getImg } from "../../store/images";
+import { deleteImg, getImg } from "../../store/images";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
   const [isLiked, setIsLiked] = useState(false);
   const [likeIdState, setLikeIdState] = useState();
-  const [imgLen, setImgLen] = useState(0)
+  const [imgLen, setImgLen] = useState(0);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const breweries = useSelector((state) => state.breweries.allBreweries);
   const reviews = useSelector((state) => state.reviews.allReviews);
-  const images = useSelector((state)=>state.images.allImages)
+  const images = useSelector((state) => state.images.allImages);
   const brewLikes = useSelector((state) => state.breweryLikes.breweryLikes);
   const sessionUser = useSelector((state) => state.session.user);
   let brewery;
@@ -52,7 +52,7 @@ export const SpecificBrewery = () => {
     dispatch(getReviewsByBrewery(+breweryId));
     dispatch(getBreweryLikes(+breweryId));
     dispatch(getAllReviewLikes());
-    dispatch(getImg({breweryId}))
+    dispatch(getImg({ breweryId }));
   }, [dispatch, breweryId]);
 
   const onAddReview = (e) => {
@@ -69,6 +69,21 @@ export const SpecificBrewery = () => {
       if (window.confirm("Are you sure you want to delete this brewery?")) {
         dispatch(deleteBrewery(+breweryId));
         navigate("/");
+      }
+    }
+  };
+  console.log(images[imgLen])
+  const onDeletePhoto = (e) => {
+    e.preventDefault();
+    if (+sessionUser.id === +images[imgLen].userId) {
+      if (window.confirm("Are you sure you want to delete this Image?")) {
+        dispatch(deleteImg(+images[imgLen].id))
+        //  if(imgLen === 1){
+            setImgLen(0)
+          // }else{
+          //   setImgLen(imgLen -1)
+          // }
+  
       }
     }
   };
@@ -93,64 +108,78 @@ export const SpecificBrewery = () => {
     e.preventDefault();
     navigate(`/breweries/${breweryId}/edit-brewery`);
   };
-
+console.log(imgLen)
   return (
     <div>
       {brewery ? (
         <div>
           <div className="specificBreweryContainer">
-
-
             <div className="specificLeft">
-              {images.length >= 1 ?(
+
+
+
+              {sessionUser &&
+             images[imgLen]  &&
+              images[imgLen].userId === sessionUser.id ? (
+                <div className="buttonCenterDelete">
+                  <button onClick={onDeletePhoto} className="buttonStyle">
+                    Delete Image
+                  </button>
+                </div>
+              ) : (
+                <p></p>
+              )}
+              {images[imgLen]
+               ? (
                 <img
-                className="specificBreweryContainerIMG"
-                src={images[imgLen].URL}
-              />
-              ):(<img
-                className="specificBreweryContainerIMG"
-                src="https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp"
-              />)}
-          
-              {images.length > 1&& <div className="siideArrows">
-              <FontAwesomeIcon 
-              onClick={(e)=>{
-                e.preventDefault()
-                if(imgLen > 0){
-                  setImgLen(imgLen - 1)  
-                }else{
-                  setImgLen(images.length -1)
-                }
-              }}
-              icon="fa-solid fa-chevron-left" />
-              <FontAwesomeIcon 
-                onClick={(e)=>{
-                  e.preventDefault()
-                  if(imgLen < images.length -1){
-                    setImgLen(imgLen + 1)
-                  }else{
-                    setImgLen(0)
-                  }
-                  
-                }}
-              icon="fa-solid fa-chevron-right" />
+                  className="specificBreweryContainerIMG"
+                  src={images[imgLen].URL}
+                />
+              ) : (
+                <img
+                  className="specificBreweryContainerIMG"
+                  src="https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp"
+                />
+              )}
 
-              </div>}
-
-
+              {images.length > 1 && (
+                <div className="siideArrows">
+                  <FontAwesomeIcon
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (imgLen > 0) {
+                        setImgLen(imgLen - 1);
+                      } else {
+                        setImgLen(images.length - 1);
+                      }
+                    }}
+                    icon="fa-solid fa-chevron-left"
+                  />
+                  <FontAwesomeIcon
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (imgLen < images.length - 1) {
+                        setImgLen(imgLen + 1);
+                      } else {
+                        setImgLen(0);
+                      }
+                    }}
+                    icon="fa-solid fa-chevron-right"
+                  />
+                </div>
+              )}
 
               <div className="specificBreweryContainerBtn">
                 <button className="specificButton" onClick={onAddReview}>
                   <FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" />
                   <p>Review</p>
                 </button>
-                <OpenImgModalButton 
-                modalComponent={<UploadImg
-                breweryId={+breweryId}
-                />}>
 
-                </OpenImgModalButton>
-                
+                {sessionUser && (
+                  <OpenImgModalButton
+                    modalComponent={<UploadImg breweryId={+breweryId} />}
+                  ></OpenImgModalButton>
+                )}
 
                 {sessionUser && +sessionUser.id === brewery.ownerId && (
                   <button onClick={onEditBrew} className="specificButton">
@@ -163,7 +192,6 @@ export const SpecificBrewery = () => {
                     <FontAwesomeIcon icon="fa-solid fa-trash-can" />
                     <p>Delete</p>
                   </button>
-                  
                 )}
               </div>
             </div>
@@ -244,7 +272,6 @@ export const SpecificBrewery = () => {
               </div>
             )}
           </div>
-
         </div>
       ) : (
         <div>

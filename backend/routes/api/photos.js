@@ -11,7 +11,7 @@ const {
 
 
 AWS.config.update({
-    region: "us-east-1",
+    region: "us-east-2",
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   });
@@ -61,7 +61,8 @@ router.delete("/:fileId", async (req, res) => {
   const file = await Photo.findOne({ where: { id: +fileId } });
   if (file) {
     if(+req.user.id === +file.userId){
-    deleteFile(file.URL)
+       const fileName = file.URL.split('/')[3]
+    deleteFile(fileName)
 
     await file.destroy()
     res.status(200)
