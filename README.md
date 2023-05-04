@@ -93,7 +93,7 @@
 
 #### Note
 - lvcky-correct-state-spelling is my own NPM package
-- filter state is the function used from it to check state spelling
+- filterState is the function used from it to check state spelling
 
 ## Local Deployment
 ### ENV Example Backend
