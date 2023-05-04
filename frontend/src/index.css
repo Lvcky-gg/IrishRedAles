@@ -16,7 +16,11 @@ p{
     color:#B4C4BC;
 }
 
+h1{
+ overflow-wrap: break-word;
 
+word-break:keep-all;
+}
 @font-face {
     font-family: Rye;
     src: local('Rye'),

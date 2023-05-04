@@ -20,6 +20,15 @@
     max-height:70%;
     height:350px;
 }
+.menuHead{
+    width:fit-content;
+    font-family: Rye;
+    margin:auto;
+    padding:2%;
+}
+.menuHolder{
+    height: 100%;
+}
 .buttonCenterDelete{
     position: relative;
     top:62%;
@@ -181,8 +190,8 @@
 }
 .sortButton {
     width:80%;
-    height:250px;
     margin:auto;
+    padding-bottom: 5%;
     margin-bottom: 1%;
     margin-top: 1%;
     border-radius: 3%;

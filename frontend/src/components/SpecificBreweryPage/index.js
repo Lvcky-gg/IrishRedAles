@@ -215,9 +215,13 @@ export const SpecificBrewery = () => {
             </div>
           </div>
           {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}
-          {/* <div className="sortButton">
+          <div className="sortButton">
+            <h1 className="menuHead">Menu</h1>
+            <div className="menuHolder">
+              </div>
 
-</div> */}
+            </div>
+             {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}
           <div className="bottomSpecified">
             <div className="locationHolder">
               <h2 className="specificHeader">Location</h2>

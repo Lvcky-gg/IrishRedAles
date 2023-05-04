@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "breweryId",
         onDelete: "CASCADE",
       });
+      Brewery.hasMany(models.Beer, {
+        foreignKey: "breweryId",
+        onDelete: "CASCADE",
+      });
     }
   }
   Brewery.init(
@@ -38,8 +42,8 @@ module.exports = (sequelize, DataTypes) => {
             }
           },
           isLessThanFifty(str) {
-            if (str.length > 50) {
-              throw new Error("Name can not be longer than fifty characters.");
+            if (str.length > 20) {
+              throw new Error("Name can not be longer than twenty characters.");
             }
           },
         },
