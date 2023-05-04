@@ -216,7 +216,7 @@ export const SpecificBrewery = () => {
           </div>
           {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}
           <div className="sortButton">
-            <h1 className="menuHead">Menu</h1>
+            <h1 className="menuHead">Brews</h1>
             <div className="menuHolder">
               </div>
 

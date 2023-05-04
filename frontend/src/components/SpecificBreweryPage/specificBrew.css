@@ -150,6 +150,9 @@
     font-family: Rye;
     width:fit-content;
     font-size:70px;
+    overflow-wrap: break-word;
+
+    word-break:break-all;
 }
 .reviewcardContainer{
     width:60%;

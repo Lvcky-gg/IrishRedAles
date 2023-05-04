@@ -35,6 +35,8 @@
 }
 .breweryCardcontainerInner h2, p{
     width:fit-content;
+    overflow-wrap: break-word;
+    word-break:break-all
 }
 .breweryCardImg {
     width:100%;
