@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { requireAuth } = require("../../utils/auth.js");
 const { Beer, Brewery } = require("../../db/models");
+const beer = require("../../db/models/beer.js");
 
 
 router.get("/:breweryId",  async (req, res) => {
@@ -46,9 +47,48 @@ router.post("/:breweryId", requireAuth, async (req, res) => {
 
 })
 router.put("/:beerId", requireAuth, async (req, res) => {
+    const {beerId} = req.params;
+    const {name, price} = req.body
+    const userId = req.user.id
+    const beer = await Beer.findOne({where:{id:+beerId}})
+    if(beer){
+        if(+userId === +beer.userId){
+            const mod = await beer.update({name, price})
+            res.status(200)
+            return res.json(mod)
+
+        }else{
+            res.status(403)
+            return res.json({"message":"This beer does not belong to you"})
+        }
+        
+
+    }else{
+        res.status(404)
+        return res.json({"message":"This beer does not exist"})
+    }
 
 })
 router.delete("/:beerId", requireAuth, async (req, res) => {
+    const {beerId} = req.params;
+    const userId = req.user.id
+    const beer = await Beer.findOne({where:{id:+beerId}})
+    if(beer){
+        if(+userId === +beer.userId){
+            beer.destroy()
+            res.status(200)
+            return res.json({"message":"success"})
+
+        }else{
+            res.status(403)
+            return res.json({"message":"This beer does not belong to you"})
+        }
+        
+
+    }else{
+        res.status(404)
+        return res.json({"message":"This beer does not exist"})
+    }
 
 })
 

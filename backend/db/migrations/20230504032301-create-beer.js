@@ -22,6 +22,13 @@ module.exports = {
         type: Sequelize.DECIMAL,
         allowNull: false
       },
+      userId:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: "Users" },
+        onDelete: "CASCADE",
+
+      },
       breweryId: {
         type: Sequelize.INTEGER,
         allowNull: false,

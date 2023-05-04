@@ -15,17 +15,20 @@ module.exports = {
         {
           breweryId:1,
           name:"Sample Beer One",
-          price:6.45
+          price:6.45,
+          userId:1
         },
         {
           breweryId:1,
           name:"Sample Beer Two",
-          price:6.25
+          price:6.25,
+          userId:1
         },
         {
           breweryId:1,
           name:"Sample Beer Three",
-          price:6.75
+          price:6.75,
+          userId:1
         },
 
       ])

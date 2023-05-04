@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Beer.belongsTo(models.Brewery, { foreignKey: "breweryId" });
+      Beer.belongsTo(models.User, { foreignKey: "userId" });
     }
   }
   Beer.init({
@@ -40,6 +41,10 @@ module.exports = (sequelize, DataTypes) => {
       //     if(price.split('.')[1])
       //   }
       // }
+    },
+    userId:{
+      type:DataTypes.INTEGER,
+      allowNull:false
     },
     breweryId:{ 
       type:DataTypes.INTEGER,
