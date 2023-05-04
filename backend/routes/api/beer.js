@@ -7,7 +7,7 @@ const { Beer, Brewery } = require("../../db/models");
 router.get("/:breweryId",  async (req, res) => {
     const {breweryId} = req.params;
     const beers = await Beer.findAll({where:{breweryId:+breweryId}})
-    if(beers){
+    if(beers.length){
         res.status(200)
         return res.json({beers})
 
@@ -21,7 +21,7 @@ router.post("/:breweryId", requireAuth, async (req, res) => {
     const {breweryId} = req.params;
     const {name, price} = req.body
     const userId = req.user.id
-    const brewery = await Brewery.findOne({where:{breweryId:+breweryId}})
+    const brewery = await Brewery.findOne({where:{id:+breweryId}})
     if(brewery){
         if(+brewery.ownerId === +userId  ){
             const newBeer = await Beer.create({
