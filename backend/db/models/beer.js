@@ -34,7 +34,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     price: {
       type:DataTypes.DECIMAL,
-      allowNull:false
+      allowNull:false,
+      // validate:{
+      //   isCorrect(price){
+      //     if(price.split('.')[1])
+      //   }
+      // }
     },
     breweryId:{ 
       type:DataTypes.INTEGER,
