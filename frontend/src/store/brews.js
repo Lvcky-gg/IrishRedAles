@@ -114,10 +114,10 @@ export const createBrew = createAsyncThunk(
 
 export const editBrew = createAsyncThunk(
     "brews/editBrew",
-    async({breweryId, name, price}, {rejectWithValue})=>{
+    async({beerId, name, price}, {rejectWithValue})=>{
         try {
             const response = await axios.put(
-                `/api/beers/${+breweryId}`,
+                `/api/beers/${+beerId}`,
                 JSON.stringify({name, price}),
                 {
                     headers: {

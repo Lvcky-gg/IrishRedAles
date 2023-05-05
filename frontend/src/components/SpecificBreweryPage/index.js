@@ -20,6 +20,8 @@ import { deleteImg, getImg } from "../../store/images";
 import { deleteBrew, getBrews } from "../../store/brews";
 import OpenModalButton from "../OpenModalButton";
 import CreateBrew from "../CreateBrewModal";
+import { useModal } from "../../context/Modal";
+import EditBrew from "../editBeer";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -33,7 +35,8 @@ export const SpecificBrewery = () => {
   const images = useSelector((state) => state.images.allImages);
   const brewLikes = useSelector((state) => state.breweryLikes.breweryLikes);
   const sessionUser = useSelector((state) => state.session.user);
-  const brews = useSelector((state)=> state.brews.brews.beers)
+  const brews = useSelector((state)=> state.brews.brews.beers);
+  const { setModalContent, setOnModalClose } = useModal();
   let brewery;
   for (let i = 0; i < breweries.length; i++) {
     if (breweries[i].id === +breweryId) brewery = breweries[i];
@@ -109,8 +112,14 @@ console.log(brews)
     e.preventDefault();
     navigate(`/breweries/${breweryId}/edit-brewery`);
   };
-  const onEditBeer = (e, id) => {
+  const onEditBeer = (e, id, name, price) => {
     e.preventDefault()
+    setModalContent(
+    <EditBrew
+    beerId={+id}
+    beername={name}
+    beerprice={price}
+    ></EditBrew>);
    
   }
   const onDeleteBeer = (e, id) => {
@@ -252,7 +261,7 @@ console.log(brews)
                           sessionUser && +sessionUser.id === +brewery.ownerId && (
                             <div>
                             <FontAwesomeIcon 
-                            onClick={onEditBeer}
+                            onClick={(e)=>onEditBeer(e, id, name, price)}
                             className="penBrews"
                             icon="fa-solid fa-pen-to-square" />
                             {"      "}
