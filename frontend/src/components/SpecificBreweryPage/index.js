@@ -18,6 +18,8 @@ import OpenImgModalButton from "../OpenImgModal";
 import UploadImg from "../CreateImgModal";
 import { deleteImg, getImg } from "../../store/images";
 import { deleteBrew, getBrews } from "../../store/brews";
+import OpenModalButton from "../OpenModalButton";
+import CreateBrew from "../CreateBrewModal";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -117,7 +119,6 @@ console.log(brews)
       dispatch(deleteBrew(+id))
     }
   }
-
   return (
     <div>
       {brewery ? (
@@ -230,6 +231,17 @@ console.log(brews)
           {/* <div className="specificBreweryContainerimgs">images placeholder</div> */}
           <div className="sortButton">
             <h1 className="menuHead">Brews</h1>
+           { sessionUser && +sessionUser.id === brewery.ownerId &&
+           <div className="createBrewModal">
+             <OpenModalButton
+             
+             buttonText="Add Brew"
+            //  onModalClose={closeMenu}
+             modalComponent={
+             <CreateBrew
+             breweryId={breweryId}
+             />}/>
+             </div>}
             <div className="menuHolder">
                   {
                     brews && brews.length ?(

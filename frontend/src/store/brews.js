@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { csrfFetch } from "./csrf";
 import axios from "axios"
+import Cookies from "js-cookie";
 
 const initialState = {
     brews:[],
@@ -27,12 +28,32 @@ export const brewsSlice = createSlice({
             state.errors = action.error
         })
         .addCase(deleteBrew.fulfilled,(state, action)=>{
-            state.brews = state.brews.beers.filter(
+            state.brews.beers = state.brews.beers.filter(
                 (brew) => brew.id !== action.payload
             )
             state.errors = null
         })
         .addCase(deleteBrew.rejected,(state, action)=>{})
+        .addCase(createBrew.fulfilled, (state, action)=>{
+            console.log(action)
+            console.log(state.brews)
+            state.brews.beers.push(action.payload)
+            state.errors = null
+        })
+        .addCase(createBrew.rejected, (state, action)=>{
+            state.errors = action.payload.errors;
+        })
+        .addCase(editBrew.fulfilled, (state, action)=>{
+            const updateBeer = action.payload;
+            const idx = state.brews.beers.findIndex(
+              (beer) => beer.id === updateBeer.id
+            );
+            state.brews.beers[idx] = updateBeer;
+            state.errors = null;
+        })
+        .addCase(editBrew.rejected, (state, action)=>{
+            state.errors = action.payload.errors;
+        })
     }
 })
 export const getBrews = createAsyncThunk(
@@ -68,6 +89,47 @@ export const deleteBrew = createAsyncThunk(
             return rejectWithValue(errData);
           }
           return beerId;
+    }
+)
+export const createBrew = createAsyncThunk(
+    "brews/createBrew",
+    async({breweryId, name, price}, {rejectWithValue})=>{
+        try {
+            const response = await axios.post(
+                `/api/beers/${+breweryId}`,
+                JSON.stringify({name, price}),
+                {
+                    headers: {
+                      "Content-Type": "application/json",
+                      "XSRF-Token": Cookies.get("XSRF-TOKEN"),
+                    },
+                }
+            )
+            if (response.data) return response.data;
+        }catch(error){
+            return rejectWithValue({ errors: error.response.data.errors });
+        }
+    }
+)
+
+export const editBrew = createAsyncThunk(
+    "brews/editBrew",
+    async({breweryId, name, price}, {rejectWithValue})=>{
+        try {
+            const response = await axios.put(
+                `/api/beers/${+breweryId}`,
+                JSON.stringify({name, price}),
+                {
+                    headers: {
+                      "Content-Type": "application/json",
+                      "XSRF-Token": Cookies.get("XSRF-TOKEN"),
+                    },
+                }
+            )
+            if (response.data) return response.data;
+        }catch(error){
+            return rejectWithValue({ errors: error.response.data.errors });
+        }
     }
 )
     export default brewsSlice.reducer;

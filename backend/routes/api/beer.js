@@ -22,13 +22,15 @@ router.post("/:breweryId", requireAuth, async (req, res) => {
     const {breweryId} = req.params;
     const {name, price} = req.body
     const userId = req.user.id
+    console.log(userId)
     const brewery = await Brewery.findOne({where:{id:+breweryId}})
     if(brewery){
         if(+brewery.ownerId === +userId  ){
             const newBeer = await Beer.create({
                 name,
                 price,
-                breweryId:+breweryId
+                breweryId:+breweryId,
+                userId
             })
             res.status(200)
             return res.json(newBeer)

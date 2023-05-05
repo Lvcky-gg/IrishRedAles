@@ -32,13 +32,16 @@
     flex-flow: wrap;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin-top:2%;
 }
 .menuHolder>h4{
-    width:fit-content;
-    padding:5%;
+    width:33%;
+    padding:3%;
     font-size: 25px;
     color:#B4C4BC;
     margin:auto;
+    display: flex;
+    justify-content: center;
 }
 .buttonCenterDelete{
     position: relative;
@@ -214,7 +217,12 @@
     border-right: 3px outset rgba(0,0,0.5);
     border-bottom: 3px outset rgba(0,0,0.5);
 }
+
 .penBrews:hover{
     color:black;
     cursor: pointer;
+}
+.createBrewModal{
+    width: 8%;
+    margin:auto;
 }
