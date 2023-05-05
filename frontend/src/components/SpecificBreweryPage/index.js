@@ -17,6 +17,7 @@ import { getAllReviewLikes } from "../../store/reviewLikes";
 import OpenImgModalButton from "../OpenImgModal";
 import UploadImg from "../CreateImgModal";
 import { deleteImg, getImg } from "../../store/images";
+import { deleteBrew, getBrews } from "../../store/brews";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -30,11 +31,12 @@ export const SpecificBrewery = () => {
   const images = useSelector((state) => state.images.allImages);
   const brewLikes = useSelector((state) => state.breweryLikes.breweryLikes);
   const sessionUser = useSelector((state) => state.session.user);
+  const brews = useSelector((state)=> state.brews.brews.beers)
   let brewery;
   for (let i = 0; i < breweries.length; i++) {
     if (breweries[i].id === +breweryId) brewery = breweries[i];
   }
-
+console.log(brews)
   useEffect(() => {
     if (sessionUser) {
       if (brewLikes.length === 0) setIsLiked(false);
@@ -53,6 +55,7 @@ export const SpecificBrewery = () => {
     dispatch(getBreweryLikes(+breweryId));
     dispatch(getAllReviewLikes());
     dispatch(getImg({ breweryId }));
+    dispatch(getBrews(+breweryId))
   }, [dispatch, breweryId]);
 
   const onAddReview = (e) => {
@@ -104,6 +107,16 @@ export const SpecificBrewery = () => {
     e.preventDefault();
     navigate(`/breweries/${breweryId}/edit-brewery`);
   };
+  const onEditBeer = (e, id) => {
+    e.preventDefault()
+   
+  }
+  const onDeleteBeer = (e, id) => {
+    e.preventDefault()
+    if (window.confirm("Are you sure you want to delete this Brew?")) {
+      dispatch(deleteBrew(+id))
+    }
+  }
 
   return (
     <div>
@@ -218,6 +231,33 @@ export const SpecificBrewery = () => {
           <div className="sortButton">
             <h1 className="menuHead">Brews</h1>
             <div className="menuHolder">
+                  {
+                    brews && brews.length ?(
+                      brews.map(({id,name, price})=>(
+                        <h4
+                          key={id}
+                        >{`Brew: ${name} | Price: $${price}`}{
+                          sessionUser && +sessionUser.id === +brewery.ownerId && (
+                            <div>
+                            <FontAwesomeIcon 
+                            onClick={onEditBeer}
+                            className="penBrews"
+                            icon="fa-solid fa-pen-to-square" />
+                            {"      "}
+                            <FontAwesomeIcon 
+                            onClick={(e)=>onDeleteBeer(e,id)}
+                            className="penBrews"
+                            icon="fa-solid fa-trash-can" />
+                            </div>
+                          )
+                        }</h4>
+                      ))
+
+                    ):(
+                      <h2>There are no brews here yet</h2>
+                      
+                    )
+                  }
               </div>
 
             </div>
