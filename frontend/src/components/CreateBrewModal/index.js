@@ -14,7 +14,6 @@ const CreateBrew = ({breweryId}) => {
   const [price, setPrice] = useState(0.0);
   const [name, setName] = useState("");
   const errors = useSelector((state)=> state.brews.errors)
-    console.log(breweryId)
  const onSubmit = async(e) => {
     e.preventDefault();
     const newBrew = await dispatch(createBrew({

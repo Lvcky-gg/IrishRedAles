@@ -9,9 +9,7 @@ import logo from "../../images/086f9e39-3d3b-431d-b928-a129c3901f2d-profile_imag
 
 const EditBrew = ({beerId, beername, beerprice}) => {
     const dispatch = useDispatch()
-    console.log(beerId)
   const { closeModal, setOnModalClose } = useModal();
-  const [inputValidate, setInputValidate] = useState([]);
   const [price, setPrice] = useState(beerprice);
   const [name, setName] = useState(beername);
   const errors = useSelector((state)=> state.brews.errors)
