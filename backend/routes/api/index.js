@@ -7,6 +7,7 @@ const reviewRouter = require("./review.js");
 const reviewLikeRouter = require("./reviewLikes.js");
 const breweryLikeRouter = require("./breweryLikes.js");
 const photoRouter = require("./photos.js");
+const beerRouter = require("./beer.js")
 
 const { restoreUser } = require("../../utils/auth.js");
 const { route } = require("./session.js");
@@ -20,6 +21,7 @@ router.use("/brewery-likes", breweryLikeRouter);
 router.use("/review-likes", reviewLikeRouter);
 router.use("/users", usersRouter);
 router.use("/photos", photoRouter);
+router.use("/beers", beerRouter)
 
 router.post("/test", function (req, res) {
   res.json({ requestBody: req.body });

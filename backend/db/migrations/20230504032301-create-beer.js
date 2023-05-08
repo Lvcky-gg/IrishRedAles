@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /** @type {import('sequelize-cli').Migration} */
 let options = {};
 if (process.env.NODE_ENV === "production") {
@@ -6,26 +6,34 @@ if (process.env.NODE_ENV === "production") {
 }
 module.exports = {
   async up(queryInterface, Sequelize) {
-    options.tableName = "Photos";
+    options.tableName = 'Beers'
     await queryInterface.createTable(options, {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      price: {
+        type: Sequelize.DECIMAL,
+        allowNull: false
+      },
+      userId:{
         type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: "Users" },
+        onDelete: "CASCADE",
+
       },
       breweryId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: { model: "Breweries" },
         onDelete: "CASCADE",
-      },
-      userId: {
-        type: Sequelize.INTEGER,
-        references: { model: "Users" },
-        onDelete: "CASCADE",
-      },
-      URL: {
-        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -36,11 +44,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      },
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = "Photos";
+    options.tableName = 'Beers'
     await queryInterface.dropTable(options);
-  },
+  }
 };

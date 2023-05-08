@@ -7,6 +7,7 @@ import reviewReducer from "./reviews";
 import breweryLikeReducer from "./breweryLikes";
 import reviewLikeReducer from "./reviewLikes";
 import imageReducer from "./images"
+import brewReducer from "./brews"
 const middleware = [loadingMiddleware];
 
 if (process.env.NODE_ENV === "development") {
@@ -23,6 +24,7 @@ const store = configureStore({
     breweryLikes: breweryLikeReducer,
     reviewLikes: reviewLikeReducer,
     images:imageReducer,
+    brews:brewReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middleware),
