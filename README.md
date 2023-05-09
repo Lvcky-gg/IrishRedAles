@@ -54,6 +54,8 @@
   * state will autocorrect if mispelled
   * city is case insensitive
   * the home page will prompt a geolocation. This allows the initial state to be set in your location
+### Feature 8: Brews
+  * "/breweries/:breweryId" Allows full crud of this feature if you are the owner of the brewery
 ### Additional Routes: Redirect
   * If there are no items matching a search, "/breweries" will render a redirect home with a button to go to "/create-brewery"
   * If an unauthenticated user tries to do something, they will go to "/redirect-login" with options for login or signup
