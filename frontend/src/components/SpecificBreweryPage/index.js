@@ -259,7 +259,7 @@ console.log(brews)
                           key={id}
                         >{`Brew: ${name} | Price: $${price}`}{
                           sessionUser && +sessionUser.id === +brewery.ownerId && (
-                            <div>
+                            <div className="buttonsEditBeer">
                             <FontAwesomeIcon 
                             onClick={(e)=>onEditBeer(e, id, name, price)}
                             className="penBrews"
