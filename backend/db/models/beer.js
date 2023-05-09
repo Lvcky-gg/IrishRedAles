@@ -36,11 +36,12 @@ module.exports = (sequelize, DataTypes) => {
     price: {
       type:DataTypes.DECIMAL,
       allowNull:false,
-      // validate:{
-      //   isCorrect(price){
-      //     if(price.split('.')[1])
-      //   }
-      // }
+      validate:{
+        isCorrect(price){
+          if(price.length < 4)throw new Error("Input valid price.")
+          if(price > 50)throw new Error("Price is too high")
+        }
+      }
     },
     userId:{
       type:DataTypes.INTEGER,
