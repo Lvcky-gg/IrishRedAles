@@ -11,7 +11,7 @@ const CreateBrew = ({breweryId}) => {
     const dispatch = useDispatch()
   const { closeModal, setOnModalClose } = useModal();
   const [inputValidate, setInputValidate] = useState([]);
-  const [price, setPrice] = useState(0.0);
+  const [price, setPrice] = useState(0.00);
   const [name, setName] = useState("");
   const errors = useSelector((state)=> state.brews.errors)
  const onSubmit = async(e) => {
@@ -57,7 +57,7 @@ const CreateBrew = ({breweryId}) => {
             value={price}
             min="0.00"
             step="0.01"
-            presicion={2}
+            precision={2}
             onChange={(e) => setPrice(e.target.value)}
             required
           ></input>

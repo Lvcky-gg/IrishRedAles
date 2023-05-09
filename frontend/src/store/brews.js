@@ -35,6 +35,7 @@ export const brewsSlice = createSlice({
         })
         .addCase(deleteBrew.rejected,(state, action)=>{})
         .addCase(createBrew.fulfilled, (state, action)=>{
+
             state.brews.beers.push(action.payload)
             state.errors = null
         })

@@ -41,7 +41,6 @@ export const SpecificBrewery = () => {
   for (let i = 0; i < breweries.length; i++) {
     if (breweries[i].id === +breweryId) brewery = breweries[i];
   }
-console.log(brews)
   useEffect(() => {
     if (sessionUser) {
       if (brewLikes.length === 0) setIsLiked(false);
@@ -259,7 +258,7 @@ console.log(brews)
                           key={id}
                         >{`Brew: ${name} | Price: $${price}`}{
                           sessionUser && +sessionUser.id === +brewery.ownerId && (
-                            <div>
+                            <div className="buttonsEditBeer">
                             <FontAwesomeIcon 
                             onClick={(e)=>onEditBeer(e, id, name, price)}
                             className="penBrews"
