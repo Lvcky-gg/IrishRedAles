@@ -41,7 +41,6 @@ export const SpecificBrewery = () => {
   for (let i = 0; i < breweries.length; i++) {
     if (breweries[i].id === +breweryId) brewery = breweries[i];
   }
-console.log(brews)
   useEffect(() => {
     if (sessionUser) {
       if (brewLikes.length === 0) setIsLiked(false);
