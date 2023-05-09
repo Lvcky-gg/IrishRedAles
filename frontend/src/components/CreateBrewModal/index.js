@@ -57,7 +57,7 @@ const CreateBrew = ({breweryId}) => {
             value={price}
             min="0.00"
             step="0.01"
-            presicion={2}
+            precision={2}
             onChange={(e) => setPrice(e.target.value)}
             required
           ></input>
