@@ -3,10 +3,7 @@ import { csrfFetch } from "./csrf";
 import axios from "axios"
 import Cookies from "js-cookie";
 
-const initialState = {
-    brews:[],
-    errors:null
-}
+
 export const brewsSlice = createSlice({
     name:"brews",
     initialState:{

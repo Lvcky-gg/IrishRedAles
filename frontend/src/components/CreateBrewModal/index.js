@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useSyncExternalStore } from "react";
+import React, {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { createBrew } from "../../store/brews";
@@ -9,8 +9,7 @@ import "./createBrew.css";
 
 const CreateBrew = ({breweryId}) => {
     const dispatch = useDispatch()
-  const { closeModal, setOnModalClose } = useModal();
-  const [inputValidate, setInputValidate] = useState([]);
+  const { closeModal} = useModal();
   const [price, setPrice] = useState(0.00);
   const [name, setName] = useState("");
   const errors = useSelector((state)=> state.brews.errors)

@@ -36,7 +36,7 @@ export const SpecificBrewery = () => {
   const brewLikes = useSelector((state) => state.breweryLikes.breweryLikes);
   const sessionUser = useSelector((state) => state.session.user);
   const brews = useSelector((state)=> state.brews.brews.beers);
-  const { setModalContent, setOnModalClose } = useModal();
+  const { setModalContent } = useModal();
   let brewery;
   for (let i = 0; i < breweries.length; i++) {
     if (breweries[i].id === +breweryId) brewery = breweries[i];
@@ -148,10 +148,12 @@ export const SpecificBrewery = () => {
                 <img
                   className="specificBreweryContainerIMG"
                   src={images[imgLen].URL}
+                  alt="#"
                 />
               ) : (
                 <img
                   className="specificBreweryContainerIMG"
+                  alt="#"
                   src="https://imgs.search.brave.com/xjs25IGx1dhPbD6ueLPad87O61xUBgTRbd8qeIHCFwQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/aUZzel90dlB5R0Vw/VXpoSDFONkVRSGFG/aiZwaWQ9QXBp"
                 />
               )}
