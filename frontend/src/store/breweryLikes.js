@@ -1,9 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { csrfFetch } from "./csrf";
 
-// const initialState = {
-//     breweryLikes: [],
-// }
 export const breweryLikeSlice = createSlice({
   name: "breweryLikes",
   initialState: {
