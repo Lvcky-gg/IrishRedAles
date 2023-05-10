@@ -2,6 +2,10 @@
 ## Brews and Reviews
 
 ![image][def]
+![image][def1]
+![image][def2]
+![image][def3]
+![image][def4]
 
 ## Introduction
 
@@ -147,3 +151,7 @@
 
 
 [def]: ./irishRedAle.png
+[def1]: ./ales1.png
+[def2]: ./ales2.png
+[def3]: ./ales3.png
+[def4]: ./ales4.png
