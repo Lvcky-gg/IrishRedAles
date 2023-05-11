@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getReviewLikes } from "../../store/reviewLikes";
 import { getReviewsByBrewery } from "../../store/reviews";
+import { returnState } from "../../utils/returnState";
 import "./breweryCard.css";
 
 const BreweryCard = ({ id, breweryName, city, state }) => {
@@ -23,7 +24,7 @@ const BreweryCard = ({ id, breweryName, city, state }) => {
       <div className="breweryCardInner">
         <h1>{breweryName}</h1>
         <h2>
-          {city}, {state}
+          {city}, {returnState(state)}
         </h2>
       </div>
     </div>

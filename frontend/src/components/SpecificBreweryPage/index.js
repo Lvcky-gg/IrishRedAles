@@ -22,6 +22,7 @@ import OpenModalButton from "../OpenModalButton";
 import CreateBrew from "../CreateBrewModal";
 import { useModal } from "../../context/Modal";
 import EditBrew from "../editBeer";
+import { returnState } from "../../utils/returnState";
 
 export const SpecificBrewery = () => {
   const { breweryId } = useParams();
@@ -290,7 +291,7 @@ export const SpecificBrewery = () => {
               <div className="locationHolderSpecific">
                 <p>{brewery.addressLineOne}</p>
                 <p>
-                  {brewery.city}, {brewery.state}, {brewery.zip}{" "}
+                  {brewery.city}, {returnState(brewery.state)}, {brewery.zip}{" "}
                 </p>
                 <MapPageB brewery={brewery}></MapPageB>
               </div>

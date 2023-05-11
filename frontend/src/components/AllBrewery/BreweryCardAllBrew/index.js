@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getReviewsByBrewery } from "../../../store/reviews";
 import { getReviewLikes } from "../../../store/reviewLikes";
+import { returnState } from "../../../utils/returnState";
 
 const BreweryCardHome = ({
   breweryName,
@@ -37,7 +38,7 @@ const BreweryCardHome = ({
           {breweryName}
         </h2>
         <p>
-          {city}, {state}
+          {city}, {returnState(state)}
         </p>
         <RatingDisplay rating={rating}></RatingDisplay>
       </div>
