@@ -39,6 +39,7 @@ function ProfileButton({ user }) {
   const handleClickForCreate = (e) => {
     e.preventDefault();
     navigate("/create-brewery");
+    setShowMenu(false);
   };
 
   const handleLogout = (e) => {

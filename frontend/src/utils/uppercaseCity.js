@@ -1,6 +1,6 @@
 export const upperCaseCity = (city) => {
 if(city){
-  const arr = city.split(" ");
+  const arr = city.trim().split(" ");
   let val = " ";
   for (let i = 0; i < arr.length; i++) {
     val +=

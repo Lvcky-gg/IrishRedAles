@@ -693,172 +693,172 @@ export const filterState = (state) => {
   ];
 
   if (state && typeof state === "string") {
-    if (state.toLowerCase().startsWith("alab")) return "Alabama";
-    if (state.toLowerCase().startsWith("alas")) return "Alaska";
-    if (state.toLowerCase().startsWith("ari")) return "Arizona";
-    if (state.toLowerCase().startsWith("ark")) return "Arkansas";
-    if (state.toLowerCase().startsWith("cali")) return "California";
-    if (state.toLowerCase().startsWith("colo")) return "Colorado";
-    if (state.toLowerCase().startsWith("conn")) return "Connecticut";
-    if (state.toLowerCase().startsWith("dela")) return "Delaware";
-    if (state.toLowerCase().startsWith("flo")) return "Florida";
-    if (state.toLowerCase().startsWith("geor")) return "Georgia";
-    if (state.toLowerCase().startsWith("hawa")) return "Hawaii";
-    if (state.toLowerCase().startsWith("ida")) return "Idaho";
-    if (state.toLowerCase().startsWith("ill")) return "Illinois";
-    if (state.toLowerCase().startsWith("ind")) return "Indiana";
-    if (state.toLowerCase().startsWith("io")) return "Iowa";
-    if (state.toLowerCase().startsWith("kan")) return "Kansas";
-    if (state.toLowerCase().startsWith("ke")) return "Kentucky";
-    if (state.toLowerCase().startsWith("lou")) return "Louisiana";
-    if (state.toLowerCase().startsWith("mai")) return "Maine";
-    if (state.toLowerCase().startsWith("mar")) return "Maryland";
-    if (state.toLowerCase().startsWith("mas")) return "Massachusetts";
-    if (state.toLowerCase().startsWith("mic")) return "Michigan";
-    if (state.toLowerCase().startsWith("min")) return "Minnesota";
-    if (state.toLowerCase().startsWith("missi")) return "Mississippi";
-    if (state.toLowerCase().startsWith("misso")) return "Missouri";
-    if (state.toLowerCase().startsWith("mon")) return "Montana";
-    if (state.toLowerCase().startsWith("neb")) return "Nebraska";
-    if (state.toLowerCase().startsWith("nev")) return "Nevada";
-    if (state.toLowerCase().startsWith("new h")) return "NewHampshire";
-    if (state.toLowerCase().startsWith("new j")) return "NewJersey";
-    if (state.toLowerCase().startsWith("new y")) return "NewYork";
-    if (state.toLowerCase().startsWith("north c")) return "NorthCarolina";
-    if (state.toLowerCase().startsWith("north d")) return "NorthDakota";
-    if (state.toLowerCase().startsWith("ohi")) return "Ohio";
-    if (state.toLowerCase().startsWith("okl")) return "Oklahoma";
-    if (state.toLowerCase().startsWith("ore")) return "Oregon";
-    if (state.toLowerCase().startsWith("penn")) return "Pennsylvania";
-    if (state.toLowerCase().startsWith("rho")) return "RhodeIsland";
-    if (state.toLowerCase().startsWith("south c")) return "SouthCarolina";
-    if (state.toLowerCase().startsWith("south d")) return "SouthDakota";
-    if (state.toLowerCase().startsWith("tenn")) return "Tennessee";
-    if (state.toLowerCase().startsWith("tex")) return "Texas";
-    if (state.toLowerCase().startsWith("uta")) return "Utah";
-    if (state.toLowerCase().startsWith("verm")) return "Vermont";
-    if (state.toLowerCase().startsWith("virg")) return "Virginia";
-    if (state.toLowerCase().startsWith("wash")) return "Washington";
-    if (state.toLowerCase().startsWith("west")) return "WestVirginia";
-    if (state.toLowerCase().startsWith("wisc")) return "Wisconsin";
-    if (state.toLowerCase().startsWith("wyo")) return "Wyoming";
+    if (state.trim().toLowerCase().startsWith("alab")) return "Alabama";
+    if (state.trim().toLowerCase().startsWith("alas")) return "Alaska";
+    if (state.trim().toLowerCase().startsWith("ari")) return "Arizona";
+    if (state.trim().toLowerCase().startsWith("ark")) return "Arkansas";
+    if (state.trim().toLowerCase().startsWith("cali")) return "California";
+    if (state.trim().toLowerCase().startsWith("colo")) return "Colorado";
+    if (state.trim().toLowerCase().startsWith("conn")) return "Connecticut";
+    if (state.trim().toLowerCase().startsWith("dela")) return "Delaware";
+    if (state.trim().toLowerCase().startsWith("flo")) return "Florida";
+    if (state.trim().toLowerCase().startsWith("geor")) return "Georgia";
+    if (state.trim().toLowerCase().startsWith("hawa")) return "Hawaii";
+    if (state.trim().toLowerCase().startsWith("ida")) return "Idaho";
+    if (state.trim().toLowerCase().startsWith("ill")) return "Illinois";
+    if (state.trim().toLowerCase().startsWith("ind")) return "Indiana";
+    if (state.trim().toLowerCase().startsWith("io")) return "Iowa";
+    if (state.trim().toLowerCase().startsWith("kan")) return "Kansas";
+    if (state.trim().toLowerCase().startsWith("ke")) return "Kentucky";
+    if (state.trim().toLowerCase().startsWith("lou")) return "Louisiana";
+    if (state.trim().toLowerCase().startsWith("mai")) return "Maine";
+    if (state.trim().toLowerCase().startsWith("mar")) return "Maryland";
+    if (state.trim().toLowerCase().startsWith("mas")) return "Massachusetts";
+    if (state.trim().toLowerCase().startsWith("mic")) return "Michigan";
+    if (state.trim().toLowerCase().startsWith("min")) return "Minnesota";
+    if (state.trim().toLowerCase().startsWith("missi")) return "Mississippi";
+    if (state.trim().toLowerCase().startsWith("misso")) return "Missouri";
+    if (state.trim().toLowerCase().startsWith("mon")) return "Montana";
+    if (state.trim().toLowerCase().startsWith("neb")) return "Nebraska";
+    if (state.trim().toLowerCase().startsWith("nev")) return "Nevada";
+    if (state.trim().toLowerCase().startsWith("new h")) return "NewHampshire";
+    if (state.trim().toLowerCase().startsWith("new j")) return "NewJersey";
+    if (state.trim().toLowerCase().startsWith("new y")) return "NewYork";
+    if (state.trim().toLowerCase().startsWith("north c")) return "NorthCarolina";
+    if (state.trim().toLowerCase().startsWith("north d")) return "NorthDakota";
+    if (state.trim().toLowerCase().startsWith("ohi")) return "Ohio";
+    if (state.trim().toLowerCase().startsWith("okl")) return "Oklahoma";
+    if (state.trim().toLowerCase().startsWith("ore")) return "Oregon";
+    if (state.trim().toLowerCase().startsWith("penn")) return "Pennsylvania";
+    if (state.trim().toLowerCase().startsWith("rho")) return "RhodeIsland";
+    if (state.trim().toLowerCase().startsWith("south c")) return "SouthCarolina";
+    if (state.trim().toLowerCase().startsWith("south d")) return "SouthDakota";
+    if (state.trim().toLowerCase().startsWith("tenn")) return "Tennessee";
+    if (state.trim().toLowerCase().startsWith("tex")) return "Texas";
+    if (state.trim().toLowerCase().startsWith("uta")) return "Utah";
+    if (state.trim().toLowerCase().startsWith("verm")) return "Vermont";
+    if (state.trim().toLowerCase().startsWith("virg")) return "Virginia";
+    if (state.trim().toLowerCase().startsWith("wash")) return "Washington";
+    if (state.trim().toLowerCase().startsWith("west")) return "WestVirginia";
+    if (state.trim().toLowerCase().startsWith("wisc")) return "Wisconsin";
+    if (state.trim().toLowerCase().startsWith("wyo")) return "Wyoming";
   }
   if(state){
   for (let i = 0; i < 18; i++) {
-    if (Alabama[i] && state.toLowerCase() === Alabama[i].toLowerCase())
+    if (Alabama[i] && state.trim().toLowerCase() === Alabama[i].trim().toLowerCase())
       return "Alabama";
-    if (Alaska[i] && state.toLowerCase() === Alaska[i].toLowerCase())
+    if (Alaska[i] && state.trim().toLowerCase() === Alaska[i].trim().toLowerCase())
       return "Alaska";
-    if (Arizona[i] && state.toLowerCase() === Arizona[i].toLowerCase())
+    if (Arizona[i] && state.trim().toLowerCase() === Arizona[i].trim().toLowerCase())
       return "Arizona";
-    if (Arkansas[i] && state.toLowerCase() === Arkansas[i].toLowerCase())
+    if (Arkansas[i] && state.trim().toLowerCase() === Arkansas[i].trim().toLowerCase())
       return "Arkansas";
-    if (California[i] && state.toLowerCase() === California[i].toLowerCase())
+    if (California[i] && state.trim().toLowerCase() === California[i].trim().toLowerCase())
       return "California";
-    if (Colorado[i] && state.toLowerCase() === Colorado[i].toLowerCase())
+    if (Colorado[i] && state.trim().toLowerCase() === Colorado[i].trim().toLowerCase())
       return "Colorado";
-    if (Connecticut[i] && state.toLowerCase() === Connecticut[i].toLowerCase())
+    if (Connecticut[i] && state.trim().toLowerCase() === Connecticut[i].trim().toLowerCase())
       return "Connecticut";
-    if (Delaware[i] && state.toLowerCase() === Delaware[i].toLowerCase())
+    if (Delaware[i] && state.trim().toLowerCase() === Delaware[i].trim().toLowerCase())
       return "Delaware";
-    if (Florida[i] && state.toLowerCase() === Florida[i].toLowerCase())
+    if (Florida[i] && state.trim().toLowerCase() === Florida[i].trim().toLowerCase())
       return "Florida";
-    if (Georgia[i] && state.toLowerCase() === Georgia[i].toLowerCase())
+    if (Georgia[i] && state.trim().toLowerCase() === Georgia[i].trim().toLowerCase())
       return "Georgia";
-    if (Hawaii[i] && state.toLowerCase() === Hawaii[i].toLowerCase())
+    if (Hawaii[i] && state.trim().toLowerCase() === Hawaii[i].trim().toLowerCase())
       return "Hawaii";
-    if (Idaho[i] && state.toLowerCase() === Idaho[i].toLowerCase())
+    if (Idaho[i] && state.trim().toLowerCase() === Idaho[i].trim().toLowerCase())
       return "Idaho";
-    if (Illinois[i] && state.toLowerCase() === Illinois[i].toLowerCase())
+    if (Illinois[i] && state.trim().toLowerCase() === Illinois[i].trim().toLowerCase())
       return "Illinois";
-    if (Indiana[i] && state.toLowerCase() === Indiana[i].toLowerCase())
+    if (Indiana[i] && state.trim().toLowerCase() === Indiana[i].trim().toLowerCase())
       return "Indiana";
-    if (Iowa[i] && state.toLowerCase() === Iowa[i].toLowerCase()) return "Iowa";
-    if (Kansas[i] && state.toLowerCase() === Kansas[i].toLowerCase())
+    if (Iowa[i] && state.trim().toLowerCase() === Iowa[i].trim().toLowerCase()) return "Iowa";
+    if (Kansas[i] && state.trim().toLowerCase() === Kansas[i].trim().toLowerCase())
       return "Kansas";
-    if (Kentucky[i] && state.toLowerCase() === Kentucky[i].toLowerCase())
+    if (Kentucky[i] && state.trim().toLowerCase() === Kentucky[i].trim().toLowerCase())
       return "Kentucky";
-    if (Louisiana[i] && state.toLowerCase() === Louisiana[i].toLowerCase())
+    if (Louisiana[i] && state.trim().toLowerCase() === Louisiana[i].trim().toLowerCase())
       return "Louisiana";
-    if (Maine[i] && state.toLowerCase() === Maine[i].toLowerCase())
+    if (Maine[i] && state.trim().toLowerCase() === Maine[i].trim().toLowerCase())
       return "Maine";
-    if (Maryland[i] && state.toLowerCase() === Maryland[i].toLowerCase())
+    if (Maryland[i] && state.trim().toLowerCase() === Maryland[i].trim().toLowerCase())
       return "Maryland";
     if (
       Massachusetts[i] &&
-      state.toLowerCase() === Massachusetts[i].toLowerCase()
+      state.trim().toLowerCase() === Massachusetts[i].trim().toLowerCase()
     )
       return "Massachusetts";
-    if (Michigan[i] && state.toLowerCase() === Michigan[i].toLowerCase())
+    if (Michigan[i] && state.trim().toLowerCase() === Michigan[i].trim().toLowerCase())
       return "Michigan";
-    if (Minnesota[i] && state.toLowerCase() === Minnesota[i].toLowerCase())
+    if (Minnesota[i] && state.trim().toLowerCase() === Minnesota[i].trim().toLowerCase())
       return "Minnesota";
-    if (Mississippi[i] && state.toLowerCase() === Mississippi[i].toLowerCase())
+    if (Mississippi[i] && state.trim().toLowerCase() === Mississippi[i].trim().toLowerCase())
       return "Mississippi";
-    if (Missouri[i] && state.toLowerCase() === Missouri[i].toLowerCase())
+    if (Missouri[i] && state.trim().toLowerCase() === Missouri[i].trim().toLowerCase())
       return "Missouri";
-    if (Montana[i] && state.toLowerCase() === Montana[i].toLowerCase())
+    if (Montana[i] && state.trim().toLowerCase() === Montana[i].trim().toLowerCase())
       return "Montana";
-    if (Nebraska[i] && state.toLowerCase() === Nebraska[i].toLowerCase())
+    if (Nebraska[i] && state.trim().toLowerCase() === Nebraska[i].trim().toLowerCase())
       return "Nebraska";
-    if (Nevada[i] && state.toLowerCase() === Nevada[i].toLowerCase())
+    if (Nevada[i] && state.trim().toLowerCase() === Nevada[i].trim().toLowerCase())
       return "Nevada";
     if (
       NewHampshire[i] &&
-      state.toLowerCase() === NewHampshire[i].toLowerCase()
+      state.trim().toLowerCase() === NewHampshire[i].trim().toLowerCase()
     )
       return "NewHampshire";
-    if (NewJersey[i] && state.toLowerCase() === NewJersey[i].toLowerCase())
+    if (NewJersey[i] && state.trim().toLowerCase() === NewJersey[i].trim().toLowerCase())
       return "NewJersey";
-    if (NewMexico[i] && state.toLowerCase() === NewMexico[i].toLowerCase())
+    if (NewMexico[i] && state.trim().toLowerCase() === NewMexico[i].trim().toLowerCase())
       return "NewMexico";
-    if (NewYork[i] && state.toLowerCase() === NewYork[i].toLowerCase())
+    if (NewYork[i] && state.trim().toLowerCase() === NewYork[i].trim().toLowerCase())
       return "NewYork";
     if (
       NorthCarolina[i] &&
-      state.toLowerCase() === NorthCarolina[i].toLowerCase()
+      state.trim().toLowerCase() === NorthCarolina[i].trim().toLowerCase()
     )
       return "NorthCarolina";
-    if (NorthDakota[i] && state.toLowerCase() === NorthDakota[i].toLowerCase())
+    if (NorthDakota[i] && state.trim().toLowerCase() === NorthDakota[i].trim().toLowerCase())
       return "NorthDakota";
-    if (Ohio[i] && state.toLowerCase() === Ohio[i].toLowerCase()) return "Ohio";
-    if (Oklahoma[i] && state.toLowerCase() === Oklahoma[i].toLowerCase())
+    if (Ohio[i] && state.trim().toLowerCase() === Ohio[i].trim().toLowerCase()) return "Ohio";
+    if (Oklahoma[i] && state.trim().toLowerCase() === Oklahoma[i].trim().toLowerCase())
       return "Oklahoma";
-    if (Oregon[i] && state.toLowerCase() === Oregon[i].toLowerCase())
+    if (Oregon[i] && state.trim().toLowerCase() === Oregon[i].trim().toLowerCase())
       return "Oregon";
     if (
       Pennsylvania[i] &&
-      state.toLowerCase() === Pennsylvania[i].toLowerCase()
+      state.trim().toLowerCase() === Pennsylvania[i].trim().toLowerCase()
     )
       return "Pennsylvania";
-    if (RhodeIsland[i] && state.toLowerCase() === RhodeIsland[i].toLowerCase())
+    if (RhodeIsland[i] && state.trim().toLowerCase() === RhodeIsland[i].trim().toLowerCase())
       return "RhodeIsland";
     if (
       SouthCarolina[i] &&
-      state.toLowerCase() === SouthCarolina[i].toLowerCase()
+      state.trim().toLowerCase() === SouthCarolina[i].trim().toLowerCase()
     )
       return "SouthCarolina";
-    if (SouthDakota[i] && state.toLowerCase() === SouthDakota[i].toLowerCase())
+    if (SouthDakota[i] && state.trim().toLowerCase() === SouthDakota[i].trim().toLowerCase())
       return "SouthDakota";
-    if (Tennessee[i] && state.toLowerCase() === Tennessee[i].toLowerCase())
+    if (Tennessee[i] && state.trim().toLowerCase() === Tennessee[i].trim().toLowerCase())
       return "Tennessee";
-    if (Texas[i] && state.toLowerCase() === Texas[i].toLowerCase())
+    if (Texas[i] && state.trim().toLowerCase() === Texas[i].trim().toLowerCase())
       return "Texas";
-    if (Utah[i] && state.toLowerCase() === Utah[i].toLowerCase()) return "Utah";
-    if (Vermont[i] && state.toLowerCase() === Vermont[i].toLowerCase())
+    if (Utah[i] && state.trim().toLowerCase() === Utah[i].trim().toLowerCase()) return "Utah";
+    if (Vermont[i] && state.trim().toLowerCase() === Vermont[i].trim().toLowerCase())
       return "Vermont";
-    if (Virginia[i] && state.toLowerCase() === Virginia[i].toLowerCase())
+    if (Virginia[i] && state.trim().toLowerCase() === Virginia[i].trim().toLowerCase())
       return "Virginia";
-    if (Washington[i] && state.toLowerCase() === Washington[i].toLowerCase())
+    if (Washington[i] && state.trim().toLowerCase() === Washington[i].trim().toLowerCase())
       return "Washington";
     if (
       WestVirginia[i] &&
-      state.toLowerCase() === WestVirginia[i].toLowerCase()
+      state.trim().toLowerCase() === WestVirginia[i].trim().toLowerCase()
     )
       return "WestVirginia";
-    if (Wisconsin[i] && state.toLowerCase() === Wisconsin[i].toLowerCase())
+    if (Wisconsin[i] && state.trim().toLowerCase() === Wisconsin[i].trim().toLowerCase())
       return "Wisconsin";
-    if (Wyoming[i] && state.toLowerCase() === Wyoming[i].toLowerCase())
+    if (Wyoming[i] && state.trim().toLowerCase() === Wyoming[i].trim().toLowerCase())
       return "Wyoming";
   }
   return state;
