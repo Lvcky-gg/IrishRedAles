@@ -15,7 +15,9 @@ const AllBrew = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    if (parameter) dispatch(filterBreweries(parameter));
+
+    if (parameter) dispatch(filterBreweries(parameter))
+    else dispatch(getAllBreweries())
   }, [dispatch, parameter]);
 
   return (
