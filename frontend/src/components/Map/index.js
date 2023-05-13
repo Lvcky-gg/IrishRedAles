@@ -24,9 +24,9 @@ const MapPageA = () => {
       setCurrentPosition({ lat: +breweries[0].lat, lng: +breweries[0].lng });
     }
   }, [breweries]);
-  useEffect(() => {
-    dispatch(getAllBreweries());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAllBreweries());
+  // }, [dispatch]);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",

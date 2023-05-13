@@ -4,7 +4,7 @@ import MapPageA from "../Map";
 import { useDispatch, useSelector } from "react-redux";
 import BreweryCardHome from "./BreweryCardAllBrew";
 import { useLocation } from "react-router-dom";
-import { filterBreweries } from "../../store/breweries";
+import { filterBreweries, getAllBreweries } from "../../store/breweries";
 import Redirect from "../Redirect";
 
 const AllBrew = () => {
@@ -13,7 +13,7 @@ const AllBrew = () => {
   const location = useLocation();
   const parameter = location.search;
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     if (parameter) dispatch(filterBreweries(parameter));
   }, [dispatch, parameter]);
