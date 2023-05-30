@@ -16,3 +16,6 @@ width:40%;
 .search::placeholder{
     color:black;
 }
+.searchbtn{
+    width:fit-content;
+}
