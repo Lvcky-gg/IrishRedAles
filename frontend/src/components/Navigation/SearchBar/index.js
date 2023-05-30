@@ -55,7 +55,7 @@ const Search = () => {
         onChange={(e) => setStateInput(e.target.value)}
         className="buttonStyle search"
       ></input>
-      <button className="buttonStyle searchbtn">Locate Brewery</button>
+      <button className="buttonStyle searchbtn">Search</button>
     </form>
   );
 };
