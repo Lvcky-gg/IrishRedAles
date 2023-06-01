@@ -50,7 +50,7 @@ function LoginFormModal() {
           <img src={logo} alt="#"></img>
         </div>
         <div>
-          <label>Username or Password</label>
+          <label>Username or Email</label>
           <input
             type="text"
             value={credential}
