@@ -32,6 +32,7 @@ import {
   faHeart,
   faCameraRetro,
   faCamera,
+  faMagnifyingGlass
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -39,6 +40,7 @@ import {
   faLinkedinIn,
   faSquareGithub,
   faTwitter,
+  
 
 } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
@@ -75,6 +77,7 @@ function App() {
     faChevronRight,
     faCameraRetro,
     faCamera,
+    faMagnifyingGlass
   );
 
   return (
