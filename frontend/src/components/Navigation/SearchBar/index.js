@@ -5,6 +5,7 @@ import "./search.css";
 import { filterState } from "../../../utils/filterState";
 import { useDispatch } from "react-redux";
 import { upperCaseCity } from "../../../utils/uppercaseCity";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -46,16 +47,18 @@ const Search = () => {
         placeholder="City"
         value={cityInput}
         onChange={(e) => setCityInput(e.target.value)}
-        className="buttonStyle search"
+        className="search searchOne"
       ></input>
       <input
         type="text"
         placeholder="State"
         value={stateInput}
         onChange={(e) => setStateInput(e.target.value)}
-        className="buttonStyle search"
+        className="search searchTwo"
       ></input>
-      <button className="buttonStyle searchbtn">Search</button>
+
+      <button className=" searchbtn"><FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /></button>
+
     </form>
   );
 };
