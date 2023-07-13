@@ -36,3 +36,6 @@ width:40%;
     padding-left:5%;
     color:black;
 }
+.searchbtn{
+    width:fit-content;
+}

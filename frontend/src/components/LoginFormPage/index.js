@@ -55,7 +55,7 @@ function LoginFormPage() {
         </div>
 
         <div className="handleLoginBox">
-          <label>Username or Password</label>
+          <label>Username or Email</label>
           <input
             className="buttonStyle"
             type="text"

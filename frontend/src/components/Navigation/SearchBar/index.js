@@ -56,7 +56,9 @@ const Search = () => {
         onChange={(e) => setStateInput(e.target.value)}
         className="search searchTwo"
       ></input>
+
       <button className=" searchbtn"><FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /></button>
+
     </form>
   );
 };
