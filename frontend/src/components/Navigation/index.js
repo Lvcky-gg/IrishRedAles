@@ -19,22 +19,25 @@ function Navigation({ isLoaded }) {
       <div className="imgHollderNav">
         <img onClick={onClickbtn} src={logo} alt="#" className="navLogo"></img>
       </div>
-      <Search></Search>
+      
 
-      <ul className="navDrop">
+      <div className="navDrop">
         {isLoaded && (
           <>
-            <li className="navHomeLink">
+            <div className="navHomeLink">
               <NavLink to="/">Home</NavLink>
-            </li>
+            </div>
+            <div>
+            <Search className="searchTab"></Search>
+            </div>
           </>
         )}
         {isLoaded && (
-          <li>
+          <div className="shortenDiv">
             <ProfileButton user={sessionUser} />
-          </li>
+            </div>
         )}
-      </ul>
+      </div>
     </div>
   );
 }

@@ -17,25 +17,34 @@
 .navDrop{
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
     margin-top:1%;
+    margin-right:5%;
+    height:70%;
+    width:35%;
+    background-color: rgba(0, 0, 0, 0.286);
     margin-bottom:0%;
+    border-radius: 3.5%;
     
     
 }
+.searchTab{
+    width:100px;
+}
 
 .navHomeLink{
-    padding-right:10%;
+    padding-right:5%;
 }
 .navHomeLink a{
     text-decoration: none;
     color:#B4C4BC;
     font-size:30px;
+    padding-left:25%;
 }
-.navDrop li {
+.navDrop div {
     list-style: none;
     display:flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content:center;
     
 }
 .hidden {
@@ -54,13 +63,13 @@
 }
 .profile-dropdown {
     position:relative;
-    right:100%;
-    top:110%;
+    right:85%;
+    top:190%;
    background-color:rgba(253, 253, 253, 0.26);
    backdrop-filter: blur(5px);
    border-radius:5%;
-   height:170px;
-   width:170px;
+   height:180px;
+   width:280px;
    /* padding:10%; */
    
 }
@@ -81,10 +90,14 @@ color:#B4C4BC
     color:black;
 }
 .profileButton{
-    height:25%;
+    height:50%;
     width:20%;
-    background-color: rgba(253, 253, 253, 0.26);;
-    border-radius: 15%;
+    background:transparent;
+    border:none;
+    color:#B4C4BC;
+}
+.profileButton svg {
+    width:100%;
 }
 .profileButton:hover{
     cursor: pointer;
@@ -98,4 +111,8 @@ color:#B4C4BC
         margin-left:6%;
         padding:2%;
     
+}
+ .shortenDiv{
+display:block;
+width:35%;
 }
