@@ -1,9 +1,7 @@
 .searchBar{
     display: flex;
-    width:30%;
-    height:30%;
-    margin-top:3%;
-    margin-bottom: 0%;
+    width:100%;
+    height:50%;
 }
 .search {
 /* margin-right: 1%; */

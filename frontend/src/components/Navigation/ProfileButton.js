@@ -64,7 +64,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu} className="profileButton buttonStyle">
+      <button onClick={openMenu} className="profileButton">
         {up ? (
           <FontAwesomeIcon icon="fa-solid fa-chevron-up" />
         ) : (
