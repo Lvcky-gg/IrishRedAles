@@ -42,6 +42,7 @@ p{
   background-color: rgba(253, 253, 253, 0.56);
   box-shadow: 0 0 0 2em transparent;
   cursor:pointer;
+  
 }
 .specificButton{
     height:50px;
@@ -52,6 +53,9 @@ p{
     margin:2%;
     background-color: black;
     color:rgba(253, 253, 253, 0.25);
+}
+.specificButton svg {
+    padding-right: 5%;
 }
 .specificButton:hover{
     background-color:rgba(253, 253, 253, 0.25);
