@@ -12,6 +12,7 @@
    border-left: 3px outset rgba(0,0,0.3);
    border-right: 3px outset rgba(0,0,0.5);
    border-bottom: 3px outset rgba(0,0,0.5);
+   background-color: rgba(253, 253, 253, 0.25);
 
 }
 .breweryCardcontainerInner{
@@ -23,9 +24,9 @@
     margin: auto;
     margin-left:10%;
 }
-.breweryCardcontainer:hover{
+/* .breweryCardcontainer:hover{
     background-color: rgba(253, 253, 253, 0.36);
-}
+} */
 .breweryCardcontainerInner h2 {
     color:#B4C4BC;
 }
