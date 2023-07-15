@@ -67,6 +67,10 @@
    border-radius:5%;
    height:180px;
    width:280px;
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
    
 }
 .navdropcomp:hover{
@@ -74,12 +78,15 @@ color:#B4C4BC
 }
 .modalButton{
     width:100%;
+    height:30px;
+    border-radius: 9%;
 }
 .profile-dropdown li {
     width:80%;
     margin:auto;
-    margin-left:-10%;
+    margin-left:-5%;
     padding-top:9%;
+    padding-bottom: 2%;
 }
 .profile-dropdown li a, p, button {
     text-decoration:none;
