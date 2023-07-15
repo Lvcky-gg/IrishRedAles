@@ -18,12 +18,9 @@
     display:flex;
     flex-direction: row;
     margin-top:1%;
-    /* margin-right:5%; */
     height:70%;
     width:35%;
-    /* background-color: rgba(0, 0, 0, 0.286); */
     margin-bottom:0%;
-    /* border-radius: 3.5%; */
     
     
 }
@@ -70,7 +67,6 @@
    border-radius:5%;
    height:180px;
    width:280px;
-   /* padding:10%; */
    
 }
 .navdropcomp:hover{
