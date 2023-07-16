@@ -22,7 +22,7 @@
 }
 .menuHead{
     width:fit-content;
-    font-family: Rye;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin:auto;
     padding:2%;
 }
@@ -108,7 +108,7 @@
 
 }
 .specificHeader{
-    font-family: Rye;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .specificHeaderLike{
     color:#B4C4BC;
@@ -126,7 +126,7 @@
     align-items: center;
 }
 .specificHolder h2 {
-    font-family: Rye;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size:40px;
 }
 .locationHolder{
@@ -161,7 +161,7 @@
     flex-direction: column;
 }
 .specificFont{
-    font-family: Rye;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width:fit-content;
     font-size:70px;
     overflow-wrap: break-word;
