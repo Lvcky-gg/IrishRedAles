@@ -18,8 +18,8 @@
     width:100%;
     margin:auto;
     border-radius: 3% 3% 0% 0%;
-    display:flex;
-    max-height:70%;
+    /* display:flex; */
+    max-height:120%;
     height:350px;
 }
 .menuHead{
@@ -47,7 +47,7 @@
 }
 .buttonCenterDelete{
     position: relative;
-    top:62%;
+    top:300px;
     width: fit-content;
     margin:auto;
 }
@@ -55,7 +55,7 @@
 .specificBreweryContainerBtn{
     display:flex;
     margin:auto;
-    margin-top:0%;
+    margin-top:-10%;
     margin-bottom: 0%;
     width:100%;
     display:flex;
@@ -69,7 +69,7 @@
     width: 90%;
     position:relative;
     z-index: 5;
-    bottom:40%;
+    bottom:200px;
     display:flex;
     justify-content: space-between;
     margin:auto;
